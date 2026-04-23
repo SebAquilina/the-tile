@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { CollectionsExplorer } from "@/components/catalog/CollectionsExplorer";
+import { CollectionsExplorerServer } from "@/components/catalog/CollectionsExplorerServer";
 import { getAllProducts, getEffectCategories } from "@/lib/seed";
 
 export const metadata: Metadata = {
@@ -9,7 +8,11 @@ export const metadata: Metadata = {
     "Every tile series The Tile carries — filter by effect, usage, brand, or tag.",
 };
 
-export default function CollectionsPage() {
+export default function CollectionsPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
   const products = getAllProducts().filter((p) => p.showInCatalog !== false);
   const effectCategories = getEffectCategories();
 
@@ -25,13 +28,12 @@ export default function CollectionsPage() {
           concierge if you&apos;d rather talk it through.
         </p>
       </header>
-      <Suspense fallback={null}>
-        <CollectionsExplorer
-          products={products}
-          effectCategories={effectCategories}
-          countLabelPrefix="Showing"
-        />
-      </Suspense>
+      <CollectionsExplorerServer
+        products={products}
+        effectCategories={effectCategories}
+        searchParams={searchParams}
+        countLabelPrefix="Showing"
+      />
     </>
   );
 }

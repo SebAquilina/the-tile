@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Suspense } from "react";
-import { CollectionsExplorer } from "@/components/catalog/CollectionsExplorer";
+import { CollectionsExplorerServer } from "@/components/catalog/CollectionsExplorerServer";
+import { breadcrumbLd, jsonLdToString } from "@/lib/jsonld";
 import {
   getAllProducts,
   getCategoryById,
@@ -41,7 +41,13 @@ function isEffect(effect: string): effect is EffectId {
   return (EFFECT_IDS as readonly string[]).includes(effect);
 }
 
-export default function EffectLandingPage({ params }: { params: { effect: string } }) {
+export default function EffectLandingPage({
+  params,
+  searchParams,
+}: {
+  params: { effect: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
   if (!isEffect(params.effect)) notFound();
 
   const category = getCategoryById(params.effect);
@@ -55,8 +61,19 @@ export default function EffectLandingPage({ params }: { params: { effect: string
   const allProducts = getAllProducts().filter((p) => p.showInCatalog !== false);
   const effectCategories = getEffectCategories();
 
+  const breadcrumbs = breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "Collections", url: "/collections" },
+    { name: category.name, url: `/collections/${category.id}` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: jsonLdToString(breadcrumbs) }}
+      />
       <header className="mx-auto max-w-wide px-space-5 md:px-space-7 pt-space-9 pb-space-5">
         <nav aria-label="Breadcrumb" className="text-sm text-ink-subtle">
           <ol className="flex items-center gap-space-2">
@@ -92,14 +109,13 @@ export default function EffectLandingPage({ params }: { params: { effect: string
           </p>
         ) : null}
       </header>
-      <Suspense fallback={null}>
-        <CollectionsExplorer
-          products={allProducts}
-          effectCategories={effectCategories}
-          lockedEffect={params.effect}
-          countLabelPrefix={`Showing ${products.length} of`}
-        />
-      </Suspense>
+      <CollectionsExplorerServer
+        products={allProducts}
+        effectCategories={effectCategories}
+        searchParams={searchParams}
+        lockedEffect={params.effect}
+        countLabelPrefix={`Showing ${products.length} of`}
+      />
     </>
   );
 }

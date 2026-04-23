@@ -1,18 +1,17 @@
 import { AGENT_SYSTEM_PROMPT } from "@/lib/agent-system-prompt";
 import { AgentChatRequestSchema } from "@/lib/schemas";
+import { hashIp, clientIp } from "@/lib/ip-hash";
+import { limitAgentPerIp } from "@/lib/rate-limit";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-// TODO(phase-0): Turnstile verification on the first message of a session.
-// TODO(phase-0): Rate limiting — per IP hash + per sessionId, backed by D1 / KV.
-// TODO(phase-0): MONTHLY_TOKEN_CAP enforcement + short-break fallback reply.
-// TODO(phase-0): Log turn metadata (session id, latency, token counts, actions)
-//                to D1 `agent_sessions` / `agent_turns`.
-
 const DEFAULT_MODEL = "gemini-flash-lite-latest";
+const SESSION_COOKIE = "tt_agent_session";
+const SESSION_COOKIE_MAX_AGE = 60 * 60 * 24; // 24h — matches spec's return-visit window.
 
-const SSE_HEADERS = {
+const SSE_HEADERS: Record<string, string> = {
   "Content-Type": "text/event-stream; charset=utf-8",
   "Cache-Control": "no-cache, no-transform",
   Connection: "keep-alive",
@@ -27,9 +26,53 @@ interface GeminiCandidate {
   content?: { parts?: GeminiPart[] };
 }
 
+interface GeminiUsageMetadata {
+  promptTokenCount?: number;
+  candidatesTokenCount?: number;
+  totalTokenCount?: number;
+}
+
 interface GeminiStreamFrame {
   candidates?: GeminiCandidate[];
+  usageMetadata?: GeminiUsageMetadata;
 }
+
+// --- Module-scope monthly token counter (approximate, per isolate) -----------
+// Each edge isolate keeps its own counter, reset on the first request of a new
+// calendar month (UTC). A durable counter backed by D1 / KV is Phase 2. For
+// Phase 1 this is a best-effort circuit breaker against runaway bills.
+
+let tokenBucketMonth = monthKey(new Date());
+let monthlyTokens = 0;
+
+function monthKey(d: Date): string {
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
+}
+
+function resetIfNewMonth(): void {
+  const current = monthKey(new Date());
+  if (current !== tokenBucketMonth) {
+    tokenBucketMonth = current;
+    monthlyTokens = 0;
+  }
+}
+
+function isTokenCapExceeded(): boolean {
+  resetIfNewMonth();
+  const raw = process.env.MONTHLY_TOKEN_CAP;
+  if (!raw) return false;
+  const cap = Number(raw);
+  if (!Number.isFinite(cap) || cap <= 0) return false;
+  return monthlyTokens >= cap;
+}
+
+function recordTokens(used: number): void {
+  if (!Number.isFinite(used) || used <= 0) return;
+  resetIfNewMonth();
+  monthlyTokens += used;
+}
+
+// --- SSE helpers -------------------------------------------------------------
 
 function encodeSseFrame(payload: unknown): Uint8Array {
   return new TextEncoder().encode(`data: ${JSON.stringify(payload)}\n\n`);
@@ -39,6 +82,31 @@ function encodeSseDone(): Uint8Array {
   return new TextEncoder().encode("data: [DONE]\n\n");
 }
 
+/**
+ * Build a polite-fallback SSE stream with a single error frame. Used for
+ * rate-limit, bot-check, and token-cap hits so the frontend can render a
+ * friendly message without a network error.
+ */
+function politeFallback(
+  error: "busy" | "bot-check" | "token-cap",
+  message: string,
+  extraHeaders: Record<string, string> = {},
+): Response {
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      controller.enqueue(encodeSseFrame({ error, message }));
+      controller.enqueue(encodeSseDone());
+      controller.close();
+    },
+  });
+  return new Response(stream, {
+    // Keep 200 so EventSource / fetch-stream clients consume the frame cleanly,
+    // except for the true 429 case where we want observability in server logs.
+    status: error === "busy" ? 429 : 200,
+    headers: { ...SSE_HEADERS, ...extraHeaders },
+  });
+}
+
 function extractDeltaFromFrame(raw: string): string | null {
   const trimmed = raw.trim();
   if (!trimmed) return null;
@@ -46,11 +114,43 @@ function extractDeltaFromFrame(raw: string): string | null {
     const parsed = JSON.parse(trimmed) as GeminiStreamFrame;
     const parts = parsed.candidates?.[0]?.content?.parts ?? [];
     const text = parts.map((p) => p.text ?? "").join("");
+    // Record token usage opportunistically — Gemini emits usageMetadata on the
+    // final frame (and sometimes interstitially).
+    const used = parsed.usageMetadata?.totalTokenCount;
+    if (typeof used === "number") recordTokens(used);
     return text || null;
   } catch {
     return null;
   }
 }
+
+// --- Session cookie ---------------------------------------------------------
+
+function readSessionCookie(request: Request): string | null {
+  const cookieHeader = request.headers.get("cookie");
+  if (!cookieHeader) return null;
+  for (const part of cookieHeader.split(";")) {
+    const [name, ...rest] = part.trim().split("=");
+    if (name === SESSION_COOKIE) {
+      const value = rest.join("=").trim();
+      return value || null;
+    }
+  }
+  return null;
+}
+
+function buildSessionCookie(value: string): string {
+  return [
+    `${SESSION_COOKIE}=${value}`,
+    "Path=/",
+    "HttpOnly",
+    "SameSite=Lax",
+    "Secure",
+    `Max-Age=${SESSION_COOKIE_MAX_AGE}`,
+  ].join("; ");
+}
+
+// --- Route ------------------------------------------------------------------
 
 export async function POST(request: Request): Promise<Response> {
   let body: unknown;
@@ -68,7 +168,49 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
-  const { messages } = parsed.data;
+  const { messages, sessionId, isFirstMessage, turnstileToken } = parsed.data;
+
+  // Plant / refresh the agent session cookie (HttpOnly; identity-free).
+  const existingCookie = readSessionCookie(request);
+  const cookieValue = existingCookie ?? sessionId;
+  const setCookieHeader = buildSessionCookie(cookieValue);
+
+  // --- Rate limit: 30/min + 200/hr per IP hash ---
+  const ipHash = await hashIp(request);
+  const limited = limitAgentPerIp(ipHash);
+  if (!limited.ok) {
+    return politeFallback(
+      "busy",
+      "We're taking a breather — please try again in a moment.",
+      {
+        "Set-Cookie": setCookieHeader,
+        "Retry-After": String(
+          Math.max(1, Math.ceil((limited.resetAt - Date.now()) / 1000)),
+        ),
+      },
+    );
+  }
+
+  // --- Turnstile gate on the first message of a session ---
+  if (isFirstMessage === true) {
+    const ok = await verifyTurnstile(turnstileToken, clientIp(request));
+    if (!ok) {
+      return politeFallback(
+        "bot-check",
+        "Please complete the quick human check and try again.",
+        { "Set-Cookie": setCookieHeader },
+      );
+    }
+  }
+
+  // --- Monthly token cap (approximate, per-isolate) ---
+  if (isTokenCapExceeded()) {
+    return politeFallback(
+      "token-cap",
+      "I'm taking a short break — in the meantime, please browse the collections or drop us a note.",
+      { "Set-Cookie": setCookieHeader },
+    );
+  }
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -118,7 +260,9 @@ export async function POST(request: Request): Promise<Response> {
         controller.close();
       },
     });
-    return new Response(errorStream, { headers: SSE_HEADERS });
+    return new Response(errorStream, {
+      headers: { ...SSE_HEADERS, "Set-Cookie": setCookieHeader },
+    });
   }
 
   if (!upstream.ok || !upstream.body) {
@@ -138,7 +282,7 @@ export async function POST(request: Request): Promise<Response> {
       },
     });
     return new Response(errorStream, {
-      headers: SSE_HEADERS,
+      headers: { ...SSE_HEADERS, "Set-Cookie": setCookieHeader },
       // Keep 200 so EventSource clients happily consume the error frame.
       status: 200,
     });
@@ -196,5 +340,12 @@ export async function POST(request: Request): Promise<Response> {
     },
   });
 
-  return new Response(stream, { headers: SSE_HEADERS });
+  // `sessionId` is intentionally referenced so TS treats the destructure as
+  // fully-used even when session logic is kept cookie-only (the cookie value
+  // defaults to the client-supplied id on first contact).
+  void sessionId;
+
+  return new Response(stream, {
+    headers: { ...SSE_HEADERS, "Set-Cookie": setCookieHeader },
+  });
 }

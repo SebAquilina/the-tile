@@ -190,6 +190,8 @@ export type AgentMessage = z.infer<typeof AgentMessageSchema>;
 export const AgentChatRequestSchema = z.object({
   messages: z.array(AgentMessageSchema).min(1),
   sessionId: z.string().min(1),
+  isFirstMessage: z.boolean().optional(),
+  turnstileToken: z.string().optional(),
 });
 
 export type AgentChatRequest = z.infer<typeof AgentChatRequestSchema>;

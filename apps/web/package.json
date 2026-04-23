@@ -11,11 +11,13 @@
     "test": "vitest run",
     "build-agent-context": "tsx scripts/build-agent-context.ts",
     "sync-data": "tsx scripts/sync-data.ts",
-    "postinstall": "tsx scripts/sync-data.ts && tsx scripts/build-agent-context.ts"
+    "generate-redirects": "tsx scripts/generate-redirects.ts",
+    "postinstall": "tsx scripts/sync-data.ts && tsx scripts/build-agent-context.ts && tsx scripts/generate-redirects.ts"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.0.20",
     "@fontsource/inter": "^5.0.20",
+    "@hookform/resolvers": "^3.9.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "14.2.18",

@@ -6,7 +6,12 @@ import { RelatedTiles } from "@/components/catalog/RelatedTiles";
 import { SaveToListButton } from "@/components/catalog/SaveToListButton";
 import { SpecsTable } from "@/components/catalog/SpecsTable";
 import { Button } from "@/components/ui";
-import { getAllProducts, getProductBySlug } from "@/lib/seed";
+import {
+  breadcrumbLd,
+  jsonLdToString,
+  productLd,
+} from "@/lib/jsonld";
+import { getAllProducts, getProductBySlug, getCategoryById } from "@/lib/seed";
 
 interface Params {
   effect: string;
@@ -39,8 +44,28 @@ export default function ProductDetailPage({ params }: { params: Params }) {
     heroImage?.alt || `${product.name} — ${String(product.effect)} effect tile`;
   const allProducts = getAllProducts();
 
+  const effectCategory = getCategoryById(String(product.effect));
+  const effectLabel = effectCategory?.name ?? String(product.effect);
+  const breadcrumbs = breadcrumbLd([
+    { name: "Home", url: "/" },
+    { name: "Collections", url: "/collections" },
+    { name: effectLabel, url: `/collections/${String(product.effect)}` },
+    { name: product.name, url: product.url },
+  ]);
+  const productLdObj = productLd(product);
+
   return (
     <div className="mx-auto max-w-wide px-space-5 md:px-space-7 pt-space-7 pb-space-10">
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: jsonLdToString(productLdObj) }}
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: jsonLdToString(breadcrumbs) }}
+        />
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="text-sm text-ink-subtle">
           <ol className="flex flex-wrap items-center gap-space-2">

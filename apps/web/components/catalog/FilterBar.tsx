@@ -14,6 +14,13 @@ export interface FilterBarProps {
   effectCategories: Category[];
   /** Optional: lock one facet (e.g. on `/collections/[effect]`, effect is fixed). */
   lockedEffect?: string;
+  /**
+   * Optional: initial filter values for SSR hydration. When the page is a
+   * server component, it computes the same filter state and passes it in so
+   * the FilterBar's first client render matches the server HTML before
+   * `useSearchParams()` is available.
+   */
+  initialParams?: Partial<Record<FilterKey, string>>;
   /** Optional extra class for the outer container. */
   className?: string;
 }
@@ -65,20 +72,34 @@ export function FilterBar({
   products,
   effectCategories,
   lockedEffect,
+  initialParams,
   className,
 }: FilterBarProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  // Prefer `initialParams` on the very first render so the client tree matches
+  // the server HTML before `useSearchParams()` populates. Once the Suspense
+  // boundary resolves `searchParams` it takes over.
+  const hasSearchParams = searchParams.toString().length > 0;
   const current = useMemo<Record<FilterKey, string>>(
     () => ({
-      effect: lockedEffect ?? searchParams.get("effect") ?? "",
-      usage: searchParams.get("usage") ?? "",
-      brand: searchParams.get("brand") ?? "",
-      tag: searchParams.get("tag") ?? "",
+      effect:
+        lockedEffect ??
+        searchParams.get("effect") ??
+        (hasSearchParams ? "" : initialParams?.effect ?? ""),
+      usage:
+        searchParams.get("usage") ??
+        (hasSearchParams ? "" : initialParams?.usage ?? ""),
+      brand:
+        searchParams.get("brand") ??
+        (hasSearchParams ? "" : initialParams?.brand ?? ""),
+      tag:
+        searchParams.get("tag") ??
+        (hasSearchParams ? "" : initialParams?.tag ?? ""),
     }),
-    [searchParams, lockedEffect],
+    [searchParams, lockedEffect, initialParams, hasSearchParams],
   );
 
   // Facet options from the product set the parent passed in.
