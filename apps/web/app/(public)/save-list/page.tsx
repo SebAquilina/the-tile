@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function SaveListPage() {
   return (
-    <main className="mx-auto max-w-content px-6 py-20">
+    <section className="mx-auto max-w-content px-space-5 md:px-space-7 py-space-10">
       <h1 className="font-display text-4xl">Your save list</h1>
-      <p className="mt-6 text-ink-muted">
+      <p className="mt-space-5 text-ink-muted">
         Loading your selections. Full page wires up with the catalog in Wave 3.
       </p>
-    </main>
+    </section>
   );
 }

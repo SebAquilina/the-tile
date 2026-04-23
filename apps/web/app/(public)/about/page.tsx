@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-prose px-6 py-20">
+    <section className="mx-auto max-w-prose px-space-5 md:px-space-7 py-space-10">
       <h1 className="font-display text-4xl">About The Tile</h1>
-      <p className="mt-6 text-ink-muted">
+      <p className="mt-space-5 text-ink-muted">
         Thirty years of quiet curation on the island of Malta. This page is coming soon.
       </p>
-    </main>
+    </section>
   );
 }

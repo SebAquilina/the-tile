@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 export default function JournalPage() {
   return (
-    <main className="mx-auto max-w-prose px-6 py-20">
+    <section className="mx-auto max-w-prose px-space-5 md:px-space-7 py-space-10">
       <h1 className="font-display text-4xl">Journal</h1>
-      <p className="mt-6 text-ink-muted">Articles arriving at launch.</p>
-    </main>
+      <p className="mt-space-5 text-ink-muted">Articles arriving at launch.</p>
+    </section>
   );
 }
