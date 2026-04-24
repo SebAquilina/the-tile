@@ -17,6 +17,11 @@ jobs:
     permissions:
       contents: read
       deployments: write
+    env:
+      # Surfacing the optional Sentry token into env lets the step-level
+      # conditional below reference it (GitHub Actions doesn't allow
+      # `secrets.*` in step `if:` expressions).
+      SENTRY_AUTH_TOKEN_PRESENT: ${{ secrets.SENTRY_AUTH_TOKEN != '' && 'yes' || 'no' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -65,7 +70,7 @@ jobs:
           branch: ${{ github.ref_name }}
 
       - name: Upload Sentry release
-        if: github.ref == 'refs/heads/main' && secrets.SENTRY_AUTH_TOKEN != ''
+        if: github.ref == 'refs/heads/main' && env.SENTRY_AUTH_TOKEN_PRESENT == 'yes'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

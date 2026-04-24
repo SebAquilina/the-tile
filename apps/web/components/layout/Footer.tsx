@@ -228,6 +228,14 @@ export function Footer() {
               >
                 Instagram
               </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href="/admin"
+                className="text-ink-subtle/70 hover:text-ink"
+                title="Staff sign-in"
+              >
+                Staff
+              </a>
             </p>
           </div>
           <button
