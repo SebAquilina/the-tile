@@ -5,13 +5,14 @@ test.describe("Contact form", () => {
     await page.goto("/contact");
 
     await page.getByLabel(/your name/i).fill("Playwright Test");
-    await page.getByLabel(/^email/i).fill("playwright@example.com");
-    await page.getByLabel(/your project/i, { exact: false }).fill(
+    await page.getByLabel(/^email/i).first().fill("playwright@example.com");
+    await page.getByLabel(/project notes/i).fill(
       "Testing the enquiry flow — please disregard.",
     );
-    await page.getByLabel(/i agree to be contacted/i).check();
+    // Consent checkbox's label is a React fragment; target by role instead.
+    await page.getByRole("checkbox").first().check();
 
-    await page.getByRole("button", { name: /send/i }).click();
+    await page.getByRole("button", { name: /send enquiry/i }).click();
 
     await expect(
       page
@@ -25,9 +26,10 @@ test.describe("Contact form", () => {
   test("blocks submission without consent", async ({ page }) => {
     await page.goto("/contact");
     await page.getByLabel(/your name/i).fill("No Consent");
-    await page.getByLabel(/^email/i).fill("noconsent@example.com");
-    await page.getByLabel(/your project/i, { exact: false }).fill("x");
-    await page.getByRole("button", { name: /send/i }).click();
+    await page.getByLabel(/^email/i).first().fill("noconsent@example.com");
+    await page.getByLabel(/project notes/i).fill("x");
+    await page.getByRole("button", { name: /send enquiry/i }).click();
+    // Zod consent error surfaces under the checkbox.
     await expect(
       page.getByText(/consent|agree/i).first(),
     ).toBeVisible();

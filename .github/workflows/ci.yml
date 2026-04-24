@@ -80,10 +80,11 @@ jobs:
       - name: Run Playwright
         run: pnpm test:e2e
         env:
+          # Empty PLAYWRIGHT_BASE_URL + empty TURNSTILE_SECRET lets the
+          # config's webServer start pnpm start fresh and skips the bot
+          # check entirely. GEMINI_API_KEY is optional — the agent smoke
+          # test skips itself when unset.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_TEST }}
-          PLAYWRIGHT_BASE_URL: http://localhost:3000
-          # Cloudflare Turnstile always-passes test key
-          TURNSTILE_SECRET: 1x0000000000000000000000000000000AA
 
       - name: Upload Playwright report
         if: failure()

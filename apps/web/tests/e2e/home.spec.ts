@@ -4,12 +4,13 @@ test.describe("Home — agent-first hero", () => {
   test("first visit shows the full-viewport agent hero", async ({ page }) => {
     await page.context().clearCookies();
     await page.goto("/");
+    // AgentHero's h1 is the signal.
     await expect(
-      page.getByRole("heading", { level: 1 }).first(),
+      page.getByRole("heading", {
+        level: 1,
+        name: /tell me what you are looking for|welcome back/i,
+      }).first(),
     ).toBeVisible();
-    // Starter chips are the visual signal for the hero.
-    const chips = page.getByRole("button").or(page.getByRole("link"));
-    await expect(chips.first()).toBeVisible();
   });
 
   test("just-let-me-browse path escapes to the return-visit home", async ({ page }) => {
@@ -23,12 +24,9 @@ test.describe("Home — agent-first hero", () => {
 
   test("return visit surfaces recommendations + review strip", async ({ page }) => {
     await page.goto("/");
-    // Simulate a returning visitor; key name matches the HomeView logic.
+    // Simulate a returning visitor — key matches HomeView.DISMISS_KEY.
     await page.evaluate(() => {
-      sessionStorage.setItem(
-        "the-tile:last-agent-touch",
-        String(Date.now() - 60_000),
-      );
+      sessionStorage.setItem("the-tile:hero-dismissed", "1");
     });
     await page.reload();
     await expect(

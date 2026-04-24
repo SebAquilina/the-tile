@@ -15,10 +15,11 @@ test.describe("Save list — shortlist → quote handoff", () => {
     page,
   }) => {
     await page.goto("/");
+    // Storage shape is { ids: string[] } — see lib/save-list.ts.
     await page.evaluate(() => {
       sessionStorage.setItem(
         "the-tile:save-list",
-        JSON.stringify(["tele-di-marmo-revolution", "unique-marble"]),
+        JSON.stringify({ ids: ["tele-di-marmo-revolution", "unique-marble"] }),
       );
     });
     await page.goto("/save-list");
