@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "home_intro": {
+    "title": "The Tile",
+    "tagline_legacy": "Quality floor and wall tile specialists located in San Gwann, Malta",
+    "since": 1990,
+    "paragraphs": [
+      "Marble Effect \u200b \u200b One of the loveliest, most noble, most durable materials which brings beauty to any location: marble-effect porcelain stoneware. The home or office floor is beautified with a unique architectural power, thanks to the stoneware marble look. Finishes are elegant and very decorative, shining and natural, and create pleasant impressions of refinement and simplicity. An absolutely aristocratic simplicity, which only marble-effect porcelain stoneware can give to design schemes. Design gives way to an exquisite classical loveliness and interiors are subtly coloured by unusual, dynamic reflected light, thanks to the versatility of marble-effect tiles. Emilgroup marble-effect porcelain stoneware is ideal for tailor-made architectural projects: it tones down the surface's classical severity, but delivers a very strong aesthetic impact. Marble is the number one choice for design schemes of elegance, light and grace: unconventional marble, which brings beauty to indoor and outdoor locations. Go to Marble Collections",
+      "Wood Effect For styling distinctive, unconventional interiors, with striking contemporary design, wood-look porcelain stoneware is the ideal choice. The tiles give the rooms of your home or office an elegant spirit, and create a stylish, subtle, tasteful floor. Wood-look porcelain stoneware recounts the history of the Italian tradition: every step you take on these tiles conveys a feeling of calm and wellbeing. Wood-look porcelain stoneware tiles are strong and anti-slip, making them suitable for use in any location, both residential and commercial. Porcelain stoneware's wood effect emanates a sense of intimacy into the interior, denoting simplicity but bestowing personality, for design schemes that are unfussy but with the right touch of elegance. Wood-effect porcelain stoneware tiles strike the ideal balance between light and warmth: interiors are filled with classical colour shades, vintage but with a modern character. Wood-effect porcelain stoneware floors are designed for use not only in residential contexts but also for public projects. Go to Wood Collections",
+      "Stone Effect \u200b Stone-effect porcelain stoneware combines an extremely compact structure with a special, natural aesthetic. For outdoors: a private or public garden, of the home, office or restaurant; the stone look creates the perfect blend of history and design, trendiness and tradition. For indoors: a large living-room or a kitchen, a restaurant dining-room or meeting-room; stone-effect porcelain stoneware creates a mood that refreshes the whole surrounding area, with a striking blend of the innovative and the classic. A stone-effect porcelain stoneware floor guarantees outstanding strength, especially in outdoor areas, more exposed to the weather and heavy loads. For both classical and contemporary design schemes, stone-effect stoneware provides a perfect match, with special, subtle colour inputs. A stone-effect floor gives public and private locations a style rich in meaning and prestige: where elegance and convenience go hand-in-hand. \u200b Go to Stone Collections",
+      "Concrete Effect There is an elegant solution for residential interiors and commercial locations such as waiting-rooms, showrooms or stores: concrete-effect porcelain stoneware. These tiles give design schemes style and simplicity, with an impression of peace and good order at every step. Very versatile, concrete-effect tiles are perfect for fulfilling the potential of many locations and contexts: indoors and outdoors. The forceful style of the concrete look gives character to a living-room or the main dining-room of a restaurant, and denotes cleanliness and modernity, features which enhance the positive perception of anyone walking across a porcelain stoneware floor. With concrete-look porcelain stoneware, the rest of the design scheme has plenty of scope for expression: these tiles are not invasive and decorate with discretion, not detracting from other design features. The surface texture of concrete-effect porcelain stoneware tiles is definitely one of the most versatile, and can provide perfect continuity between different areas. Go to Concrete Collections",
+      "Slate Effect Slate has been used as a flooring material for hundreds of years. It gives a rugged and rustic feel to any home. It is also available in various colours, not only black or grey as one might assume. Our collections are inspired by natural slate from different corners of the world. \u200b Go to Slate Collections"
+    ]
+  },
+  "about": {
+    "title": "About The Tile",
+    "paragraphs": [],
+    "sourceUrl": "https://www.the-tile.com/about-us.html"
+  },
+  "contact": {
+    "title": "Contact The Tile",
+    "paragraphs": [],
+    "address": "San Gwann, Malta",
+    "sourceUrl": "https://www.the-tile.com/contact-us.html",
+    "note": "Implementation agent should extract phone/email/map from raw HTML at scrape/the-tile/raw/contact-us-html.html"
+  }
+}

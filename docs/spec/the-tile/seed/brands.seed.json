@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "count": 5,
+  "brands": [
+    {
+      "name": "Emilceramica",
+      "logoUrl": null
+    },
+    {
+      "name": "Emilgroup",
+      "logoUrl": null
+    },
+    {
+      "name": "Ergon",
+      "logoUrl": null
+    },
+    {
+      "name": "Provenza",
+      "logoUrl": null
+    },
+    {
+      "name": "Viva",
+      "logoUrl": null
+    }
+  ]
+}

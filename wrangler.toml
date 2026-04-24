@@ -1,0 +1,45 @@
+# wrangler.toml — Cloudflare Pages + D1 binding for The Tile
+#
+# Production deploys on push to `main`; staging on push to `staging`.
+# Replace the `database_id` placeholders once the D1 databases are created:
+#   pnpm wrangler d1 create the-tile-prod      → copy UUID into prod block
+#   pnpm wrangler d1 create the-tile-staging   → copy UUID into staging block
+
+name = "the-tile"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Cloudflare Pages detects Next.js automatically; the pages_build_output_dir
+# is informational for local previews via `wrangler pages dev`.
+pages_build_output_dir = "apps/web/.next"
+
+# --- Production (main) ----------------------------------------------------
+[[d1_databases]]
+binding = "DB"
+database_name = "the-tile-prod"
+database_id = "REPLACE-WITH-PROD-D1-UUID"
+
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://www.the-tile.com"
+
+# --- Staging --------------------------------------------------------------
+[env.staging]
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "the-tile-staging"
+database_id = "REPLACE-WITH-STAGING-D1-UUID"
+
+[env.staging.vars]
+NEXT_PUBLIC_SITE_URL = "https://staging.the-tile.com"
+
+# --- Preview (feature branches) ------------------------------------------
+[env.preview]
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "the-tile-staging"
+database_id = "REPLACE-WITH-STAGING-D1-UUID"
+
+[env.preview.vars]
+NEXT_PUBLIC_SITE_URL = "https://preview.the-tile.com"

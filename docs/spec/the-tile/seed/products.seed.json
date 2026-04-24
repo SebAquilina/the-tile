@@ -1,0 +1,1593 @@
+{
+  "version": 2,
+  "generatedFrom": "https://www.the-tile.com scrape (2026-04-23)",
+  "count": 60,
+  "categories": [
+    {
+      "id": "slate",
+      "name": "Slate Effect",
+      "type": "effect",
+      "summary": "Slate-inspired tiles \u2014 rugged, tactile, multi-coloured.",
+      "sourceUrl": "https://www.the-tile.com/slate.html"
+    },
+    {
+      "id": "terrazzo",
+      "name": "Venetian Terrazzo",
+      "type": "effect",
+      "summary": "Italian master-craftsman tradition \u2014 chip-and-scatter aesthetic in porcelain.",
+      "sourceUrl": "https://www.the-tile.com/venetian-terrazzo-tiles.html"
+    },
+    {
+      "id": "terracotta",
+      "name": "Terracotta & Brick",
+      "type": "effect",
+      "summary": "Terracotta-effect porcelain \u2014 warmth, veining, Italian tradition.",
+      "sourceUrl": "https://www.the-tile.com/kotto_brick.html"
+    },
+    {
+      "id": "gesso",
+      "name": "Gesso / Plaster Effect",
+      "type": "effect",
+      "summary": "Plaster-look porcelain \u2014 traditional architectural material as tile.",
+      "sourceUrl": "https://www.the-tile.com/gesso--plaster-effect.html"
+    },
+    {
+      "id": "full-colour",
+      "name": "Full Colour",
+      "type": "effect",
+      "summary": "Solid-colour porcelain \u2014 backsplashes, countertops, bold features.",
+      "sourceUrl": "https://www.the-tile.com/full_colour.html"
+    },
+    {
+      "id": "marble",
+      "name": "Marble Effect",
+      "type": "effect",
+      "summary": "Marble-veined porcelain \u2014 aristocratic, luminous.",
+      "sourceUrl": "https://www.the-tile.com/marble-effect-tiles.html"
+    },
+    {
+      "id": "wood",
+      "name": "Wood Effect",
+      "type": "effect",
+      "summary": "Wood-plank porcelain \u2014 warm, anti-slip, indoor/outdoor.",
+      "sourceUrl": "https://www.the-tile.com/wood-effect-tiles.html"
+    },
+    {
+      "id": "stone",
+      "name": "Stone Effect",
+      "type": "effect",
+      "summary": "Stone-look porcelain \u2014 compact, natural aesthetic.",
+      "sourceUrl": "https://www.the-tile.com/stone-effect-tiles.html"
+    },
+    {
+      "id": "concrete",
+      "name": "Concrete Effect",
+      "type": "effect",
+      "summary": "Concrete-look porcelain \u2014 understated, versatile, modern.",
+      "sourceUrl": "https://www.the-tile.com/concrete-effect-tiles.html"
+    },
+    {
+      "id": "bathroom",
+      "name": "Bathroom",
+      "type": "usage",
+      "summary": "Selections suitable for bathroom.",
+      "sourceUrl": "https://www.the-tile.com/bath.html"
+    },
+    {
+      "id": "outdoor-paving",
+      "name": "Outdoor Paving",
+      "type": "usage",
+      "summary": "Selections suitable for outdoor paving.",
+      "sourceUrl": "https://www.the-tile.com/outdoor-tiles.html"
+    },
+    {
+      "id": "paving-20mm",
+      "name": "Paving 20Mm",
+      "type": "usage",
+      "summary": "Selections suitable for paving 20mm.",
+      "sourceUrl": "https://www.the-tile.com/20mm-outdoor-solutions.html"
+    }
+  ],
+  "products": [
+    {
+      "id": "architect-resin",
+      "name": "Architect Resin",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Concrete-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/concrete/architect-resin",
+      "sourceUrl": "https://www.the-tile.com/architect-resin.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "be-square",
+      "name": "Be Square",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Be-Square tile collection",
+      "description": "Be-Square tile collection",
+      "url": "/collections/concrete/be-square",
+      "sourceUrl": "https://www.the-tile.com/be-square.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "karman",
+      "name": "Karman",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Karman tile collection",
+      "description": "Karman tile collection",
+      "url": "/collections/concrete/karman",
+      "sourceUrl": "https://www.the-tile.com/karman.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "on-square",
+      "name": "On Square",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Concrete becomes a precious interior design element, with generous colour shades, details and nuances.",
+      "description": "Concrete becomes a precious interior design element, with generous colour shades, details and nuances.",
+      "url": "/collections/concrete/on-square",
+      "sourceUrl": "https://www.the-tile.com/on-square.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete",
+        "luxury"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "pigmento",
+      "name": "Pigmento",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Inspired by hand-trowelled cement resin, Pigmento expresses its personality through the sensuality of dense colour.",
+      "description": "Inspired by hand-trowelled cement resin, Pigmento expresses its personality through the sensuality of dense colour.",
+      "url": "/collections/concrete/pigmento",
+      "sourceUrl": "https://www.the-tile.com/pigmento.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "playground",
+      "name": "Playground",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Concrete-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/concrete/playground",
+      "sourceUrl": "https://www.the-tile.com/playground.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "re-play",
+      "name": "Re-Play Concrete",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Re-Play Concrete offers a vast range of pieces for unlimited compositions and combinations, to style complete interiors or contrasting surfaces, creat...",
+      "description": "Re-Play Concrete offers a vast range of pieces for unlimited compositions and combinations, to style complete interiors or contrasting surfaces, create coordinated floor and wall coverings, or design delightful corners in industrial taste.",
+      "url": "/collections/concrete/re-play",
+      "sourceUrl": "https://www.the-tile.com/re-play.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "tr3nd",
+      "name": "Tr3nd",
+      "effect": "concrete",
+      "usage": [],
+      "brand": null,
+      "summary": "Tr3nd tile collection",
+      "description": "Tr3nd tile collection",
+      "url": "/collections/concrete/tr3nd",
+      "sourceUrl": "https://www.the-tile.com/tr3nd.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "concrete"
+      ],
+      "bestFor": [
+        "modern minimalist interiors",
+        "showrooms",
+        "contemporary kitchens"
+      ]
+    },
+    {
+      "id": "abacus",
+      "name": "Abacus",
+      "effect": "full-colour",
+      "usage": [],
+      "brand": null,
+      "summary": "Pure, authentic colour infused into the material of a ceramic brick.",
+      "description": "Pure, authentic colour infused into the material of a ceramic brick.",
+      "url": "/collections/full-colour/abacus",
+      "sourceUrl": "https://www.the-tile.com/abacus.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "full-colour"
+      ],
+      "bestFor": [
+        "backsplashes",
+        "bathroom features",
+        "accent walls",
+        "countertops"
+      ]
+    },
+    {
+      "id": "totalook",
+      "name": "Totalook",
+      "effect": "full-colour",
+      "usage": [],
+      "brand": null,
+      "summary": "A FINE BALANCE OF TECHNOLOGY AND DESIGN, FOR A MINIMAL, METROPOLITAN STYLE\nThe TotaLook collection explores the world of resins with a new project: a ...",
+      "description": "A FINE BALANCE OF TECHNOLOGY AND DESIGN, FOR A MINIMAL, METROPOLITAN STYLE\nThe TotaLook collection explores the world of resins with a new project: a complete abacus of matching ceramic materials, intended to satisfy the most widely varying interior desig",
+      "url": "/collections/full-colour/totalook",
+      "sourceUrl": "https://www.the-tile.com/totalook.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "full-colour",
+        "modern"
+      ],
+      "bestFor": [
+        "backsplashes",
+        "bathroom features",
+        "accent walls",
+        "countertops"
+      ]
+    },
+    {
+      "id": "tele",
+      "name": "Tele di Marmo",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "Tele di Marmo collection",
+      "description": "Tele di Marmo collection",
+      "url": "/collections/marble/tele",
+      "sourceUrl": "https://www.the-tile.com/tele.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tdm_lumia",
+      "name": "Tele di Marmo Lumia",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "We carefully selected real precious stones, meticulously choosing the ideal gems for a unique creative programme.",
+      "description": "We carefully selected real precious stones, meticulously choosing the ideal gems for a unique creative programme. The project we brought to fruition explores three gemstones at the moment when light interacts with them, revealing all the splendour of thei",
+      "url": "/collections/marble/tdm_lumia",
+      "sourceUrl": "https://www.the-tile.com/tdm_lumia.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele-di-marmo-onyx",
+      "name": "Tele di Marmo Onyx",
+      "effect": "marble",
+      "usage": [],
+      "brand": "Emilceramica",
+      "summary": "Onyx is the stone at the centre of the new Tele di Marmo Onyx collection by Emilceramica, that generates a seductive, sumptuous array of tiles.",
+      "description": "Onyx is the stone at the centre of the new Tele di Marmo Onyx collection by Emilceramica, that generates a seductive, sumptuous array of tiles.",
+      "url": "/collections/marble/tele-di-marmo-onyx",
+      "sourceUrl": "https://www.the-tile.com/tele-di-marmo-onyx.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele-di-marmo-precious",
+      "name": "Tele di Marmo Precious",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "With Precious, the gleaming purity of quartz crystals becomes a magnificent interior design tool.",
+      "description": "With Precious, the gleaming purity of quartz crystals becomes a magnificent interior design tool.",
+      "url": "/collections/marble/tele-di-marmo-precious",
+      "sourceUrl": "https://www.the-tile.com/tele-di-marmo-precious.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele-di-marmo-pure-onyx",
+      "name": "Tele di Marmo Pure Onyx",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "In Pure Onyx, the Tele di Marmo project achieves new levels of realism and splendour, with five ceramic onyxes that aspire to perfection.",
+      "description": "In Pure Onyx, the Tele di Marmo project achieves new levels of realism and splendour, with five ceramic onyxes that aspire to perfection.",
+      "url": "/collections/marble/tele-di-marmo-pure-onyx",
+      "sourceUrl": "https://www.the-tile.com/tele-di-marmo-pure-onyx.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele_reloadd",
+      "name": "Tele di Marmo Reloaded",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "Tele di Marmo Reloaded collection",
+      "description": "Tele di Marmo Reloaded collection",
+      "url": "/collections/marble/tele_reloadd",
+      "sourceUrl": "https://www.the-tile.com/tele_reloadd.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele-di-marmo-revolution",
+      "name": "Tele di Marmo Revolution",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "The Tele di Marmo Revolution collection offers a fresh interpretation of marble, in a contemporary evocation of a material of eternal beauty and elegance.",
+      "description": "The Tele di Marmo Revolution collection offers a fresh interpretation of marble, in a contemporary evocation of a material of eternal beauty and elegance. The series features new colours and unusual combinations to enhance its expressive power: Bianco Tha",
+      "url": "/collections/marble/tele-di-marmo-revolution",
+      "sourceUrl": "https://www.the-tile.com/tele-di-marmo-revolution.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble",
+        "modern"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "tele-di-marmo-selection",
+      "name": "Tele di Marmo Selection",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "Tele di Marmo Selection is a daring collection, based on a fine balance of contrasts, for styling interiors with strong connotations, unique as works ...",
+      "description": "Tele di Marmo Selection is a daring collection, based on a fine balance of contrasts, for styling interiors with strong connotations, unique as works of art.",
+      "url": "/collections/marble/tele-di-marmo-selection",
+      "sourceUrl": "https://www.the-tile.com/tele-di-marmo-selection.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "marble"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "unique-marble",
+      "name": "Unique Marble",
+      "effect": "marble",
+      "usage": [],
+      "brand": "Provenza",
+      "summary": "Unique Marble by Provenza combines the timeless beauty of marble with the casual contemporary spirit of resin, to create a new, original aesthetic.",
+      "description": "Unique Marble by Provenza combines the timeless beauty of marble with the casual contemporary spirit of resin, to create a new, original aesthetic.",
+      "url": "/collections/marble/unique-marble",
+      "sourceUrl": "https://www.the-tile.com/unique-marble.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "classic",
+        "marble",
+        "modern"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "unique-travertine",
+      "name": "Unique Travertine",
+      "effect": "marble",
+      "usage": [],
+      "brand": null,
+      "summary": "A striking, versatile series, created in four elegant shades in four irresistible finishes, for a fresh, contemporary take on travertine.",
+      "description": "A striking, versatile series, created in four elegant shades in four irresistible finishes, for a fresh, contemporary take on travertine.",
+      "url": "/collections/marble/unique-travertine",
+      "sourceUrl": "https://www.the-tile.com/unique-travertine.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "marble",
+        "modern",
+        "neutral"
+      ],
+      "bestFor": [
+        "statement interiors",
+        "luxury residential",
+        "feature walls",
+        "hospitality"
+      ]
+    },
+    {
+      "id": "cornerstone",
+      "name": "Cornerstone",
+      "effect": "slate",
+      "usage": [],
+      "brand": null,
+      "summary": "the Cornerstone tile collection",
+      "description": "the Cornerstone tile collection",
+      "url": "/collections/slate/cornerstone",
+      "sourceUrl": "https://www.the-tile.com/cornerstone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "slate"
+      ],
+      "bestFor": [
+        "rustic homes",
+        "country kitchens",
+        "feature floors"
+      ]
+    },
+    {
+      "id": "cornerstone_alpen",
+      "name": "Cornerstone Alpen",
+      "effect": "slate",
+      "usage": [],
+      "brand": null,
+      "summary": "The Cornerstone Alpen tile collection",
+      "description": "The Cornerstone Alpen tile collection",
+      "url": "/collections/slate/cornerstone_alpen",
+      "sourceUrl": "https://www.the-tile.com/cornerstone_alpen.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "slate"
+      ],
+      "bestFor": [
+        "rustic homes",
+        "country kitchens",
+        "feature floors"
+      ]
+    },
+    {
+      "id": "groove",
+      "name": "Groove",
+      "effect": "slate",
+      "usage": [],
+      "brand": null,
+      "summary": "The interpretation of a northern European limestone",
+      "description": "The interpretation of a northern European limestone",
+      "url": "/collections/slate/groove",
+      "sourceUrl": "https://www.the-tile.com/groove.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "slate"
+      ],
+      "bestFor": [
+        "rustic homes",
+        "country kitchens",
+        "feature floors"
+      ]
+    },
+    {
+      "id": "nordika",
+      "name": "Nordika",
+      "effect": "slate",
+      "usage": [],
+      "brand": null,
+      "summary": "nordika collection",
+      "description": "nordika collection",
+      "url": "/collections/slate/nordika",
+      "sourceUrl": "https://www.the-tile.com/nordika.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "slate"
+      ],
+      "bestFor": [
+        "rustic homes",
+        "country kitchens",
+        "feature floors"
+      ]
+    },
+    {
+      "id": "bleu",
+      "name": "Unique Bleu",
+      "effect": "slate",
+      "usage": [],
+      "brand": null,
+      "summary": "Unique Bleu tile collection",
+      "description": "Unique Bleu tile collection",
+      "url": "/collections/slate/bleu",
+      "sourceUrl": "https://www.the-tile.com/bleu.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "slate"
+      ],
+      "bestFor": [
+        "rustic homes",
+        "country kitchens",
+        "feature floors"
+      ]
+    },
+    {
+      "id": "chateau",
+      "name": "Chateau",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Stone-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/stone/chateau",
+      "sourceUrl": "https://www.the-tile.com/chateau.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "elegance-pro",
+      "name": "Elegance Pro",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Elegance Pro is the collection that provides a contemporary interpretation of sandstone, combining technical performances, exquisite good looks, and t...",
+      "description": "Elegance Pro is the collection that provides a contemporary interpretation of sandstone, combining technical performances, exquisite good looks, and the utmost surface protection.",
+      "url": "/collections/stone/elegance-pro",
+      "sourceUrl": "https://www.the-tile.com/elegance-pro.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "modern",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "eterna",
+      "name": "Eterna",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Eterna Collection",
+      "description": "Eterna Collection",
+      "url": "/collections/stone/eterna",
+      "sourceUrl": "https://www.the-tile.com/eterna.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "eureka",
+      "name": "Eureka",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "A VERSATILE COLLECTION SUITABLE FOR UNUSUAL, INNOVATIVE SOLUTIONS\nThe nobility of Sicilian Stone, innate beauty carved by time: a wonderful limestone,...",
+      "description": "A VERSATILE COLLECTION SUITABLE FOR UNUSUAL, INNOVATIVE SOLUTIONS\nThe nobility of Sicilian Stone, innate beauty carved by time: a wonderful limestone, chosen for love, astonishingly harmonious yet full of live. Noble and rare, it has an intrinsic graphic",
+      "url": "/collections/stone/eureka",
+      "sourceUrl": "https://www.the-tile.com/eureka.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "neutral",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "matera_stone",
+      "name": "Ever-stone",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Originating from a carefully selected unique, primordial block of stone, Matera Stone tells a story of innovation, design and refinement.",
+      "description": "Originating from a carefully selected unique, primordial block of stone, Matera Stone tells a story of innovation, design and refinement. Its surface is an attractive composition of pebbles of different sizes on a rarefied, neutral background.",
+      "url": "/collections/stone/matera_stone",
+      "sourceUrl": "https://www.the-tile.com/matera_stone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "neutral",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "ever-stone",
+      "name": "Ever-stone",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Ever-Stone is inspired by a selection of exquisite salvaged ancient French stones, chosen for use in exclusive restoration projects.",
+      "description": "Ever-Stone is inspired by a selection of exquisite salvaged ancient French stones, chosen for use in exclusive restoration projects.",
+      "url": "/collections/stone/ever-stone",
+      "sourceUrl": "https://www.the-tile.com/ever-stone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "externa",
+      "name": "Externa",
+      "effect": "stone",
+      "usage": [
+        "outdoor-paving"
+      ],
+      "brand": "Emilceramica",
+      "summary": "Stone-effect Externa creates impressions of natural elegance.",
+      "description": "Stone-effect Externa creates impressions of natural elegance.\nExterna by Emilceramica is the collection that allows users to create outdoor spaces of great beauty, without sacrificing technical performance.",
+      "url": "/collections/stone/externa",
+      "sourceUrl": "https://www.the-tile.com/externa.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "outdoor-paving",
+        "rustic",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "externa-quarzite",
+      "name": "Externa Quarzite",
+      "effect": "stone",
+      "usage": [
+        "outdoor-paving"
+      ],
+      "brand": "Emilceramica",
+      "summary": "Externa Quarzite by Emilceramica is as strong and hard-wearing as the dolostone that inspired it.",
+      "description": "Externa Quarzite by Emilceramica is as strong and hard-wearing as the dolostone that inspired it. The collection is designed for exterior use in public and private spaces where the highest technical performance is required in terms of weathering and stres",
+      "url": "/collections/stone/externa-quarzite",
+      "sourceUrl": "https://www.the-tile.com/externa-quarzite.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "outdoor-paving",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "fabrika",
+      "name": "Fabrika",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes.",
+      "description": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes. The 100x100 size is also offered in the anti-slip \u201cTecnica\u201d surface.",
+      "url": "/collections/stone/fabrika",
+      "sourceUrl": "https://www.the-tile.com/fabrika.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "landscape",
+      "name": "Landscape",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Contemporary elegance\n\nThe ceramic collection inspired by the limestone.",
+      "description": "Contemporary elegance\n\nThe ceramic collection inspired by the limestone.",
+      "url": "/collections/stone/landscape",
+      "sourceUrl": "https://www.the-tile.com/landscape.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "modern",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "mapierre",
+      "name": "MaPierre",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "A unique architectural finish with three personalities.",
+      "description": "A unique architectural finish with three personalities.",
+      "url": "/collections/stone/mapierre",
+      "sourceUrl": "https://www.the-tile.com/mapierre.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "oros-stone",
+      "name": "Oros Stone",
+      "effect": "stone",
+      "usage": [
+        "outdoor-paving"
+      ],
+      "brand": "Ergon",
+      "summary": "Stone is an ever-popular interior design classic, capable of giving character and light to any type of room.",
+      "description": "Stone is an ever-popular interior design classic, capable of giving character and light to any type of room. And it is on light that Ergon has focused when designing Oros Stone.",
+      "url": "/collections/stone/oros-stone",
+      "sourceUrl": "https://www.the-tile.com/oros-stone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "classic",
+        "outdoor-paving",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "portland",
+      "name": "Portland Stone",
+      "effect": "stone",
+      "usage": [],
+      "brand": "Ergon",
+      "summary": "Portland Stone takes a fresh look at a very ancient limestone, as Ergon successfully offers the contemporary design world the ancestral strength of a ...",
+      "description": "Portland Stone takes a fresh look at a very ancient limestone, as Ergon successfully offers the contemporary design world the ancestral strength of a material that has survived geological eras with its charisma intact.",
+      "url": "/collections/stone/portland",
+      "sourceUrl": "https://www.the-tile.com/portland.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "modern",
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "salt_stone",
+      "name": "Salt Stone",
+      "effect": "stone",
+      "usage": [],
+      "brand": "Provenza",
+      "summary": "A tale with ancient beginnings\n\nWith Salt Stone, Provenza celebrates salt, a mineral of fundamental importance for our planet.",
+      "description": "A tale with ancient beginnings\n\nWith Salt Stone, Provenza celebrates salt, a mineral of fundamental importance for our planet.",
+      "url": "/collections/stone/salt_stone",
+      "sourceUrl": "https://www.the-tile.com/salt_stone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "stone-project",
+      "name": "Stone Project",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Stone-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/stone/stone-project",
+      "sourceUrl": "https://www.the-tile.com/stone-project.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "stonetalk",
+      "name": "Stone Talk",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Stone talk collection",
+      "description": "Stone talk collection",
+      "url": "/collections/stone/stonetalk",
+      "sourceUrl": "https://www.the-tile.com/stonetalk.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "unique_bourgogne",
+      "name": "Unique Bourgogne",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Unique Bourgogne is the outcome of our search for perfection in the interpretation of this famous French limestone.",
+      "description": "Unique Bourgogne is the outcome of our search for perfection in the interpretation of this famous French limestone. After lengthy, meticulous research, Unique Bourgogne was produced on the basis of wide, highly selective sampling of the original stone. As",
+      "url": "/collections/stone/unique_bourgogne",
+      "sourceUrl": "https://www.the-tile.com/unique_bourgogne.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "u_infinity",
+      "name": "Unique Intensity",
+      "effect": "stone",
+      "usage": [],
+      "brand": null,
+      "summary": "Unique Infinity. Every indoor or outdoor space can be covered with the character and expressive power of the authentic rock.",
+      "description": "Unique Infinity. Every indoor or outdoor space can be covered with the character and expressive power of the authentic rock.",
+      "url": "/collections/stone/u_infinity",
+      "sourceUrl": "https://www.the-tile.com/u_infinity.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "stone"
+      ],
+      "bestFor": [
+        "rustic interiors",
+        "commercial entrances",
+        "large floor areas"
+      ]
+    },
+    {
+      "id": "forme",
+      "name": "Forme",
+      "effect": "terracotta",
+      "usage": [],
+      "brand": "Emilceramica",
+      "summary": "Forme is the new Emilceramica collection dedicated to terracotta.",
+      "description": "Forme is the new Emilceramica collection dedicated to terracotta.",
+      "url": "/collections/terracotta/forme",
+      "sourceUrl": "https://www.the-tile.com/forme.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "terracotta"
+      ],
+      "bestFor": [
+        "Mediterranean interiors",
+        "warm kitchens",
+        "traditional residential"
+      ]
+    },
+    {
+      "id": "sixty",
+      "name": "Sixty",
+      "effect": "terracotta",
+      "usage": [],
+      "brand": "Emilgroup",
+      "summary": "Sixty is the collection that celebrates the sixtieth birthday of Emilgroup through a return to its origins and to the most fundamental of all its raw ...",
+      "description": "Sixty is the collection that celebrates the sixtieth birthday of Emilgroup through a return to its origins and to the most fundamental of all its raw materials - clay - expressed in a sophisticated, elegant collection.",
+      "url": "/collections/terracotta/sixty",
+      "sourceUrl": "https://www.the-tile.com/sixty.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "modern",
+        "terracotta"
+      ],
+      "bestFor": [
+        "Mediterranean interiors",
+        "warm kitchens",
+        "traditional residential"
+      ]
+    },
+    {
+      "id": "ego",
+      "name": "Ego",
+      "effect": "terrazzo",
+      "usage": [],
+      "brand": null,
+      "summary": "Ego collection",
+      "description": "Ego collection",
+      "url": "/collections/terrazzo/ego",
+      "sourceUrl": "https://www.the-tile.com/ego.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "terrazzo"
+      ],
+      "bestFor": [
+        "entryways",
+        "feature floors",
+        "hospitality",
+        "nostalgic-modern interiors"
+      ]
+    },
+    {
+      "id": "grainstone",
+      "name": "Grain Stone",
+      "effect": "terrazzo",
+      "usage": [],
+      "brand": null,
+      "summary": "Garin Stone collection",
+      "description": "Garin Stone collection",
+      "url": "/collections/terrazzo/grainstone",
+      "sourceUrl": "https://www.the-tile.com/grainstone.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "terrazzo"
+      ],
+      "bestFor": [
+        "entryways",
+        "feature floors",
+        "hospitality",
+        "nostalgic-modern interiors"
+      ]
+    },
+    {
+      "id": "lombarda",
+      "name": "Lombarda",
+      "effect": "terrazzo",
+      "usage": [],
+      "brand": null,
+      "summary": "Lombarda collection",
+      "description": "Lombarda collection",
+      "url": "/collections/terrazzo/lombarda",
+      "sourceUrl": "https://www.the-tile.com/lombarda.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "terrazzo"
+      ],
+      "bestFor": [
+        "entryways",
+        "feature floors",
+        "hospitality",
+        "nostalgic-modern interiors"
+      ]
+    },
+    {
+      "id": "medley",
+      "name": "Medley",
+      "effect": "terrazzo",
+      "usage": [],
+      "brand": null,
+      "summary": "Medley collection",
+      "description": "Medley collection",
+      "url": "/collections/terrazzo/medley",
+      "sourceUrl": "https://www.the-tile.com/medley.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "terrazzo"
+      ],
+      "bestFor": [
+        "entryways",
+        "feature floors",
+        "hospitality",
+        "nostalgic-modern interiors"
+      ]
+    },
+    {
+      "id": "20twenty",
+      "name": "20Twenty",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "20Twenty wood tile collection",
+      "description": "20Twenty wood tile collection",
+      "url": "/collections/wood/20twenty",
+      "sourceUrl": "https://www.the-tile.com/20twenty.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "alter",
+      "name": "Alter",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "MINGLING ERAS, STYLES AND INSPIRATIONS\nThe Alter collection places an emphasis on nature and authenticity, celebrating different forms of exquisite sa...",
+      "description": "MINGLING ERAS, STYLES AND INSPIRATIONS\nThe Alter collection places an emphasis on nature and authenticity, celebrating different forms of exquisite salvaged oak, processed and treated with coloured resin inserts. The final result is a perfect tactile bala",
+      "url": "/collections/wood/alter",
+      "sourceUrl": "https://www.the-tile.com/alter.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "dimore",
+      "name": "Dimore",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "Distinguished by its elegance and vitality, the Dimore collection interprets oak with a new, original style.",
+      "description": "Distinguished by its elegance and vitality, the Dimore collection interprets oak with a new, original style.\nThe collection in the 20x120 size comes in four shades: Sbiancato, Naturale, Dorato and Tabacco.\nThe collection derives its expressive power from",
+      "url": "/collections/wood/dimore",
+      "sourceUrl": "https://www.the-tile.com/dimore.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "rustic",
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "millelegni",
+      "name": "Millelegni",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "Wood-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/wood/millelegni",
+      "sourceUrl": "https://www.the-tile.com/millelegni.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "millelegni_r",
+      "name": "Millelegni Remake",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "The Millelegni Remake wood tile collection",
+      "description": "The Millelegni Remake wood tile collection",
+      "url": "/collections/wood/millelegni_r",
+      "sourceUrl": "https://www.the-tile.com/millelegni_r.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "mimesis",
+      "name": "Mimesis",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "The Mimesis collection was created to express the strong, tactile character of wood, with all its timeworn, uneven appearance offered in a contemporar...",
+      "description": "The Mimesis collection was created to express the strong, tactile character of wood, with all its timeworn, uneven appearance offered in a contemporary, versatile collection.",
+      "url": "/collections/wood/mimesis",
+      "sourceUrl": "https://www.the-tile.com/mimesis.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "modern",
+        "neutral",
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "playwood",
+      "name": "Playwood",
+      "effect": "wood",
+      "usage": [],
+      "brand": "Emilceramica",
+      "summary": "Playwood is a new Emilceramica collection that extends an invitation to experiment during the design process.",
+      "description": "Playwood is a new Emilceramica collection that extends an invitation to experiment during the design process. Its ceramic material is inspired by oak wood and comes in a range of three sizes, the pieces in a game to be played with shapes to create infinit",
+      "url": "/collections/wood/playwood",
+      "sourceUrl": "https://www.the-tile.com/playwood.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "provoak",
+      "name": "Provoak",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "Wood-effect collection from The Tile.",
+      "description": "",
+      "url": "/collections/wood/provoak",
+      "sourceUrl": "https://www.the-tile.com/provoak.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "revival",
+      "name": "Revival",
+      "effect": "wood",
+      "usage": [],
+      "brand": "Viva",
+      "summary": "A new life for reclaimed oak wood\n\nA material that offers its own history for the most refined interior design projects.",
+      "description": "A new life for reclaimed oak wood\n\nA material that offers its own history for the most refined interior design projects.",
+      "url": "/collections/wood/revival",
+      "sourceUrl": "https://www.the-tile.com/revival.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "luxury",
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "sleekwood",
+      "name": "Sleekwood",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "The Sleekwood collection.",
+      "description": "The Sleekwood collection.",
+      "url": "/collections/wood/sleekwood",
+      "sourceUrl": "https://www.the-tile.com/sleekwood.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    },
+    {
+      "id": "woodtouch",
+      "name": "Woodtouch",
+      "effect": "wood",
+      "usage": [],
+      "brand": null,
+      "summary": "The Woodtouch collection.",
+      "description": "The Woodtouch collection.",
+      "url": "/collections/wood/woodtouch",
+      "sourceUrl": "https://www.the-tile.com/woodtouch.html",
+      "attributes": {
+        "material": "porcelain stoneware"
+      },
+      "images": [],
+      "inStock": true,
+      "tags": [
+        "wood"
+      ],
+      "bestFor": [
+        "warm residential floors",
+        "bedrooms",
+        "living rooms",
+        "indoor-outdoor continuity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-tile.com/schemas/product.json",
+  "title": "Tile Product",
+  "description": "Canonical schema for a tile collection at The Tile. Seed JSON and D1 rows conform to this. Runtime validation via Zod in apps/web/lib/schemas.ts.",
+  "type": "object",
+  "required": ["id", "name", "effect", "summary", "url"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*[a-z0-9]$",
+      "description": "URL slug. Lowercase, hyphen- or underscore-separated. Matches the folder name under /collections/[effect]/."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "Display name of the collection (e.g. 'Tele di Marmo Precious')."
+    },
+    "effect": {
+      "type": "string",
+      "enum": ["marble", "wood", "stone", "slate", "concrete", "terrazzo", "terracotta", "gesso", "full-colour"],
+      "description": "Primary visual effect — the material look. Each product has exactly one."
+    },
+    "usage": {
+      "type": "array",
+      "description": "Cross-cutting usage categories the product is suited for.",
+      "items": {
+        "type": "string",
+        "enum": ["indoor", "outdoor", "bathroom", "outdoor-paving", "paving-20mm", "commercial", "wet-area", "high-traffic"]
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "brand": {
+      "type": ["string", "null"],
+      "description": "Italian supplier / manufacturer. Null if unknown.",
+      "examples": ["Emilgroup", "Emilceramica", "Provenza", "Ergon", "Tagina", "Marca Corona", "Rex", "Florim"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "One- to two-sentence description, used in TileCard and meta descriptions."
+    },
+    "description": {
+      "type": "string",
+      "description": "Full long-form description for the product detail page. Markdown allowed.",
+      "default": ""
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^/collections/[a-z-]+/[a-z0-9_-]+$",
+      "description": "Canonical site URL."
+    },
+    "sourceUrl": {
+      "type": ["string", "null"],
+      "description": "Original URL on the-tile.com (pre-rebuild). Kept for operational reference."
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Physical + technical characteristics specific to tiles. All fields optional; Claude Code during implementation should populate from supplier technical sheets where possible.",
+      "properties": {
+        "material": {
+          "type": "string",
+          "enum": ["porcelain stoneware", "glazed ceramic", "unglazed porcelain", "pressed porcelain"],
+          "default": "porcelain stoneware"
+        },
+        "formats": {
+          "type": "array",
+          "description": "Available sizes. Format string: 'widthxheight' in cm (e.g. '60x120', '30x60', '120x240').",
+          "items": {
+            "type": "string",
+            "pattern": "^\\d{2,3}x\\d{2,3}(x\\d+mm)?$"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "finishes": {
+          "type": "array",
+          "description": "Surface finishes the series is produced in.",
+          "items": {
+            "type": "string",
+            "enum": ["natural", "polished", "lappato", "semi-polished", "honed", "textured", "anti-slip", "matte", "structured", "bush-hammered"]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "thicknesses": {
+          "type": "array",
+          "description": "Available thicknesses in mm. 20mm is for outdoor paving.",
+          "items": {
+            "type": "number",
+            "enum": [6, 8, 9, 9.5, 10, 10.5, 11, 12, 14, 20, 30]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "slipRating": {
+          "type": "string",
+          "description": "DIN 51130 / R-class slip resistance.",
+          "enum": ["R9", "R10", "R11", "R12", "R13"]
+        },
+        "waterAbsorption": {
+          "type": "string",
+          "description": "EN 14411 water absorption class.",
+          "enum": ["BIa", "BIb", "BIIa", "BIIb", "BIII"]
+        },
+        "frostResistant": {
+          "type": "boolean",
+          "description": "Safe for outdoor use in cold conditions. Malta rarely freezes but some outdoor applications still matter."
+        },
+        "colours": {
+          "type": "array",
+          "description": "Colour variants within the series.",
+          "items": {
+            "type": "string",
+            "examples": ["White", "Cream", "Beige", "Grey", "Anthracite", "Black", "Ivory", "Sand", "Rust"]
+          },
+          "default": []
+        },
+        "rectified": {
+          "type": "boolean",
+          "description": "Whether edges are factory-ground for tight grout lines."
+        },
+        "colourBody": {
+          "type": "boolean",
+          "description": "Whether the tile's body colour matches the surface colour through the thickness."
+        }
+      },
+      "additionalProperties": false
+    },
+    "images": {
+      "type": "array",
+      "description": "Image references. First entry is the hero.",
+      "items": {
+        "type": "object",
+        "required": ["src", "alt"],
+        "properties": {
+          "src": {
+            "type": "string",
+            "description": "Path (relative) or URL (absolute) to the image. Prefer /images/products/[id]/hero.jpg."
+          },
+          "alt": {
+            "type": "string",
+            "description": "Descriptive alt text."
+          },
+          "caption": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string",
+            "enum": ["flat", "in-room", "detail", "lifestyle"],
+            "description": "Where this image fits in the product page composition."
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          }
+        }
+      },
+      "default": []
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform mood/style tags used by the agent for matching user intents to tiles.",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "bestFor": {
+      "type": "array",
+      "description": "Use-case phrases the agent can pattern-match against user-described needs.",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "relatedIds": {
+      "type": "array",
+      "description": "Manually-curated 'also consider' product IDs. If empty, related is computed by effect + tags similarity.",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "inStock": {
+      "type": "boolean",
+      "description": "Shown on the site as 'available from showroom' vs 'special order'. Showroom updates via admin or seed JSON edit.",
+      "default": true
+    },
+    "showInCatalog": {
+      "type": "boolean",
+      "description": "Set to false to hide from /collections but keep URL live for redirects/bookmarks.",
+      "default": true
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last edit timestamp. Build script stamps automatically."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "tele_di_marmo_precious",
+      "name": "Tele di Marmo Precious",
+      "effect": "marble",
+      "usage": ["indoor"],
+      "brand": "Emilgroup",
+      "summary": "Emilgroup's white-veined marble-effect range with bold veining and multiple precious variants.",
+      "description": "...",
+      "url": "/collections/marble/tele_di_marmo_precious",
+      "sourceUrl": "https://www.the-tile.com/tele_di_marmo_precious.html",
+      "attributes": {
+        "material": "porcelain stoneware",
+        "formats": ["60x120", "120x120", "120x240"],
+        "finishes": ["natural", "lappato"],
+        "thicknesses": [9.5],
+        "slipRating": "R9",
+        "rectified": true,
+        "colours": ["Statuario White", "Onyx Amber", "Bourgogne"]
+      },
+      "images": [],
+      "tags": ["marble", "luxury", "classic", "bold"],
+      "bestFor": ["statement interiors", "luxury residential", "feature walls", "hospitality"],
+      "inStock": true
+    }
+  ]
+}

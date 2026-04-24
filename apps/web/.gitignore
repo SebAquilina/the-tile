@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+data/site-knowledge.md
+lib/agent-system-prompt.ts
+playwright-report/
+test-results/

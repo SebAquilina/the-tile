@@ -1,0 +1,97 @@
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  *:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--color-umber);
+    color: var(--color-surface);
+  }
+}
+
+@layer components {
+  .journal-prose h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-3);
+    color: var(--color-ink);
+  }
+  .journal-prose h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-ink);
+  }
+  .journal-prose p {
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-5);
+    line-height: 1.7;
+  }
+  .journal-prose strong { color: var(--color-ink); font-weight: 600; }
+  .journal-prose ol, .journal-prose ul {
+    margin: 0 0 var(--space-5) 0;
+    padding-left: var(--space-6);
+    color: var(--color-ink-muted);
+  }
+  .journal-prose li { margin-bottom: var(--space-2); line-height: 1.7; }
+  .journal-prose a { color: var(--color-umber); text-decoration: underline; text-underline-offset: 4px; }
+  .journal-prose a:hover { color: var(--color-umber-strong); }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-sans { font-family: var(--font-sans); }
+
+  /* Shimmer gradient for Skeleton — respects prefers-reduced-motion */
+  .skeleton-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-surface-muted) 0%,
+      var(--color-line) 50%,
+      var(--color-surface-muted) 100%
+    );
+    background-size: 200% 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton-shimmer {
+      animation: none !important;
+      background-image: none;
+      background-color: var(--color-surface-muted);
+    }
+  }
+}

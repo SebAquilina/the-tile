@@ -1,0 +1,35 @@
+name: Lighthouse
+
+on:
+  pull_request:
+  push:
+    branches: [main, staging]
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+        env:
+          GEMINI_API_KEY: ci-placeholder
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
