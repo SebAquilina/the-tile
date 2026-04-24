@@ -1,68 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Checkbox, Textarea, useToast } from "@/components/ui";
-import type { ProductOverride } from "@/lib/admin-store";
+import { useAdminDraft } from "@/lib/admin-draft";
 
 export function ProductEditor({
   id,
   seed,
-  override,
 }: {
   id: string;
   seed: { inStock: boolean; showInCatalog: boolean; summary: string };
-  override: ProductOverride | null;
 }) {
   const toast = useToast();
-  const [inStock, setInStock] = useState(override?.inStock ?? seed.inStock);
-  const [showInCatalog, setShowInCatalog] = useState(
-    override?.showInCatalog ?? seed.showInCatalog,
-  );
-  const [summary, setSummary] = useState(override?.summary ?? seed.summary);
-  const [saving, setSaving] = useState(false);
+  const { draft, patchProduct, discardProduct } = useAdminDraft();
+  const patch = draft.products[id] ?? {};
 
-  async function save() {
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/products/${id}`, {
-        method: "PATCH",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          inStock,
-          showInCatalog,
-          summary: summary !== seed.summary ? summary : undefined,
-        }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      toast.success("Changes staged.");
-    } catch (err) {
-      toast.error(`Save failed: ${(err as Error).message}`);
-    } finally {
-      setSaving(false);
-    }
+  const [inStock, setInStock] = useState<boolean>(patch.inStock ?? seed.inStock);
+  const [showInCatalog, setShowInCatalog] = useState<boolean>(
+    patch.showInCatalog ?? seed.showInCatalog,
+  );
+  const [summary, setSummary] = useState<string>(patch.summary ?? seed.summary);
+
+  // Keep local form in sync if another tab / view mutates the draft.
+  useEffect(() => {
+    setInStock(patch.inStock ?? seed.inStock);
+    setShowInCatalog(patch.showInCatalog ?? seed.showInCatalog);
+    setSummary(patch.summary ?? seed.summary);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draft.updatedAt]);
+
+  const dirty =
+    inStock !== seed.inStock ||
+    showInCatalog !== seed.showInCatalog ||
+    summary.trim() !== seed.summary.trim();
+
+  function stage() {
+    patchProduct(id, {
+      inStock: inStock === seed.inStock ? undefined : inStock,
+      showInCatalog:
+        showInCatalog === seed.showInCatalog ? undefined : showInCatalog,
+      summary: summary.trim() === seed.summary.trim() ? undefined : summary,
+    });
+    toast.success("Change staged — publish from the bottom bar when ready.");
   }
 
-  async function revert() {
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/products/${id}`, {
-        method: "DELETE",
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setInStock(seed.inStock);
-      setShowInCatalog(seed.showInCatalog);
-      setSummary(seed.summary);
-      toast.info("Reverted to seed values.");
-    } catch (err) {
-      toast.error(`Revert failed: ${(err as Error).message}`);
-    } finally {
-      setSaving(false);
-    }
+  function revert() {
+    discardProduct(id);
+    setInStock(seed.inStock);
+    setShowInCatalog(seed.showInCatalog);
+    setSummary(seed.summary);
+    toast.info("Reverted to the published values.");
   }
 
   return (
     <div className="space-y-space-6 rounded-md border border-line bg-surface p-space-6">
       <fieldset className="space-y-space-4">
+        <legend className="sr-only">Stock and visibility</legend>
         <Checkbox
           checked={inStock}
           onChange={(e) => setInStock(e.target.checked)}
@@ -76,23 +69,29 @@ export function ProductEditor({
       </fieldset>
 
       <Textarea
-        label="Summary (one-to-two sentences, used on cards + meta)"
+        label="Summary"
+        helpText="One or two sentences. Shown on tile cards and in search results (max 300 characters)."
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
-        rows={3}
+        rows={4}
+        maxLength={300}
       />
 
-      <div className="flex flex-wrap items-center gap-space-3">
-        <Button variant="primary" onClick={save} disabled={saving}>
-          {saving ? "Saving…" : "Save changes"}
-        </Button>
-        <Button variant="ghost" onClick={revert} disabled={saving}>
-          Revert to seed
-        </Button>
-        {override ? (
-          <p className="text-xs text-ink-subtle">
-            Last updated {new Date(override.updatedAt ?? "").toLocaleString("en-GB")}
-          </p>
+      <div className="flex flex-wrap items-center justify-between gap-space-3 border-t border-line pt-space-5">
+        <div className="flex gap-space-3">
+          <Button variant="primary" onClick={stage} disabled={!dirty}>
+            {dirty ? "Stage changes" : "No changes"}
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={revert}
+            disabled={Object.keys(patch).length === 0}
+          >
+            Revert to published
+          </Button>
+        </div>
+        {Object.keys(patch).length > 0 ? (
+          <p className="text-xs text-umber">Draft pending publish.</p>
         ) : null}
       </div>
     </div>
