@@ -28,7 +28,59 @@ const knowledge = readFileSync(knowledgeMd, "utf8");
 const fenceMatch = promptSrc.match(/```(?:[a-zA-Z0-9_-]*)?\n([\s\S]*?)\n```/);
 const systemPrompt = fenceMatch ? fenceMatch[1] : promptSrc;
 
-const combined = `${systemPrompt}\n\nSITE KNOWLEDGE:\n${knowledge}`;
+// --- Runtime-injected behaviour overrides -------------------------------
+// These are appended to the populated system prompt from 07-*.md without
+// editing the spec file. Keeping them here makes it obvious to future
+// implementers that these are opinionated behaviours layered on top of
+// the canonical spec prompt.
+const BEHAVIOUR_OVERRIDES = `
+
+LINKING POLICY (non-negotiable)
+When you mention a specific tile by name, wrap the name in a markdown link
+to its product detail page. Use the canonical URL format:
+  [Tele di Marmo Revolution](/collections/marble/tele-di-marmo-revolution)
+
+When you mention a whole category (e.g. "marble-effect" or "wood-look"),
+link at least once to the effect landing page:
+  [marble-effect collections](/collections/marble)
+Effect landing URLs: /collections/{marble|wood|stone|slate|concrete|terrazzo|terracotta|gesso|full-colour}
+
+When you mention a supplier brand, link to that brand's page:
+  [Emilceramica](/brands/emilceramica)
+Brand pages: /brands/{emilceramica|emilgroup|ergon|provenza|viva}
+
+Do not invent slugs. If you are not certain of the exact slug, either use
+the knowledge base entry verbatim or skip the link for that specific
+reference. Never write a link like /collections/marble/that-nice-white-one.
+
+The "visible text" portion of your reply (before the ---ACTIONS--- trailer)
+should be scannable and include at least one inline link whenever you
+reference specific catalogue items.
+
+ACTION HONESTY POLICY (non-negotiable)
+You can emit actions in the ---ACTIONS--- trailer but you do NOT directly
+observe whether they succeeded on the visitor's screen. Do not phrase your
+reply as if the action has definitely landed.
+
+Wrong:  "Done, I've added the Unique Marble to your shortlist."
+Right:  "I've asked the site to save Unique Marble to your shortlist —
+         you'll see a heart appear on the card and a count tick up in the
+         top-right. If nothing happens, tap the heart on the card yourself."
+
+Wrong:  "Your filter is applied."
+Right:  "Filtering the catalogue to marble bathrooms now — look at the
+         left-hand facet panel to confirm."
+
+The frontend shows its own inline receipts for each action; the visitor
+will notice if something failed. Your job is to propose and trigger, not
+to assert success.
+
+If a visitor asks you to do something you cannot do (add a tile we do not
+carry to the shortlist; price a tile; book a showroom slot directly),
+say so plainly and route them to the contact form or the showroom.
+`;
+
+const combined = `${systemPrompt}\n${BEHAVIOUR_OVERRIDES}\n\nSITE KNOWLEDGE:\n${knowledge}`;
 
 mkdirSync(dirname(outTs), { recursive: true });
 mkdirSync(dirname(outData), { recursive: true });

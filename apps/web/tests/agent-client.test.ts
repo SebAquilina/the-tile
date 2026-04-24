@@ -66,4 +66,33 @@ describe("parseActionTrailer", () => {
     expect(result.visibleText).toBe(raw);
     expect(result.actions).toEqual([]);
   });
+
+  it("tolerates a bare-object trailer (not wrapped in array)", () => {
+    const raw = [
+      "Saved it.",
+      "",
+      "---ACTIONS---",
+      '{"type":"navigate","data":{"url":"/collections/wood"}}',
+    ].join("\n");
+    const result = parseActionTrailer(raw);
+    expect(result.actions).toHaveLength(1);
+    expect(result.actions[0].type).toBe("navigate");
+  });
+
+  it("tolerates drifted type names + flattened field names", () => {
+    // The model often emits `action: "add_to_shortlist"` with a flat
+    // `tile_id` instead of `type: "add-to-save-list"` + `data: { productId }`.
+    const raw = [
+      "Added it to your list.",
+      "",
+      "---ACTIONS---",
+      '{"action":"add_to_shortlist","tile_id":"tele-di-marmo-revolution"}',
+    ].join("\n");
+    const result = parseActionTrailer(raw);
+    expect(result.actions).toHaveLength(1);
+    expect(result.actions[0].type).toBe("add-to-save-list");
+    if (result.actions[0].type === "add-to-save-list") {
+      expect(result.actions[0].data.productId).toBe("tele-di-marmo-revolution");
+    }
+  });
 });

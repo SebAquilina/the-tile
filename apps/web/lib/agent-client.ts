@@ -185,9 +185,10 @@ function parseCanonicalActions(trailer: string): AgentAction[] {
 
   try {
     const parsed = JSON.parse(cleaned);
-    if (!Array.isArray(parsed)) return [];
+    // Tolerate a bare object the model occasionally emits instead of an array.
+    const entries = Array.isArray(parsed) ? parsed : [parsed];
     const actions: AgentAction[] = [];
-    for (const entry of parsed) {
+    for (const entry of entries) {
       const action = coerceAction(entry);
       if (action) actions.push(action);
     }
@@ -197,16 +198,77 @@ function parseCanonicalActions(trailer: string): AgentAction[] {
   }
 }
 
+/** Map common type-name drifts from the model back to the canonical names. */
+const TYPE_ALIASES: Record<string, AgentAction["type"]> = {
+  navigate: "navigate",
+  nav: "navigate",
+  go: "navigate",
+  scroll: "scroll",
+  filter: "filter",
+  "apply-filter": "filter",
+  apply_filter: "filter",
+  highlight: "highlight-products",
+  "highlight-products": "highlight-products",
+  highlight_products: "highlight-products",
+  "add-to-save-list": "add-to-save-list",
+  add_to_save_list: "add-to-save-list",
+  add_to_shortlist: "add-to-save-list",
+  "add-to-shortlist": "add-to-save-list",
+  save: "add-to-save-list",
+  shortlist: "add-to-save-list",
+  "open-save-list": "open-save-list",
+  open_save_list: "open-save-list",
+  "submit-lead": "submit-lead",
+  submit_lead: "submit-lead",
+  lead: "submit-lead",
+  escalate: "escalate",
+  cite: "cite",
+};
+
 function coerceAction(raw: unknown): AgentAction | null {
   if (!raw || typeof raw !== "object") return null;
-  const r = raw as { type?: unknown; data?: unknown };
-  if (typeof r.type !== "string") return null;
-  const data = (r.data && typeof r.data === "object" ? r.data : {}) as Record<
-    string,
-    unknown
-  >;
+  // Extract the type — accept `type` OR `action` OR `name` as the key the
+  // model may have used. Same for the payload (`data` OR flattened fields).
+  const r = raw as Record<string, unknown>;
+  const rawType =
+    typeof r.type === "string"
+      ? r.type
+      : typeof r.action === "string"
+        ? r.action
+        : typeof r.name === "string"
+          ? r.name
+          : null;
+  if (!rawType) return null;
+  const canonical = TYPE_ALIASES[rawType.toLowerCase()] ?? (rawType as AgentAction["type"]);
 
-  switch (r.type) {
+  // Merge an explicit `data` object with top-level fallbacks. If the model
+  // flattened data (e.g. put `productId` at the top level), we still catch it.
+  const explicitData =
+    r.data && typeof r.data === "object" ? (r.data as Record<string, unknown>) : {};
+  const topLevel: Record<string, unknown> = {};
+  for (const k of Object.keys(r)) {
+    if (k === "type" || k === "action" || k === "name" || k === "data") continue;
+    topLevel[k] = r[k];
+  }
+  const data: Record<string, unknown> = { ...topLevel, ...explicitData };
+
+  // Normalise common field-name drifts for each action type.
+  if (canonical === "add-to-save-list") {
+    const pid =
+      data.productId ?? data.product_id ?? data.tile_id ?? data.tileId ?? data.id;
+    if (typeof pid === "string") data.productId = pid;
+  }
+  if (canonical === "navigate") {
+    const url = data.url ?? data.href ?? data.to ?? data.path;
+    if (typeof url === "string") data.url = url;
+  }
+  if (canonical === "highlight-products") {
+    const ids =
+      data.ids ?? data.productIds ?? data.product_ids ?? data.tile_ids ?? data.tileIds;
+    if (Array.isArray(ids)) data.ids = ids;
+  }
+
+  switch (canonical) {
     case "navigate":
       if (typeof data.url === "string") {
         return { type: "navigate", data: { url: data.url } };

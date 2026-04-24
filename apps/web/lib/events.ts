@@ -11,6 +11,7 @@
  */
 
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { getAllProducts } from "@/lib/seed";
 
 // --- Action types (mirror `docs/spec/the-tile/07-agent-system-prompt.md`) ---
 
@@ -151,10 +152,23 @@ export async function executeAction(
 
     case "add-to-save-list": {
       const productId = action.data?.productId;
-      if (productId) {
-        emit("save-list:add", { productId });
-        toast.success("Added to your save list.");
+      if (!productId) {
+        toast.error("Concierge tried to save a tile with no id — skipped.");
+        return;
       }
+      // Honest validation: only add if the id matches a real catalog entry.
+      // The agent sometimes synthesises plausible-sounding ids; without this
+      // guard the toast fires but the shortlist is empty.
+      const known = getAllProducts().find((p) => p.id === productId);
+      if (!known) {
+        toast.error(
+          `Couldn't find "${productId}" in the catalogue — not adding. ` +
+            "Try asking the concierge to 'show' it first, then save from the card.",
+        );
+        return;
+      }
+      emit("save-list:add", { productId });
+      toast.success(`Saved ${known.name} — tap the heart icon to see your shortlist.`);
       return;
     }
 
