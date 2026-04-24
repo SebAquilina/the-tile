@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -51,8 +52,34 @@ const FormSchema = z.object({
 type FormValues = z.infer<typeof FormSchema>;
 
 export function ContactForm() {
+  // useSearchParams requires a Suspense boundary for client-side navigation.
+  return (
+    <Suspense fallback={null}>
+      <ContactFormInner />
+    </Suspense>
+  );
+}
+
+function ContactFormInner() {
   const toast = useToast();
+  const searchParams = useSearchParams();
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [saveListIds, setSaveListIds] = useState<string[]>([]);
+  const quoteReason = searchParams.get("reason") === "quote";
+
+  useEffect(() => {
+    const raw = searchParams.get("saveIds");
+    if (!raw) {
+      setSaveListIds([]);
+      return;
+    }
+    setSaveListIds(
+      raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean),
+    );
+  }, [searchParams]);
 
   const {
     register,
@@ -84,6 +111,7 @@ export function ContactForm() {
           message: values.projectNotes,
           preferredContactMethod: values.preferredContactMethod,
           consentGiven: values.consentGiven,
+          saveListIds: saveListIds.length > 0 ? saveListIds : undefined,
         }),
       });
 
@@ -119,6 +147,14 @@ export function ContactForm() {
           className="rounded-md border border-error bg-surface-muted px-space-4 py-space-3 text-sm text-error"
         >
           {submitError}
+        </div>
+      ) : null}
+
+      {quoteReason && saveListIds.length > 0 ? (
+        <div className="rounded-md border border-line bg-cream px-space-4 py-space-3 text-sm text-ink-muted">
+          Attaching your shortlist of{" "}
+          <span className="font-medium text-ink">{saveListIds.length}</span>{" "}
+          {saveListIds.length === 1 ? "tile" : "tiles"} to this enquiry.
         </div>
       ) : null}
 
