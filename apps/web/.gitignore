@@ -8,3 +8,5 @@ out
 next-env.d.ts
 data/site-knowledge.md
 lib/agent-system-prompt.ts
+playwright-report/
+test-results/
