@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { RelatedTiles } from "@/components/catalog/RelatedTiles";
+import { ReviewCard } from "@/components/reviews/ReviewCard";
+import { getReviewsForProduct } from "@/lib/reviews";
 import { SaveToListButton } from "@/components/catalog/SaveToListButton";
 import { SpecsTable } from "@/components/catalog/SpecsTable";
 import { Button } from "@/components/ui";
@@ -252,10 +254,30 @@ export default function ProductDetailPage({ params }: { params: Params }) {
           </div>
         </section>
 
+        {/* Reviews */}
+        <ProductReviews productId={product.id} />
+
         {/* Related */}
         <div className="mt-space-10">
           <RelatedTiles current={product} all={allProducts} />
         </div>
       </div>
+  );
+}
+
+function ProductReviews({ productId }: { productId: string }) {
+  const reviews = getReviewsForProduct(productId);
+  if (reviews.length === 0) return null;
+  return (
+    <section className="mt-space-10">
+      <h2 className="font-display text-2xl text-ink">What customers said</h2>
+      <ul className="mt-space-5 grid gap-space-5 md:grid-cols-2">
+        {reviews.map((r) => (
+          <li key={r.id}>
+            <ReviewCard review={r} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

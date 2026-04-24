@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Button, Input, useToast } from "@/components/ui";
+import { BUSINESS } from "@/lib/business-info";
 
 type Theme = "light" | "dark";
 
@@ -190,9 +191,45 @@ export function Footer() {
             "flex flex-col gap-space-4 md:flex-row md:items-center md:justify-between",
           )}
         >
-          <p className="text-xs text-ink-subtle">
-            &copy; 2026 The Tile &middot; San Gwann, Malta &middot; Since 1990
-          </p>
+          <div className="flex flex-col gap-space-1 text-xs text-ink-subtle">
+            <p>
+              &copy; 2026 The Tile &middot; {BUSINESS.addressDisplay} &middot;
+              Since {BUSINESS.foundedYear}
+            </p>
+            <p className="flex flex-wrap items-center gap-space-2">
+              <a
+                href={`tel:${BUSINESS.phoneTel}`}
+                className="hover:text-ink"
+              >
+                {BUSINESS.phoneDisplay}
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href={`mailto:${BUSINESS.email}`}
+                className="hover:text-ink"
+              >
+                {BUSINESS.email}
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href={BUSINESS.social.facebook}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="hover:text-ink"
+              >
+                Facebook
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href={BUSINESS.social.instagram}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="hover:text-ink"
+              >
+                Instagram
+              </a>
+            </p>
+          </div>
           <button
             type="button"
             onClick={toggleTheme}

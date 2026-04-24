@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import {
-  getAllBrands,
   getAllProducts,
   getEffectCategories,
 } from "@/lib/seed";
+import { getAllBrandProfiles } from "@/lib/brand-profiles";
 
 /**
  * Sitemap (Next.js Metadata Route).
@@ -42,6 +42,7 @@ const STATIC_ROUTES: StaticEntry[] = [
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/reviews", priority: 0.5, changeFrequency: "monthly" },
 ];
 
 // Optional journal loader — gracefully skipped if the module doesn't exist.
@@ -107,11 +108,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Brand pages — only emit if a /brands/[slug] dynamic route exists. The
-  // current scaffold only has a static /brands page, so we skip per-brand
-  // URLs (already included via STATIC_ROUTES). If the dynamic route ships
-  // later, uncomment the block below.
-  void getAllBrands;
+  // Brand detail pages
+  for (const brand of getAllBrandProfiles()) {
+    entries.push({
+      url: `${SITE_URL}/brands/${brand.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+  }
 
   // Journal posts — optional
   const posts = await loadJournalPosts();

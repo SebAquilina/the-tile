@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { BUSINESS } from "@/lib/business-info";
 
 export const metadata: Metadata = {
   title: "Contact — The Tile",
@@ -23,8 +24,8 @@ export default function ContactPage() {
           </h1>
           <p className="mt-space-5 text-lg text-ink-muted">
             Size, light, timeline, a mood you are chasing — whatever you have.
-            We read every note and reply within two working days, usually the
-            same day if it lands before lunch.
+            We read every note and reply within {BUSINESS.replyWithin}, usually
+            the same day if it lands before lunch.
           </p>
 
           <ContactForm />
@@ -35,40 +36,85 @@ export default function ContactPage() {
             <p className="text-xs uppercase tracking-widest text-ink-subtle">
               Other ways to reach us
             </p>
-            <dl className="mt-space-4 space-y-space-3 text-sm">
+            <dl className="mt-space-4 space-y-space-4 text-sm">
               <div>
                 <dt className="text-ink-subtle">Email</dt>
                 <dd className="mt-space-1">
                   <a
-                    href="mailto:hello@the-tile.com"
+                    href={`mailto:${BUSINESS.email}`}
                     className="text-umber underline underline-offset-4 hover:text-umber-strong"
                   >
-                    hello@the-tile.com
+                    {BUSINESS.email}
                   </a>
                 </dd>
               </div>
               <div>
                 <dt className="text-ink-subtle">Phone</dt>
-                <dd className="mt-space-1 text-ink">+356 XXXX XXXX</dd>
+                <dd className="mt-space-1">
+                  <a
+                    href={`tel:${BUSINESS.phoneTel}`}
+                    className="text-ink hover:underline underline-offset-4"
+                  >
+                    {BUSINESS.phoneDisplay}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-ink-subtle">WhatsApp</dt>
-                <dd className="mt-space-1 text-ink">+356 XXXX XXXX</dd>
+                <dd className="mt-space-1">
+                  <a
+                    href={BUSINESS.whatsappLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-ink hover:underline underline-offset-4"
+                  >
+                    {BUSINESS.whatsapp}
+                  </a>
+                </dd>
               </div>
               <div>
                 <dt className="text-ink-subtle">Showroom</dt>
                 <dd className="mt-space-1 text-ink">
-                  Triq X, San Gwann, Malta
+                  {BUSINESS.streetAddress}
                   <br />
-                  <span className="text-ink-muted">
-                    Monday to Saturday · 9:00 – 18:00
-                  </span>
+                  {BUSINESS.locality} {BUSINESS.postalCode}
+                  <br />
+                  {BUSINESS.region}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-ink-subtle">Hours</dt>
+                <dd className="mt-space-1 text-sm text-ink-muted">
+                  {BUSINESS.hoursSummary.map((h) => (
+                    <div key={h.label} className="flex justify-between gap-space-3">
+                      <span>{h.label}</span>
+                      <span className="text-ink">{h.value}</span>
+                    </div>
+                  ))}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-ink-subtle">Social</dt>
+                <dd className="mt-space-1 flex flex-wrap gap-space-3 text-sm">
+                  <a
+                    href={BUSINESS.social.facebook}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-umber underline underline-offset-4 hover:text-umber-strong"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href={BUSINESS.social.instagram}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-umber underline underline-offset-4 hover:text-umber-strong"
+                  >
+                    Instagram
+                  </a>
                 </dd>
               </div>
             </dl>
-            <p className="mt-space-4 text-xs italic text-ink-subtle">
-              Contact details pending final confirmation.
-            </p>
           </div>
         </aside>
       </div>

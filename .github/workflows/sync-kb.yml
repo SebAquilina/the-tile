@@ -1,0 +1,54 @@
+name: Sync agent knowledge
+
+on:
+  push:
+    branches: [main, staging]
+    paths:
+      - 'docs/spec/the-tile/seed/**'
+      - 'docs/spec/the-tile/06-site-knowledge.md'
+      - 'docs/spec/the-tile/07-agent-system-prompt.md'
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Regenerate agent context
+        run: |
+          pnpm sync-data
+          pnpm build-agent-context
+          pnpm generate-redirects
+
+      - name: Commit if changed
+        run: |
+          cd ../../
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/web/data/site-knowledge.md apps/web/lib/agent-system-prompt.ts apps/web/public/_redirects
+          if git diff --quiet --cached; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "chore(agent): regenerate agent context + redirects [skip ci]"
+          git push

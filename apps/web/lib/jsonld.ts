@@ -12,6 +12,7 @@
  */
 
 import type { Product } from "@/lib/schemas";
+import { BUSINESS, OPENING_HOURS_SPECIFICATION } from "@/lib/business-info";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
@@ -54,16 +55,18 @@ export function organizationLd(): OrganizationLd {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": ORG_ID,
-    name: "The Tile",
+    name: BUSINESS.name,
     url: SITE_URL,
     logo: `${SITE_URL}/og-default.svg`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "San Gwann",
-      addressCountry: "MT",
+      streetAddress: BUSINESS.streetAddress,
+      addressLocality: BUSINESS.locality,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: BUSINESS.country,
     },
-    areaServed: "MT",
-    sameAs: [],
+    areaServed: BUSINESS.country,
+    sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
   };
 }
 
@@ -89,39 +92,25 @@ export function localBusinessLd(): LocalBusinessLd {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": LOCAL_BUSINESS_ID,
-    name: "The Tile",
+    name: BUSINESS.name,
     url: SITE_URL,
     image: `${SITE_URL}/og-default.svg`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "San Gwann",
-      addressCountry: "MT",
+      streetAddress: BUSINESS.streetAddress,
+      addressLocality: BUSINESS.locality,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: BUSINESS.country,
     },
-    areaServed: "MT",
-    priceRange: "€€",
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "09:00",
-        closes: "18:00",
-      },
-    ],
+    areaServed: BUSINESS.country,
+    priceRange: BUSINESS.priceRange,
+    openingHoursSpecification: [...OPENING_HOURS_SPECIFICATION],
     geo: {
       "@type": "GeoCoordinates",
-      // Placeholder: generic Malta centroid — replace with true showroom
-      // coordinates when available.
-      latitude: 35.9042,
-      longitude: 14.4842,
+      latitude: BUSINESS.geo.latitude,
+      longitude: BUSINESS.geo.longitude,
     },
-    sameAs: [],
+    sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
   };
 }
 

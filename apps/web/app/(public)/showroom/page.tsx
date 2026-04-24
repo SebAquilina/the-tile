@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { BUSINESS } from "@/lib/business-info";
 
 export const metadata: Metadata = {
   title: "Showroom — The Tile",
@@ -38,19 +39,47 @@ export default function ShowroomPage() {
 
         <div className="mt-space-8 rounded-md border border-line bg-surface p-space-6">
           <p className="text-xs uppercase tracking-widest text-ink-subtle">
-            The Tile · San Gwann
+            The Tile · {BUSINESS.locality}
           </p>
-          <address className="mt-space-3 not-italic">
-            <p className="text-ink">Triq X, San Gwann, Malta</p>
-            <p className="mt-space-2 text-ink-muted">
-              Monday to Saturday · 9:00 – 18:00
+          <address className="mt-space-3 space-y-space-3 not-italic">
+            <p className="text-ink">
+              {BUSINESS.streetAddress}
+              <br />
+              {BUSINESS.locality} {BUSINESS.postalCode}, {BUSINESS.region}
             </p>
-            <p className="mt-space-1 text-ink-muted">+356 XXXX XXXX</p>
+            <div className="text-sm text-ink-muted">
+              {BUSINESS.hoursSummary.map((h) => (
+                <div key={h.label} className="flex justify-between gap-space-4">
+                  <span>{h.label}</span>
+                  <span className="text-ink">{h.value}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm">
+              <a
+                href={`tel:${BUSINESS.phoneTel}`}
+                className="text-ink hover:underline underline-offset-4"
+              >
+                {BUSINESS.phoneDisplay}
+              </a>
+              {" · "}
+              <a
+                href={BUSINESS.whatsappLink}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="text-ink hover:underline underline-offset-4"
+              >
+                WhatsApp
+              </a>
+              {" · "}
+              <a
+                href={`mailto:${BUSINESS.email}`}
+                className="text-ink hover:underline underline-offset-4"
+              >
+                {BUSINESS.email}
+              </a>
+            </p>
           </address>
-          <p className="mt-space-4 text-sm italic text-ink-subtle">
-            Please confirm address and hours with us before visiting — these
-            are placeholder details pending final confirmation.
-          </p>
         </div>
 
         <div className="mt-space-8 flex flex-wrap gap-space-4 text-sm">

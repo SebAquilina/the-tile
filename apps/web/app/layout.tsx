@@ -6,6 +6,7 @@ import {
   organizationLd,
 } from "@/lib/jsonld";
 import { Analytics } from "@/components/Analytics";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <Analytics />
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

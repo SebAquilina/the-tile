@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import type { Product } from "@/lib/schemas";
 import { AgentHero } from "@/components/agent/AgentHero";
 import { on } from "@/lib/events";
+import { ReviewStrip } from "@/components/reviews/ReviewStrip";
 
 const DISMISS_KEY = "the-tile:hero-dismissed";
 
@@ -93,6 +94,8 @@ function ReturnHome({ featured }: { featured: Product[] }) {
           ))}
         </ul>
       </section>
+
+      <ReviewStrip />
     </div>
   );
 }

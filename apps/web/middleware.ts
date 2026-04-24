@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { parseBasicAuth } from "@/lib/admin-auth";
 
 /**
- * Phase 1 security headers. Edge-compatible middleware running on every
- * non-static request. The CSP is restrictive but demo-friendly — it whitelists
- * the integrations we currently use (Plausible, Sentry, Turnstile, Gemini).
+ * Phase 1 security headers + Phase 2 admin-area basic auth. Edge-compatible.
  */
 
 const CSP_DIRECTIVES = [
@@ -20,23 +19,54 @@ const CSP_DIRECTIVES = [
   "form-action 'self'",
 ].join("; ");
 
-export function middleware(_request: NextRequest) {
-  const response = NextResponse.next();
-
-  response.headers.set("Content-Security-Policy", CSP_DIRECTIVES);
-  response.headers.set(
+function withSecurityHeaders(res: NextResponse): NextResponse {
+  res.headers.set("Content-Security-Policy", CSP_DIRECTIVES);
+  res.headers.set(
     "Strict-Transport-Security",
     "max-age=31536000; includeSubDomains",
   );
-  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("X-Frame-Options", "DENY");
-  response.headers.set(
+  res.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.headers.set("X-Content-Type-Options", "nosniff");
+  res.headers.set("X-Frame-Options", "DENY");
+  res.headers.set(
     "Permissions-Policy",
     "camera=(), microphone=(), geolocation=()",
   );
+  return res;
+}
 
-  return response;
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Admin-area gate: HTTP Basic against env-var credentials.
+  if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
+    const user = process.env.ADMIN_USER;
+    const pass = process.env.ADMIN_PASSWORD;
+
+    if (!user || !pass) {
+      return withSecurityHeaders(
+        new NextResponse("Admin is disabled. Configure ADMIN_USER and ADMIN_PASSWORD.", {
+          status: 503,
+          headers: { "Cache-Control": "no-store" },
+        }),
+      );
+    }
+
+    const provided = parseBasicAuth(request.headers.get("authorization"));
+    if (!provided || provided.user !== user || provided.pass !== pass) {
+      return withSecurityHeaders(
+        new NextResponse("Unauthorized", {
+          status: 401,
+          headers: {
+            "WWW-Authenticate": 'Basic realm="The Tile admin", charset="UTF-8"',
+            "Cache-Control": "no-store",
+          },
+        }),
+      );
+    }
+  }
+
+  return withSecurityHeaders(NextResponse.next());
 }
 
 export const config = {
