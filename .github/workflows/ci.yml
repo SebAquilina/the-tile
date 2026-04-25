@@ -10,9 +10,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  workflow-lint:
+    name: actionlint (catches step-if secrets.* and similar)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run actionlint
+        # The exact failure mode from the v1 build — secrets.X referenced
+        # inside a step-level if: — is caught here before merge.
+        run: |
+          curl -sSL \
+            https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash \
+            | bash -s -- 1.7.7
+          ./actionlint -color
+
   check:
     name: Lint · typecheck · unit tests · build
     runs-on: ubuntu-latest
+    needs: workflow-lint
     defaults:
       run:
         working-directory: apps/web
@@ -42,9 +57,6 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          # CI uses a dummy key so the build graph (which imports env at
-          # module load) doesn't complain. Runtime streaming tests are in
-          # the e2e job.
           GEMINI_API_KEY: ci-placeholder
           NEXT_PUBLIC_SITE_URL: https://www.the-tile.com
 
@@ -80,10 +92,6 @@ jobs:
       - name: Run Playwright
         run: pnpm test:e2e
         env:
-          # Empty PLAYWRIGHT_BASE_URL + empty TURNSTILE_SECRET lets the
-          # config's webServer start pnpm start fresh and skips the bot
-          # check entirely. GEMINI_API_KEY is optional — the agent smoke
-          # test skips itself when unset.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_TEST }}
 
       - name: Upload Playwright report
