@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { CollectionsExplorerServer } from "@/components/catalog/CollectionsExplorerServer";
 import { getAllProducts, getEffectCategories } from "@/lib/seed";
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: "All collections",
   description:
