@@ -7,63 +7,63 @@
       "id": "slate",
       "name": "Slate Effect",
       "type": "effect",
-      "summary": "Slate-inspired tiles \u2014 rugged, tactile, multi-coloured.",
+      "summary": "Slate-inspired tiles — rugged, tactile, multi-coloured.",
       "sourceUrl": "https://www.the-tile.com/slate.html"
     },
     {
       "id": "terrazzo",
       "name": "Venetian Terrazzo",
       "type": "effect",
-      "summary": "Italian master-craftsman tradition \u2014 chip-and-scatter aesthetic in porcelain.",
+      "summary": "Italian master-craftsman tradition — chip-and-scatter aesthetic in porcelain.",
       "sourceUrl": "https://www.the-tile.com/venetian-terrazzo-tiles.html"
     },
     {
       "id": "terracotta",
       "name": "Terracotta & Brick",
       "type": "effect",
-      "summary": "Terracotta-effect porcelain \u2014 warmth, veining, Italian tradition.",
+      "summary": "Terracotta-effect porcelain — warmth, veining, Italian tradition.",
       "sourceUrl": "https://www.the-tile.com/kotto_brick.html"
     },
     {
       "id": "gesso",
       "name": "Gesso / Plaster Effect",
       "type": "effect",
-      "summary": "Plaster-look porcelain \u2014 traditional architectural material as tile.",
+      "summary": "Plaster-look porcelain — traditional architectural material as tile.",
       "sourceUrl": "https://www.the-tile.com/gesso--plaster-effect.html"
     },
     {
       "id": "full-colour",
       "name": "Full Colour",
       "type": "effect",
-      "summary": "Solid-colour porcelain \u2014 backsplashes, countertops, bold features.",
+      "summary": "Solid-colour porcelain — backsplashes, countertops, bold features.",
       "sourceUrl": "https://www.the-tile.com/full_colour.html"
     },
     {
       "id": "marble",
       "name": "Marble Effect",
       "type": "effect",
-      "summary": "Marble-veined porcelain \u2014 aristocratic, luminous.",
+      "summary": "Marble-veined porcelain — aristocratic, luminous.",
       "sourceUrl": "https://www.the-tile.com/marble-effect-tiles.html"
     },
     {
       "id": "wood",
       "name": "Wood Effect",
       "type": "effect",
-      "summary": "Wood-plank porcelain \u2014 warm, anti-slip, indoor/outdoor.",
+      "summary": "Wood-plank porcelain — warm, anti-slip, indoor/outdoor.",
       "sourceUrl": "https://www.the-tile.com/wood-effect-tiles.html"
     },
     {
       "id": "stone",
       "name": "Stone Effect",
       "type": "effect",
-      "summary": "Stone-look porcelain \u2014 compact, natural aesthetic.",
+      "summary": "Stone-look porcelain — compact, natural aesthetic.",
       "sourceUrl": "https://www.the-tile.com/stone-effect-tiles.html"
     },
     {
       "id": "concrete",
       "name": "Concrete Effect",
       "type": "effect",
-      "summary": "Concrete-look porcelain \u2014 understated, versatile, modern.",
+      "summary": "Concrete-look porcelain — understated, versatile, modern.",
       "sourceUrl": "https://www.the-tile.com/concrete-effect-tiles.html"
     },
     {
@@ -102,7 +102,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/8746811_orig.jpg",
+          "alt": "Architect Resin",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/architect-resin.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/5235579_orig.jpg",
+          "alt": "Architect Resin",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/architect-resin.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/7445828_orig.jpg",
+          "alt": "Architect Resin",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/architect-resin.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/7027583_orig.jpg",
+          "alt": "Architect Resin",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/architect-resin.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -126,7 +171,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/101124871.jpg",
+          "alt": "Be Square",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/be-square.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -150,7 +207,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1564686448.jpg",
+          "alt": "Karman",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/karman.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -174,7 +243,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/317363482.jpg",
+          "alt": "On Square",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/on-square.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete",
@@ -199,7 +280,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/344033299.jpg",
+          "alt": "Pigmento",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/pigmento.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -223,7 +316,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/playgroun-resin-berlin-grey-amb-pav_orig.jpg",
+          "alt": "Playground",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/playground.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/playground-resin-berlin-grey-80x80-part-sala_orig.jpg",
+          "alt": "Playground",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/playground.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/playground-resin-new-york-sand-80x80-amb-pav-2_orig.jpg",
+          "alt": "Playground",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/playground.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/playground-resin-new-york-sand-80x80-amb-pav_orig.jpg",
+          "alt": "Playground",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/playground.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -247,7 +385,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/83259-01_orig.jpg",
+          "alt": "Re-Play Concrete",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/re-play.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/83259-02_orig.jpg",
+          "alt": "Re-Play Concrete",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/re-play.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/83259-03_orig.jpg",
+          "alt": "Re-Play Concrete",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/re-play.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/83259-04_orig.jpg",
+          "alt": "Re-Play Concrete",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/re-play.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -271,7 +454,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1017337184.jpg",
+          "alt": "Tr3nd",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tr3nd.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "concrete"
@@ -295,7 +490,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/469579031.jpg",
+          "alt": "Abacus",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/abacus.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "full-colour"
@@ -320,7 +527,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/581617883.jpg",
+          "alt": "Totalook",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/totalook.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "full-colour",
@@ -346,7 +565,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1590969930.png",
+          "alt": "Tele di Marmo",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble"
@@ -371,7 +602,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1575609066.jpg",
+          "alt": "Tele di Marmo Lumia",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tdm_lumia.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -397,7 +640,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/2001557642.jpg",
+          "alt": "Tele di Marmo Onyx",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-onyx.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble"
@@ -422,7 +677,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1761018973.jpg",
+          "alt": "Tele di Marmo Precious",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-precious.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -448,7 +715,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1167019604.jpg",
+          "alt": "Tele di Marmo Pure Onyx",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-pure-onyx.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble"
@@ -473,7 +752,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1136460997.jpeg",
+          "alt": "Tele di Marmo Reloaded",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele_reloadd.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble"
@@ -498,7 +789,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/1130x753-9_1_orig.jpg",
+          "alt": "Tele di Marmo Revolution",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-revolution.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/1130x753-8_1_orig.jpg",
+          "alt": "Tele di Marmo Revolution",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-revolution.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emilceramica-teledimarmo-revolution-001_1_orig.jpg",
+          "alt": "Tele di Marmo Revolution",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-revolution.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/teledimarmo-revolution-06_1_orig.jpg",
+          "alt": "Tele di Marmo Revolution",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-revolution.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble",
@@ -524,7 +860,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/679512403.jpg",
+          "alt": "Tele di Marmo Selection",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/tele-di-marmo-selection.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "marble"
@@ -549,7 +897,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1581131557.jpg",
+          "alt": "Unique Marble",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/unique-marble.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "classic",
@@ -576,7 +936,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/210179767.jpg",
+          "alt": "Unique Travertine",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/unique-travertine.html",
+            "scrapedAt": "2026-04-25T15:42:56.611494+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -604,7 +976,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1949399173.jpg",
+          "alt": "Cornerstone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/cornerstone.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "slate"
@@ -628,7 +1012,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/immagine-6-1130x753-solnhofen-60x120-60x60-30x60-amb-living-zenitale_orig.jpg",
+          "alt": "Cornerstone Alpen",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/cornerstone_alpen.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/immagine-8-1130x753-solnhofen-60x60-60x120-mosaico-amb-bagno_orig.jpg",
+          "alt": "Cornerstone Alpen",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/cornerstone_alpen.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ergon-cornerstone-12_orig.jpg",
+          "alt": "Cornerstone Alpen",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/cornerstone_alpen.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ergon-cornerstone-13_orig.jpg",
+          "alt": "Cornerstone Alpen",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/cornerstone_alpen.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "slate"
@@ -652,7 +1081,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/600842913.jpg",
+          "alt": "Groove",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/groove.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "slate"
@@ -676,7 +1117,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/2053943197.png",
+          "alt": "Nordika",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/nordika.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "slate"
@@ -700,7 +1153,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/provenza-uniquebleu-02_orig.jpg",
+          "alt": "Unique Bleu",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/bleu.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/provenza-uniquebleu-03_orig.jpg",
+          "alt": "Unique Bleu",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/bleu.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/provenza-uniquebleu-05_orig.jpg",
+          "alt": "Unique Bleu",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/bleu.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/provenza-uniquebleu-06_orig.jpg",
+          "alt": "Unique Bleu",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/bleu.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "slate"
@@ -724,7 +1222,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1131152226.jpg",
+          "alt": "Chateau",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/chateau.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -748,7 +1258,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/790248492.jpg",
+          "alt": "Elegance Pro",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/elegance-pro.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "modern",
@@ -773,7 +1295,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/eterna-beige-60x120-30x60-30x60-dec-rome-amb-lobby_orig.jpg",
+          "alt": "Eterna",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/eterna.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/eterna-silver-30x60-mos-60x60-amb-bagno_orig.jpg",
+          "alt": "Eterna",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/eterna.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/eterna-titanio-30x60-dec-rome-60x120-amb-living_orig.jpg",
+          "alt": "Eterna",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/eterna.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/eterna-ivory-7-5x30-60x60-amb-cucina_1_orig.jpg",
+          "alt": "Eterna",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/eterna.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -797,7 +1364,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1517826429.jpg",
+          "alt": "Eureka",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/eureka.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "neutral",
@@ -822,7 +1401,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/541698752.jpg",
+          "alt": "Ever-stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/matera_stone.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "neutral",
@@ -847,7 +1438,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/541698752.jpg",
+          "alt": "Ever-stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/ever-stone.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -874,7 +1477,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/464192395.jpg",
+          "alt": "Externa",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/externa.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "outdoor-paving",
@@ -902,7 +1517,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emil-externa-quarzite-06_orig.jpg",
+          "alt": "Externa Quarzite",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/externa-quarzite.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emil-externa-quarzite-07_orig.jpg",
+          "alt": "Externa Quarzite",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/externa-quarzite.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emil-externa-quarzite-13_orig.jpg",
+          "alt": "Externa Quarzite",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/externa-quarzite.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emil-externa-quarzite-014-jpg-1920x1080-q75-crop_orig.jpg",
+          "alt": "Externa Quarzite",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/externa-quarzite.html",
+            "scrapedAt": "2026-04-25T15:43:51.598683+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "outdoor-paving",
@@ -921,13 +1581,25 @@
       "usage": [],
       "brand": null,
       "summary": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes.",
-      "description": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes. The 100x100 size is also offered in the anti-slip \u201cTecnica\u201d surface.",
+      "description": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes. The 100x100 size is also offered in the anti-slip “Tecnica” surface.",
       "url": "/collections/stone/fabrika",
       "sourceUrl": "https://www.the-tile.com/fabrika.html",
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/563586784.jpg",
+          "alt": "Fabrika",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/fabrika.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -951,7 +1623,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1948140223.jpg",
+          "alt": "Landscape",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/landscape.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "modern",
@@ -976,7 +1660,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1755972950.jpg",
+          "alt": "MaPierre",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/mapierre.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1002,7 +1698,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/420742934.jpg",
+          "alt": "Oros Stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/oros-stone.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "classic",
@@ -1028,7 +1736,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/24551012.jpg",
+          "alt": "Portland Stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/portland.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "modern",
@@ -1053,7 +1773,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1482120867.jpg",
+          "alt": "Salt Stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/salt_stone.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1077,7 +1809,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1821724424.jpg",
+          "alt": "Stone Project",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/stone-project.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1101,7 +1845,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ambiente1_orig.jpg",
+          "alt": "Stone Talk",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/stonetalk.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ambiente2_orig.jpg",
+          "alt": "Stone Talk",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/stonetalk.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ambiente3_orig.jpg",
+          "alt": "Stone Talk",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/stonetalk.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/ambiente4_orig.jpg",
+          "alt": "Stone Talk",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/stonetalk.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1125,7 +1914,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/834902965.jpg",
+          "alt": "Unique Bourgogne",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/unique_bourgogne.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1149,7 +1950,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1929854627.jpg",
+          "alt": "Unique Intensity",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/u_infinity.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "stone"
@@ -1173,7 +1986,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/25782719.jpg",
+          "alt": "Forme",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/forme.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "terracotta"
@@ -1197,7 +2022,52 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emilceramica-abaco-sixty-2021-09-jpg-1500x900-q75-crop_orig.jpg",
+          "alt": "Sixty",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/sixty.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emilceramica-sixty-1961-fango-living-orizzontale-jpg-1920x1080-q75-crop_orig.jpg",
+          "alt": "Sixty",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/sixty.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emilceramica-sixty-1971-cielo-orizzontale-jpg-1920x1080-q75-crop_orig.jpg",
+          "alt": "Sixty",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/sixty.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        },
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/emilceramica-sixty-1981-salvia-orizzontale-jpg-1920x1080-q75-crop_orig.jpg",
+          "alt": "Sixty",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/sixty.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -1223,7 +2093,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1365110190.jpg",
+          "alt": "Ego",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/ego.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "terrazzo"
@@ -1248,7 +2130,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/645591306.jpg",
+          "alt": "Grain Stone",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/grainstone.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "terrazzo"
@@ -1273,7 +2167,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1230646798.jpg",
+          "alt": "Lombarda",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/lombarda.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "terrazzo"
@@ -1298,7 +2204,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1899452236.jpg",
+          "alt": "Medley",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/medley.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "terrazzo"
@@ -1323,7 +2241,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1144412057.jpg",
+          "alt": "20Twenty",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/20twenty.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1348,7 +2278,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1715820411.jpg",
+          "alt": "Alter",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/alter.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1373,7 +2315,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/628927950.jpg",
+          "alt": "Dimore",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/dimore.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "rustic",
@@ -1399,7 +2353,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/163618665.jpg",
+          "alt": "Millelegni",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/millelegni.html",
+            "scrapedAt": "2026-04-25T15:44:39.372197+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1424,7 +2390,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/824400839.jpg",
+          "alt": "Millelegni Remake",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/millelegni_r.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1449,7 +2427,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1115541766.jpg",
+          "alt": "Mimesis",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/mimesis.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "modern",
@@ -1476,7 +2466,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/1167278666.jpg",
+          "alt": "Playwood",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/playwood.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1501,7 +2503,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/820629819.jpg",
+          "alt": "Provoak",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/provoak.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
@@ -1526,7 +2540,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/2133112926.jpg",
+          "alt": "Revival",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/revival.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "luxury",
@@ -1552,7 +2578,19 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/background-images/2134413579.jpg",
+          "alt": "Sleekwood",
+          "width": null,
+          "height": null,
+          "source": "scraped-original",
+          "provenance": {
+            "url": "https://www.the-tile.com/sleekwood.html",
+            "scrapedAt": "2026-04-25T15:45:19.837264+00:00"
+          }
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"
