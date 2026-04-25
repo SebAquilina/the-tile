@@ -6,8 +6,6 @@ import { limit } from "@/lib/rate-limit";
 import { hashIp, clientIp } from "@/lib/ip-hash";
 
 export const runtime = 'edge';
-
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const ContactRequestSchema = ContactLeadSchema.extend({
