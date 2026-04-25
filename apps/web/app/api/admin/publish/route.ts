@@ -19,7 +19,7 @@ export const runtime = 'edge';
  * Authentication: delegated to middleware.ts (Basic auth on /api/admin/*).
  */
 
-export const runtime = "nodejs";
+export const runtime = 'edge';
 
 const PatchSchema = z.object({
   inStock: z.boolean().optional(),
