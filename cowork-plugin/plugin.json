@@ -1,0 +1,32 @@
+{
+  "name": "the-tile",
+  "displayName": "The Tile — site maintenance",
+  "version": "0.1.0",
+  "description": "Maintain the-tile.com from Cowork — catalog edits, content updates, agent tuning, deploys, rollbacks. Backend wires to apps/web/app/api/admin/* in the same repo.",
+  "author": "the-tile operator",
+  "homepage": "https://github.com/SebAquilina/the-tile",
+  "skills": [
+    "skills/update-product",
+    "skills/add-product",
+    "skills/edit-page",
+    "skills/update-theme",
+    "skills/tune-agent",
+    "skills/regenerate-kb",
+    "skills/view-leads",
+    "skills/deploy-now",
+    "skills/rollback",
+    "skills/rotate-admin-password",
+    "skills/broadcast-email",
+    "skills/analytics-summary"
+  ],
+  "commands": [],
+  "connectors": [],
+  "subagents": [],
+  "config": {
+    "repository": "SebAquilina/the-tile",
+    "productionUrl": "https://www.the-tile.com",
+    "stagingUrl": "https://staging.the-tile.com",
+    "adminUrl": "https://www.the-tile.com/admin"
+  },
+  "noPurchaseRule": "No purchase, transfer, paid sign-up, paid plan upgrade, or money movement is ever executed by this plugin without explicit per-action user confirmation. Pre-authorisations don't carry over."
+}
