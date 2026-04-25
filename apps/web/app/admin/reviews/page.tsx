@@ -1,6 +1,8 @@
 import { getAllReviews } from "@/lib/reviews";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
 
+export const runtime = 'edge';
+
 export default function AdminReviewsPage() {
   const reviews = getAllReviews();
   const placeholderCount = reviews.filter((r) => r.placeholder).length;
