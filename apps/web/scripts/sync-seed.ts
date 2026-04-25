@@ -85,9 +85,40 @@ function bool(v: unknown, def = true): string {
   return b ? "1" : "0";
 }
 
-async function runSql(statements: string[]): Promise<void> {
+// v2 retrofit fix: the D1 REST API path uses the database UUID, not its name.
+// Previously this script passed dbName ("the-tile-prod") into the URL, which
+// returned `400 Invalid property: databaseId => Invalid uuid`. We now look up
+// the UUID once via the list endpoint and cache it.
+async function resolveDatabaseId(name: string): Promise<string> {
   const res = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/d1/database/${dbName}/query`,
+    `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/d1/database?name=${encodeURIComponent(name)}`,
+    { headers: { Authorization: `Bearer ${API_TOKEN}` } },
+  );
+  if (!res.ok) {
+    throw new Error(
+      `Failed to list D1 databases: ${res.status} ${await res.text()}`,
+    );
+  }
+  const body = (await res.json()) as {
+    result?: Array<{ uuid: string; name: string }>;
+  };
+  const match = body.result?.find((d) => d.name === name);
+  if (!match) {
+    throw new Error(
+      `D1 database '${name}' not found in account ${ACCOUNT_ID}`,
+    );
+  }
+  return match.uuid;
+}
+
+let resolvedDbId: string | null = null;
+async function runSql(statements: string[]): Promise<void> {
+  if (!resolvedDbId) {
+    resolvedDbId = await resolveDatabaseId(dbName);
+    console.log(`[sync-seed] resolved ${dbName} -> ${resolvedDbId}`);
+  }
+  const res = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/d1/database/${resolvedDbId}/query`,
     {
       method: "POST",
       headers: {
