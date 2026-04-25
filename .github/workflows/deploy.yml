@@ -64,7 +64,7 @@ jobs:
         # apps/web/.next/cache/webpack/*.pack is ~40+ MB and CF Pages rejects.
         # The runtime build artefacts (server/, static/) live elsewhere under .next
         # and don't depend on the cache directory. Removing it before upload.
-        run: rm -rf apps/web/.next/cache
+        run: rm -rf .next/cache
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
