@@ -1,13 +1,16 @@
 # wrangler.toml — Cloudflare Pages + D1 binding for The Tile
 #
-# Production deploys on push to `main`; staging on push to `staging`.
+# Production deploys on push to `main`.
+# Note: CF Pages only supports the env names `preview` and `production` —
+# unlike Workers, custom env names like `staging` are rejected by recent
+# wrangler versions during validation. Staging-on-push-to-staging-branch
+# is therefore handled at the GitHub Actions level (deploy.yml chooses
+# which D1 to migrate by branch) rather than here.
 
 name = "the-tile"
 compatibility_date = "2026-04-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Cloudflare Pages detects Next.js automatically; the pages_build_output_dir
-# is informational for local previews via `wrangler pages dev`.
 pages_build_output_dir = "apps/web/.next"
 
 # --- Production (main) ----------------------------------------------------
@@ -15,25 +18,10 @@ pages_build_output_dir = "apps/web/.next"
 binding = "DB"
 database_name = "the-tile-prod"
 database_id = "8ced740d-cd95-4945-9077-14e90c660325"
-# v2 retrofit fix: migrations live under apps/web/drizzle, not the default
-# repo-root ./migrations. Without this, `wrangler d1 migrations apply` errors
-# with "No migrations present at /home/runner/work/the-tile/the-tile/migrations".
 migrations_dir = "apps/web/drizzle"
 
 [vars]
 NEXT_PUBLIC_SITE_URL = "https://www.the-tile.com"
-
-# --- Staging --------------------------------------------------------------
-[env.staging]
-
-[[env.staging.d1_databases]]
-binding = "DB"
-database_name = "the-tile-staging"
-database_id = "eb42bd66-c9ec-4574-a207-b0c2a940706c"
-migrations_dir = "apps/web/drizzle"
-
-[env.staging.vars]
-NEXT_PUBLIC_SITE_URL = "https://staging.the-tile.com"
 
 # --- Preview (feature branches) ------------------------------------------
 [env.preview]
