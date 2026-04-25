@@ -4,6 +4,8 @@ import Link from "next/link";
 import { CollectionsExplorerServer } from "@/components/catalog/CollectionsExplorerServer";
 import { breadcrumbLd, jsonLdToString } from "@/lib/jsonld";
 import {
+
+export const runtime = 'edge';
   getAllProducts,
   getCategoryById,
   getEffectCategories,
