@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
+export const runtime = 'edge';
+
 /**
  * POST /api/admin/publish
  *
