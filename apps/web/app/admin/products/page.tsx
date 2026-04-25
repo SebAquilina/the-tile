@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getAllProducts, getEffectCategories, getAllBrands } from "@/lib/seed";
 import { ProductAdminList } from "./ProductAdminList";
 
+export const runtime = 'edge';
+
 export default function AdminProductsPage() {
   const products = getAllProducts();
   const effects = getEffectCategories();
