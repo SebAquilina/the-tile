@@ -72,9 +72,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy apps/web/.vercel/output/static --project-name=the-tile-web --branch=${{ github.ref_name }} --commit-dirty=true
-          
-          branch: ${{ github.ref_name }}
-
       - name: Upload Sentry release
         if: github.ref == 'refs/heads/main' && env.SENTRY_AUTH_TOKEN_PRESENT == 'yes'
         uses: getsentry/action-release@v1
