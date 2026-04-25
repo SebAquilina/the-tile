@@ -6,6 +6,8 @@ import { BUSINESS } from "@/lib/business-info";
 import { getAllLeads } from "@/lib/admin-store";
 import { PersistenceStatus } from "./_components/PersistenceStatus";
 
+export const runtime = 'edge';
+
 export default function AdminHome() {
   const products = getAllProducts();
   const outOfStock = products.filter((p) => p.inStock === false);
