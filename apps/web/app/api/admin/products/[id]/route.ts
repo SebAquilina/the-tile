@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { setProductOverride, getProductOverride } from "@/lib/admin-store";
 
+export const runtime = 'edge';
+
 export const runtime = "nodejs";
 
 const PatchSchema = z.object({
