@@ -20,7 +20,7 @@ jobs:
     env:
       # Surfacing the optional Sentry token into env lets the step-level
       # conditional below reference it (GitHub Actions doesn't allow
-      # `secrets.*` in step `if:` expressions).
+      # secrets.* in step if: expressions).
       SENTRY_AUTH_TOKEN_PRESENT: ${{ secrets.SENTRY_AUTH_TOKEN != '' && 'yes' || 'no' }}
     steps:
       - uses: actions/checkout@v4
@@ -59,6 +59,12 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm sync-seed ${{ github.ref_name }}
+
+      - name: Strip Next.js webpack cache (CF Pages 26.2 MB per-file limit)
+        # apps/web/.next/cache/webpack/*.pack is ~40+ MB and CF Pages rejects.
+        # The runtime build artefacts (server/, static/) live elsewhere under .next
+        # and don't depend on the cache directory. Removing it before upload.
+        run: rm -rf apps/web/.next/cache
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
