@@ -3,9 +3,6 @@ import { z } from "zod";
 import { updateLeadStatus } from "@/lib/admin-store";
 
 export const runtime = 'edge';
-
-export const runtime = "nodejs";
-
 const PatchSchema = z.object({
   status: z.enum(["new", "replied", "archived"]),
 });
