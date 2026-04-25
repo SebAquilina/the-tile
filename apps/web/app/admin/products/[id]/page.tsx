@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import { getAllProducts } from "@/lib/seed";
 import { ProductEditor } from "./ProductEditor";
 
+export const runtime = 'edge';
+
 export default function AdminProductEditPage({
   params,
 }: {
