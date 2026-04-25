@@ -60,11 +60,11 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm sync-seed ${{ github.ref_name }}
 
-      - name: Strip Next.js webpack cache (CF Pages 26.2 MB per-file limit)
+      - name: Adapt Next.js for CF Pages (next-on-pages)
         # apps/web/.next/cache/webpack/*.pack is ~40+ MB and CF Pages rejects.
         # The runtime build artefacts (server/, static/) live elsewhere under .next
         # and don't depend on the cache directory. Removing it before upload.
-        run: rm -rf .next/cache
+        run: npx --yes @cloudflare/next-on-pages@latest
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -72,7 +72,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: the-tile-web
-          directory: apps/web/.next
+          directory: apps/web/.vercel/output/static
           branch: ${{ github.ref_name }}
 
       - name: Upload Sentry release
@@ -84,4 +84,4 @@ jobs:
           SENTRY_PROJECT: web
         with:
           environment: production
-          sourcemaps: apps/web/.next
+          sourcemaps: apps/web/.vercel/output/static
