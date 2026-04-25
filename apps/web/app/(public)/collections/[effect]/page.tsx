@@ -4,13 +4,13 @@ import Link from "next/link";
 import { CollectionsExplorerServer } from "@/components/catalog/CollectionsExplorerServer";
 import { breadcrumbLd, jsonLdToString } from "@/lib/jsonld";
 import {
-
-export const runtime = 'edge';
   getAllProducts,
   getCategoryById,
   getEffectCategories,
   getProductsByEffect,
 } from "@/lib/seed";
+
+export const runtime = 'edge';
 
 const EFFECT_IDS = [
   "marble",
