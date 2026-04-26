@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "extractedFrom": "https://www.the-tile.com/",
+  "extractedAt": "2026-04-26T16:06:12.213777+00:00",
+  "cms": "weebly",
+  "siteName": "THE TILE",
+  "tagline": "Quality floor and wal tile specialists since 1990. Our aim is to offer our customers quality floor and wall tiles from the best brands in the tiling industry.  Both our offices and showroom are located in San Gwann, Malta.",
+  "logo": {
+    "src": "https://www.the-tile.com/uploads/4/7/3/5/47351955/published/the-tile-logo-new-1-png.png?1771664673",
+    "alt": "THE TILE"
+  },
+  "colors": {
+    "palette": {
+      "primary": "#73becf",
+      "secondary": "#dd5857",
+      "accent": null,
+      "text": "#000000",
+      "background": "#ffffff"
+    },
+    "rankedByUsage": [
+      {
+        "hex": "#000000",
+        "count": 31
+      },
+      {
+        "hex": "#ffffff",
+        "count": 18
+      },
+      {
+        "hex": "#e1e4e6",
+        "count": 7
+      },
+      {
+        "hex": "#2a2a2a",
+        "count": 2
+      },
+      {
+        "hex": "#c5cbcf",
+        "count": 2
+      },
+      {
+        "hex": "#3f3f3f",
+        "count": 1
+      },
+      {
+        "hex": "#73becf",
+        "count": 1
+      },
+      {
+        "hex": "#a9b2b8",
+        "count": 1
+      },
+      {
+        "hex": "#dd5857",
+        "count": 1
+      },
+      {
+        "hex": "#333333",
+        "count": 1
+      }
+    ]
+  },
+  "typography": {
+    "fromCss": [],
+    "fromGoogleFonts": []
+  },
+  "voiceSignals": {
+    "h1Samples": [],
+    "h2Samples": [
+      "Marble Effect",
+      "Wood Effect",
+      "Stone Effect",
+      "Concrete Effect",
+      "Slate Effect"
+    ],
+    "metaDescription": "Quality floor and wal tile specialists since 1990. Our aim is to offer our customers quality floor and wall tiles from the best brands in the tiling industry.  Both our offices and showroom are located in San Gwann, Malta."
+  },
+  "applyPolicy": {
+    "default": "ask-operator",
+    "rationale": "Brand colors from a Weebly/Wix scrape are often defaults, not chosen brand tokens. Operator should review before the build adopts them."
+  }
+}
