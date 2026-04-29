@@ -8,12 +8,12 @@ import { PersistenceStatus } from "./_components/PersistenceStatus";
 
 export const runtime = 'edge';
 
-export default function AdminHome() {
+export default async function AdminHome() {
   const products = getAllProducts();
   const outOfStock = products.filter((p) => p.inStock === false);
   const hidden = products.filter((p) => p.showInCatalog === false);
   const reviews = getAllReviews();
-  const leads = getAllLeads();
+  const leads = await getAllLeads();
   const newLeads = leads.filter((l) => l.status === "new");
 
   const cards = [

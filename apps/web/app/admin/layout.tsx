@@ -38,6 +38,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Link href="/admin/reviews" className="hover:text-umber">
               Reviews
             </Link>
+            <Link href="/admin/pages" className="hover:text-umber">
+              Pages
+            </Link>
+            <Link href="/admin/navigation" className="hover:text-umber">
+              Nav
+            </Link>
+            <Link href="/admin/theme" className="hover:text-umber">
+              Theme
+            </Link>
+            <Link href="/admin/agent" className="hover:text-umber">
+              Agent
+            </Link>
+            <Link href="/admin/redirects" className="hover:text-umber">
+              Redirects
+            </Link>
+            <Link href="/admin/settings" className="hover:text-umber">
+              Settings
+            </Link>
             <Link href="/" className="text-ink-subtle hover:text-ink">
               View site ↗
             </Link>

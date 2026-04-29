@@ -35,7 +35,7 @@ function withSecurityHeaders(res: NextResponse): NextResponse {
   return res;
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Admin-area gate: HTTP Basic against env-var credentials.
@@ -63,6 +63,24 @@ export function middleware(request: NextRequest) {
           },
         }),
       );
+    }
+  }
+
+
+  // Per ref 19 § Class 2 redirect engine — read /redirects table and 301.
+  if (!pathname.startsWith("/admin") && !pathname.startsWith("/api/") && !pathname.includes(".")) {
+    try {
+      const { getRedirectMap } = await import("@/lib/redirects/store");
+      const map = await getRedirectMap();
+      const hit = map.get(pathname);
+      if (hit) {
+        const dest = hit.to_path.startsWith("http")
+          ? hit.to_path
+          : new URL(hit.to_path, request.nextUrl.origin).toString();
+        return withSecurityHeaders(NextResponse.redirect(dest, hit.status_code));
+      }
+    } catch (e) {
+      console.warn("[middleware.redirects] failed:", (e as Error).message);
     }
   }
 
