@@ -19,6 +19,6 @@ export async function PATCH(
       { status: 400 },
     );
   }
-  updateLeadStatus(params.id, parsed.data.status);
+  await updateLeadStatus(params.id, parsed.data.status);
   return NextResponse.json({ ok: true });
 }

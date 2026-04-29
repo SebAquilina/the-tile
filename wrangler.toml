@@ -34,3 +34,12 @@ migrations_dir = "apps/web/drizzle"
 
 [env.preview.vars]
 NEXT_PUBLIC_SITE_URL = "https://preview.the-tile.com"
+
+# --- KV dead-letter for /api/contact (ref 19 § Class 9) -------------------
+[[kv_namespaces]]
+binding = "DEAD_LETTER"
+id = "6a39783f63e64004ad258bbc5162e566"
+
+[[env.preview.kv_namespaces]]
+binding = "DEAD_LETTER"
+id = "6a39783f63e64004ad258bbc5162e566"
