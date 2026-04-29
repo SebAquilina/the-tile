@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 type AgentRow = {
   persona_name: string;
@@ -18,6 +18,7 @@ type AgentRow = {
 export function AgentEditor({ initial }: { initial: AgentRow }) {
   const router = useRouter();
   const [a, setA] = useState<AgentRow>(initial);
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
 
   function setRule(i: number, v: string) {
@@ -43,11 +44,11 @@ export function AgentEditor({ initial }: { initial: AgentRow }) {
     });
     setBusy(false);
     if (res.ok) {
-      showToast({ kind: "success", message: "Agent settings saved" });
+      toast.success("Agent settings saved");
       router.refresh();
     } else {
       const j = await res.json().catch(() => ({}));
-      showToast({ kind: "error", message: `Save failed: ${(j as { error?: string }).error || res.status}` });
+      toast.error(`Save failed: ${(j as { error?: string }).error || res.status}`);
     }
   }
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 type Settings = {
   store_name: string;
@@ -21,6 +21,7 @@ type Settings = {
 export function SettingsEditor({ initial }: { initial: Settings }) {
   const router = useRouter();
   const [s, setS] = useState<Settings>(initial);
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
 
   function set<K extends keyof Settings>(k: K, v: Settings[K]) {
@@ -36,10 +37,10 @@ export function SettingsEditor({ initial }: { initial: Settings }) {
     });
     setBusy(false);
     if (res.ok) {
-      showToast({ kind: "success", message: "Settings saved" });
+      toast.success("Settings saved");
       router.refresh();
     } else {
-      showToast({ kind: "error", message: `Save failed: ${res.status}` });
+      toast.error(`Save failed: ${res.status}`);
     }
   }
 

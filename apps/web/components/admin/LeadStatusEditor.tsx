@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 const STATUSES = ["new", "replied", "quoted", "won", "lost", "spam"] as const;
 
@@ -13,6 +13,7 @@ export function LeadStatusEditor({
 }) {
   const router = useRouter();
   const [s, setS] = useState(status);
+  const toast = useToast();
   const [n, setN] = useState(notes);
   const [busy, setBusy] = useState(false);
 
@@ -25,11 +26,11 @@ export function LeadStatusEditor({
     });
     setBusy(false);
     if (res.status === 412) {
-      showToast({ kind: "error", message: "Version conflict — reload to see latest" });
+      toast.error("Version conflict — reload to see latest");
       return;
     }
-    if (!res.ok) { showToast({ kind: "error", message: `Save failed: ${res.status}` }); return; }
-    showToast({ kind: "success", message: "Updated" });
+    if (!res.ok) { toast.error(`Save failed: ${res.status}`); return; }
+    toast.success("Updated");
     router.refresh();
   }
 

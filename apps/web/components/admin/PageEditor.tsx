@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useUnsavedChanges, useCmdS } from "@/lib/use-unsaved-changes";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 import { renderMarkdown } from "@/lib/pages/markdown-client";
 
 type PageRow = {
@@ -23,6 +23,7 @@ type PageRow = {
 export function PageEditor({ initial }: { initial: PageRow }) {
   const router = useRouter();
   const [p, setP] = useState<PageRow>(initial);
+  const toast = useToast();
   const [busy, startTx] = useTransition();
   const [err, setErr] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
@@ -45,20 +46,20 @@ export function PageEditor({ initial }: { initial: PageRow }) {
         if (res.status === 412) {
           const j = await res.json();
           setErr(`Edited elsewhere (current v${j.currentVersion}). Reload to see latest.`);
-          showToast({ kind: "error", message: "Save blocked — newer version exists." });
+          toast.error("Save blocked — newer version exists.");
           return;
         }
         if (!res.ok) {
           const j = await res.json().catch(() => ({}));
           const msg = j.error || `HTTP ${res.status}`;
           setErr(msg);
-          showToast({ kind: "error", message: `Save failed — ${msg}` });
+          toast.error(`Save failed — ${msg}`);
           return;
         }
         const j = await res.json();
         setP(j.page);
         markSaved(j.page);
-        showToast({ kind: "success", message: `Saved at ${new Date().toLocaleTimeString()}` });
+        toast.success(`Saved at ${new Date().toLocaleTimeString()}`);
         router.refresh();
       } catch (e) {
         setErr((e as Error).message);
@@ -80,7 +81,7 @@ export function PageEditor({ initial }: { initial: PageRow }) {
       headers: { "if-match": `W/"${p.version}"` },
     });
     if (!res.ok) { setErr(`Delete failed: ${res.status}`); return; }
-    showToast({ kind: "success", message: "Page deleted" });
+    toast.success("Page deleted");
     router.push("/admin/pages");
   }
 

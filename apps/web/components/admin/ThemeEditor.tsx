@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 type Tokens = {
   primary: string; primary_hover: string; on_primary: string;
@@ -33,6 +33,7 @@ const TOKEN_LABELS: Record<keyof Tokens, string> = {
 export function ThemeEditor({ initial }: { initial: Theme }) {
   const router = useRouter();
   const [t, setT] = useState<Theme>(initial);
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
 
   async function save() {
@@ -51,11 +52,11 @@ export function ThemeEditor({ initial }: { initial: Theme }) {
     });
     setBusy(false);
     if (res.ok) {
-      showToast({ kind: "success", message: "Theme saved — public site updates within 60s" });
+      toast.success("Theme saved — public site updates within 60s");
       router.refresh();
     } else {
       const j = await res.json().catch(() => ({}));
-      showToast({ kind: "error", message: `Save failed: ${(j as { error?: string }).error || res.status}` });
+      toast.error(`Save failed: ${(j as { error?: string }).error || res.status}`);
     }
   }
 

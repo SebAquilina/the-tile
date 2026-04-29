@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 type Item = { label: string; href: string; external?: boolean };
 
 export function NavigationEditor({ handle, initialItems }: { handle: string; initialItems: Item[] }) {
   const router = useRouter();
   const [items, setItems] = useState<Item[]>(initialItems);
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
   const [draggingIdx, setDraggingIdx] = useState<number | null>(null);
 
@@ -28,10 +29,10 @@ export function NavigationEditor({ handle, initialItems }: { handle: string; ini
     });
     setBusy(false);
     if (res.ok) {
-      showToast({ kind: "success", message: `${handle} menu saved` });
+      toast.success(`${handle} menu saved`);
       router.refresh();
     } else {
-      showToast({ kind: "error", message: `Save failed: HTTP ${res.status}` });
+      toast.error(`Save failed: HTTP ${res.status}`);
     }
   }
 

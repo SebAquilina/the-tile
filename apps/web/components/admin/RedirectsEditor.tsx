@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showToast } from "@/components/ui/Toast";
+import { useToast } from "@/components/ui";
 
 type Row = {
   id: string;
@@ -15,6 +15,7 @@ type Row = {
 export function RedirectsEditor({ initial }: { initial: Row[] }) {
   const router = useRouter();
   const [rows, setRows] = useState<Row[]>(initial);
+  const toast = useToast();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [code, setCode] = useState<301 | 302>(301);
@@ -29,12 +30,12 @@ export function RedirectsEditor({ initial }: { initial: Row[] }) {
       body: JSON.stringify({ from_path: from, to_path: to, status_code: code, active: true }),
     });
     setBusy(false);
-    if (res.status === 409) { showToast({ kind: "error", message: `from path already in use` }); return; }
-    if (!res.ok) { showToast({ kind: "error", message: `Add failed: ${res.status}` }); return; }
+    if (res.status === 409) { toast.error(`from path already in use`); return; }
+    if (!res.ok) { toast.error(`Add failed: ${res.status}`); return; }
     const j = await res.json();
     setRows([...rows, j.redirect]);
     setFrom(""); setTo("");
-    showToast({ kind: "success", message: "Redirect added" });
+    toast.success("Redirect added");
     router.refresh();
   }
 
@@ -51,7 +52,7 @@ export function RedirectsEditor({ initial }: { initial: Row[] }) {
     if (!confirm("Delete this redirect?")) return;
     await fetch(`/api/admin/redirects/${id}`, { method: "DELETE" });
     setRows(rows.filter((r) => r.id !== id));
-    showToast({ kind: "success", message: "Redirect deleted" });
+    toast.success("Redirect deleted");
   }
 
   return (
