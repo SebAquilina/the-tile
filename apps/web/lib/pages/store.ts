@@ -57,7 +57,7 @@ export class VersionConflictError extends Error {
 }
 
 function db(): D1Database | null {
-  return (globalThis as unknown as { DB?: D1Database }).DB ?? null;
+  return (process.env as unknown as { DB?: D1Database }).DB ?? null;
 }
 
 /** Tiny markdown → HTML renderer. Headings, paragraphs, lists, links, bold/italic, code. */

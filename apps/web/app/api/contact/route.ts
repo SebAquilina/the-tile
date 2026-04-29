@@ -50,7 +50,7 @@ export async function POST(request: Request): Promise<Response> {
   const ua = request.headers.get("user-agent") || null;
 
   // 1. Persist to D1.
-  const d = (globalThis as unknown as { DB?: D1Database }).DB;
+  const d = (process.env as unknown as { DB?: D1Database }).DB;
   let storedVia: "primary" | "dead-letter" | "failed" = "failed";
   if (d) {
     try {
@@ -91,7 +91,7 @@ export async function POST(request: Request): Promise<Response> {
 
   // KV dead-letter fallback (per ref 19 § Class 9).
   if (storedVia === "failed") {
-    const dl = (globalThis as unknown as { DEAD_LETTER?: KVNamespace }).DEAD_LETTER;
+    const dl = (process.env as unknown as { DEAD_LETTER?: KVNamespace }).DEAD_LETTER;
     if (dl) {
       try {
         await dl.put(
