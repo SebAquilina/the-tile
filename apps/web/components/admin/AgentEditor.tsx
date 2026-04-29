@@ -93,7 +93,7 @@ export function AgentEditor({ initial }: { initial: AgentRow }) {
       </label>
 
       <h3 style={{ marginTop: "var(--space-6)" }}>Custom knowledge (markdown)</h3>
-      <p className="muted">Anything the agent should know that isn't in the product catalogue.</p>
+      <p className="muted">Anything the agent should know that isn&apos;t in the product catalogue.</p>
       <textarea
         value={a.custom_kb_md ?? ""}
         onChange={(e) => setA({ ...a, custom_kb_md: e.target.value })}
