@@ -12,7 +12,7 @@ export default async function AgentAdmin() {
     <>
       <header className="admin-header">
         <h1>Agent</h1>
-        <p className="muted">The concierge's persona, voice, and knowledge. Edits propagate at request time — no redeploy.</p>
+        <p className="muted">The concierge&apos;s persona, voice, and knowledge. Edits propagate at request time — no redeploy.</p>
       </header>
       <AgentEditor initial={a} />
     </>
