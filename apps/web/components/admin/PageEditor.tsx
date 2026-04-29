@@ -44,21 +44,21 @@ export function PageEditor({ initial }: { initial: PageRow }) {
           }),
         });
         if (res.status === 412) {
-          const j = await res.json();
+          const j = (await res.json()) as { currentVersion?: number; error?: string; page?: { version: number; [k: string]: unknown }; redirect?: { id: string; from_path: string; to_path: string; status_code: 301 | 302; active: number } };
           setErr(`Edited elsewhere (current v${j.currentVersion}). Reload to see latest.`);
           toast.error("Save blocked — newer version exists.");
           return;
         }
         if (!res.ok) {
-          const j = await res.json().catch(() => ({}));
+          const j = (await res.json().catch(() => ({}))) as { error?: string };
           const msg = j.error || `HTTP ${res.status}`;
           setErr(msg);
           toast.error(`Save failed — ${msg}`);
           return;
         }
-        const j = await res.json();
-        setP(j.page);
-        markSaved(j.page);
+        const j = (await res.json()) as { currentVersion?: number; error?: string; page?: { version: number; [k: string]: unknown }; redirect?: { id: string; from_path: string; to_path: string; status_code: 301 | 302; active: number } };
+        setP(j.page as PageRow);
+        markSaved(j.page as PageRow);
         toast.success(`Saved at ${new Date().toLocaleTimeString()}`);
         router.refresh();
       } catch (e) {

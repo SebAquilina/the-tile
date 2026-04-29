@@ -32,8 +32,8 @@ export function RedirectsEditor({ initial }: { initial: Row[] }) {
     setBusy(false);
     if (res.status === 409) { toast.error(`from path already in use`); return; }
     if (!res.ok) { toast.error(`Add failed: ${res.status}`); return; }
-    const j = await res.json();
-    setRows([...rows, j.redirect]);
+    const j = (await res.json()) as { currentVersion?: number; error?: string; page?: { version: number; [k: string]: unknown }; redirect?: { id: string; from_path: string; to_path: string; status_code: 301 | 302; active: number } };
+    setRows([...rows, j.redirect as Row]);
     setFrom(""); setTo("");
     toast.success("Redirect added");
     router.refresh();
