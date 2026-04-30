@@ -172,18 +172,21 @@ export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) 
             THE TILE
           </Link>
 
-          <form
-            onSubmit={onNewsletterSubmit}
-            aria-label="Subscribe to the newsletter"
-            className="w-full md:w-auto md:min-w-[360px]"
-          >
+          <div className="w-full md:w-auto md:min-w-[360px]">
+            <p className="font-display text-lg text-ink mb-space-3">
+              New collections, quietly.
+            </p>
+            <form
+              onSubmit={onNewsletterSubmit}
+              aria-label="Subscribe to the newsletter"
+            >
             <div className="flex flex-col gap-space-2 sm:flex-row sm:items-end">
               <Input
                 type="email"
                 required
-                label="New collections, quietly"
+                label="Email"
                 placeholder="you@example.com"
-                value={contactEmail}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 containerClassName="flex-1"
                 autoComplete="email"
@@ -192,7 +195,8 @@ export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) 
                 Join
               </Button>
             </div>
-          </form>
+            </form>
+          </div>
         </div>
 
         {/* 4 columns */}

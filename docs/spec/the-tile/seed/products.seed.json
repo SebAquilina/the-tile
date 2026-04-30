@@ -7,63 +7,63 @@
       "id": "slate",
       "name": "Slate Effect",
       "type": "effect",
-      "summary": "Slate-inspired tiles — rugged, tactile, multi-coloured.",
+      "summary": "Slate-inspired tiles \u2014 rugged, tactile, multi-coloured.",
       "sourceUrl": "https://www.the-tile.com/slate.html"
     },
     {
       "id": "terrazzo",
       "name": "Venetian Terrazzo",
       "type": "effect",
-      "summary": "Italian master-craftsman tradition — chip-and-scatter aesthetic in porcelain.",
+      "summary": "Italian master-craftsman tradition \u2014 chip-and-scatter aesthetic in porcelain.",
       "sourceUrl": "https://www.the-tile.com/venetian-terrazzo-tiles.html"
     },
     {
       "id": "terracotta",
       "name": "Terracotta & Brick",
       "type": "effect",
-      "summary": "Terracotta-effect porcelain — warmth, veining, Italian tradition.",
+      "summary": "Terracotta-effect porcelain \u2014 warmth, veining, Italian tradition.",
       "sourceUrl": "https://www.the-tile.com/kotto_brick.html"
     },
     {
       "id": "gesso",
       "name": "Gesso / Plaster Effect",
       "type": "effect",
-      "summary": "Plaster-look porcelain — traditional architectural material as tile.",
+      "summary": "Plaster-look porcelain \u2014 traditional architectural material as tile.",
       "sourceUrl": "https://www.the-tile.com/gesso--plaster-effect.html"
     },
     {
       "id": "full-colour",
       "name": "Full Colour",
       "type": "effect",
-      "summary": "Solid-colour porcelain — backsplashes, countertops, bold features.",
+      "summary": "Solid-colour porcelain \u2014 backsplashes, countertops, bold features.",
       "sourceUrl": "https://www.the-tile.com/full_colour.html"
     },
     {
       "id": "marble",
       "name": "Marble Effect",
       "type": "effect",
-      "summary": "Marble-veined porcelain — aristocratic, luminous.",
+      "summary": "Marble-veined porcelain \u2014 aristocratic, luminous.",
       "sourceUrl": "https://www.the-tile.com/marble-effect-tiles.html"
     },
     {
       "id": "wood",
       "name": "Wood Effect",
       "type": "effect",
-      "summary": "Wood-plank porcelain — warm, anti-slip, indoor/outdoor.",
+      "summary": "Wood-plank porcelain \u2014 warm, anti-slip, indoor/outdoor.",
       "sourceUrl": "https://www.the-tile.com/wood-effect-tiles.html"
     },
     {
       "id": "stone",
       "name": "Stone Effect",
       "type": "effect",
-      "summary": "Stone-look porcelain — compact, natural aesthetic.",
+      "summary": "Stone-look porcelain \u2014 compact, natural aesthetic.",
       "sourceUrl": "https://www.the-tile.com/stone-effect-tiles.html"
     },
     {
       "id": "concrete",
       "name": "Concrete Effect",
       "type": "effect",
-      "summary": "Concrete-look porcelain — understated, versatile, modern.",
+      "summary": "Concrete-look porcelain \u2014 understated, versatile, modern.",
       "sourceUrl": "https://www.the-tile.com/concrete-effect-tiles.html"
     },
     {
@@ -1524,7 +1524,7 @@
       "usage": [],
       "brand": null,
       "summary": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes.",
-      "description": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes. The 100x100 size is also offered in the anti-slip “Tecnica” surface.",
+      "description": "Fabrika, characterised by surface irregularities and signs of the passage of time, is available in four colours, White, Sand, Grey and Dark Grey, in the 100x100, 60x120 and 60x60 sizes. The 100x100 size is also offered in the anti-slip \u201cTecnica\u201d surface.",
       "url": "/collections/stone/fabrika",
       "sourceUrl": "https://www.the-tile.com/fabrika.html",
       "attributes": {
@@ -2526,7 +2526,14 @@
       "attributes": {
         "material": "porcelain stoneware"
       },
-      "images": [],
+      "images": [
+        {
+          "src": "/images/products/woodtouch/1.jpg",
+          "alt": "Woodtouch (placeholder \u2014 image pending)",
+          "isPlaceholder": true,
+          "source": "self-hosted-placeholder"
+        }
+      ],
       "inStock": true,
       "tags": [
         "wood"

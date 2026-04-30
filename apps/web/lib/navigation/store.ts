@@ -20,13 +20,15 @@ export type MenuItemType = { label: string; href: string; external?: boolean; ch
 const DEFAULTS: Record<string, MenuItemType[]> = {
   header: [
     { label: "Collections", href: "/collections" },
-    { label: "Care guide", href: "/care-guide" },
+    { label: "Brands", href: "/brands" },
+    { label: "Showroom", href: "/showroom" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   footer: [
     { label: "Collections", href: "/collections" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Brands", href: "/brands" },
+    { label: "Showroom", href: "/showroom" },
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
   ],

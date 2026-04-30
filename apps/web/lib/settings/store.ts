@@ -23,10 +23,10 @@ export type SettingsInputType = z.infer<typeof SettingsInput>;
 export type SettingsRow = SettingsInputType & { version: number; updated_at: number };
 
 const DEFAULT: SettingsRow = {
-  store_name: "the tile",
+  store_name: "The Tile",
   contact_email: "info@the-tile.com",
-  contact_phone: "+356 XXXX XXXX",
-  address: "the tile, Malta",
+  contact_phone: "+356 2137 1891",
+  address: "Triq Bellavista, San Gwann SGN 2690, Malta",
   hours: "Mon–Fri 09:00–18:00 · Sat 09:00–13:00",
   currency: "EUR",
   timezone: "Europe/Malta",

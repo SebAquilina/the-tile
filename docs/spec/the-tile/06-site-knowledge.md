@@ -10,7 +10,7 @@
 The Tile is a quality floor and wall tile specialist based in San Gwann, Malta. The business has been operating since 1990, curating collections of porcelain stoneware from the best Italian manufacturers and helping homeowners, architects, and contractors across Malta find the right tile for the right project.
 
 **What makes The Tile different**
-- **Italian-first curation** — we carry collections from Emilgroup, Ergon, Tagina, Marca Corona, Rex, Florim and other established Italian makers. Italian porcelain stoneware is what we know best.
+- **Italian-first curation** — we carry collections from five Italian manufacturers — Emilceramica, Emilgroup, Ergon, Provenza, and Viva — and only those. Italian porcelain stoneware is what we know best.
 - **Thirty-plus years of experience** — since 1990, we've seen every tile trend come and go. We've chosen the collections that hold up.
 - **Showroom-led** — tile is tactile. You should feel a sample in hand, see how it reads under natural light, before you commit. Our San Gwann showroom exists to make that easy.
 
