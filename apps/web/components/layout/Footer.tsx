@@ -6,6 +6,13 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Button, Input, useToast } from "@/components/ui";
 import { BUSINESS } from "@/lib/business-info";
+import type { SettingsRow } from "@/lib/settings/store";
+import type { MenuItemType } from "@/lib/navigation/store";
+
+export interface FooterProps {
+  settings?: SettingsRow | null;
+  footerMenu?: MenuItemType[] | null;
+}
 
 type Theme = "light" | "dark";
 
@@ -67,7 +74,14 @@ function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-export function Footer() {
+export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) {
+  // Phantom-UI fix CR-B4: prefer D1-backed site_settings over BUSINESS const,
+  // so /admin/settings edits actually reach the public footer.
+  const phoneDisplay = settings?.contact_phone || BUSINESS.phoneDisplay;
+  const phoneTel = (settings?.contact_phone || BUSINESS.phoneTel).replace(/\s+/g, "");
+  const contactEmail = settings?.contact_email || BUSINESS.email;
+  const addressDisplay = settings?.address || BUSINESS.addressDisplay;
+
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
@@ -169,7 +183,7 @@ export function Footer() {
                 required
                 label="New collections, quietly"
                 placeholder="you@example.com"
-                value={email}
+                value={contactEmail}
                 onChange={(e) => setEmail(e.target.value)}
                 containerClassName="flex-1"
                 autoComplete="email"
@@ -217,22 +231,22 @@ export function Footer() {
         >
           <div className="flex flex-col gap-space-1 text-xs text-ink-subtle">
             <p>
-              &copy; 2026 The Tile &middot; {BUSINESS.addressDisplay} &middot;
+              &copy; 2026 The Tile &middot; {addressDisplay} &middot;
               Since {BUSINESS.foundedYear}
             </p>
             <p className="flex flex-wrap items-center gap-space-2">
               <a
-                href={`tel:${BUSINESS.phoneTel}`}
+                href={`tel:${phoneTel}`}
                 className="hover:text-ink"
               >
-                {BUSINESS.phoneDisplay}
+                {phoneDisplay}
               </a>
               <span aria-hidden="true">·</span>
               <a
-                href={`mailto:${BUSINESS.email}`}
+                href={`mailto:${contactEmail}`}
                 className="hover:text-ink"
               >
-                {BUSINESS.email}
+                {email}
               </a>
               <span aria-hidden="true">·</span>
               <a

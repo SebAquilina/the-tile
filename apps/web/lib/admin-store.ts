@@ -119,6 +119,12 @@ export async function updateLeadStatus(id: string, status: Lead["status"]): Prom
   if (!result.success) {
     throw new Error("update_failed");
   }
+  // Per the-tile audit P0-F2: SQLite UPDATE returns success=true for 0 rows.
+  // Surface as "not_found" so the route can map to 404.
+  const changes = result.meta?.changes ?? 0;
+  if (changes < 1) {
+    throw new Error("not_found");
+  }
 }
 
 // addLead retained as a no-op for callers that still reference it.

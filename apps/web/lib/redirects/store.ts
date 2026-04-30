@@ -12,6 +12,9 @@ export const RedirectInput = z.object({
   to_path:   z.string().min(1).max(2000),
   status_code: z.number().int().refine((n) => n === 301 || n === 302).default(301),
   active: z.boolean().default(true),
+}).refine((d) => d.from_path !== d.to_path, {
+  message: "from_path and to_path must differ (no self-loop)",
+  path: ["to_path"],
 });
 
 export type RedirectInputType = z.infer<typeof RedirectInput>;
@@ -79,24 +82,34 @@ export async function createRedirect(input: RedirectInputType): Promise<Redirect
 export async function updateRedirect(id: string, patch: Partial<RedirectInputType>): Promise<void> {
   const d = db();
   if (!d) throw new Error("db_unbound");
+  // Whitelist fields explicitly (per CR-B10) — no dynamic key interpolation.
   const fields: string[] = [];
   const vals: unknown[] = [];
-  for (const [k, v] of Object.entries(patch)) {
-    if (v === undefined) continue;
-    fields.push(`${k} = ?`);
-    vals.push(k === "active" ? (v ? 1 : 0) : v);
+  if (patch.from_path !== undefined) { fields.push("from_path = ?"); vals.push(patch.from_path); }
+  if (patch.to_path !== undefined)   { fields.push("to_path = ?");   vals.push(patch.to_path); }
+  if (patch.status_code !== undefined) { fields.push("status_code = ?"); vals.push(patch.status_code); }
+  if (patch.active !== undefined)    { fields.push("active = ?"); vals.push(patch.active ? 1 : 0); }
+  if (fields.length === 0) throw new Error("nothing_to_update");
+  // Cross-field check: if both paths supplied, can't be equal.
+  if (patch.from_path && patch.to_path && patch.from_path === patch.to_path) {
+    throw new Error("circular");
   }
-  if (fields.length === 0) return;
   fields.push("updated_at = ?");
   vals.push(Date.now());
   vals.push(id);
-  await d.prepare(`UPDATE redirects SET ${fields.join(", ")} WHERE id = ?`).bind(...vals).run();
+  const result = await d.prepare(`UPDATE redirects SET ${fields.join(", ")} WHERE id = ?`).bind(...vals).run();
+  // Per audit P0-F3: 0-row UPDATE returns success=true → must surface as not_found.
+  const changes = result.meta?.changes ?? 0;
+  if (changes < 1) throw new Error("not_found");
   bustRedirectCache();
 }
 
 export async function deleteRedirect(id: string): Promise<void> {
   const d = db();
   if (!d) throw new Error("db_unbound");
-  await d.prepare(`DELETE FROM redirects WHERE id = ?`).bind(id).run();
+  const result = await d.prepare(`DELETE FROM redirects WHERE id = ?`).bind(id).run();
+  // Per audit P0-F3: 0-row DELETE returns success=true → must surface as not_found.
+  const changes = result.meta?.changes ?? 0;
+  if (changes < 1) throw new Error("not_found");
   bustRedirectCache();
 }

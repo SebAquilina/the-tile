@@ -22,10 +22,13 @@ export async function PATCH(
   try {
     await updateLeadStatus(params.id, parsed.data.status);
   } catch (e) {
-    // Surface the failure so the inbox UI's optimistic update rolls back.
-    // Per phantom-UI audit P0 #2.
+    const msg = (e as Error).message;
+    if (msg === "not_found") {
+      return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
+    }
+    // Surface other failures so the inbox UI's optimistic update rolls back.
     return NextResponse.json(
-      { ok: false, error: (e as Error).message },
+      { ok: false, error: msg },
       { status: 503 },
     );
   }

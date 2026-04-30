@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getPageBySlug } from "@/lib/pages/store";
+import { getPageBySlug , renderMarkdown } from "@/lib/pages/store";
 
 export const runtime = "edge";
 export const revalidate = 60;
@@ -37,7 +37,7 @@ export default async function PublicPage({
         // body_html is rendered server-side from operator-authored markdown.
         // The admin store sanitizes HTML by escaping < / > / & before
         // markdown-rendering, so this is safe.
-        dangerouslySetInnerHTML={{ __html: p.body_html ?? "" }}
+        dangerouslySetInnerHTML={{ __html: p.body_html ?? renderMarkdown(p.body_md ?? "") }}
       />
     </article>
   );

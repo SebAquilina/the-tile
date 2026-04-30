@@ -1,4 +1,5 @@
 import { AGENT_SYSTEM_PROMPT } from "@/lib/agent-system-prompt";
+import { getAgentSettings } from "@/lib/agent-config/store";
 import { AgentChatRequestSchema } from "@/lib/schemas";
 import { hashIp, clientIp } from "@/lib/ip-hash";
 import { limitAgentPerIp } from "@/lib/rate-limit";
@@ -228,8 +229,41 @@ export async function POST(request: Request): Promise<Response> {
       parts: [{ text: m.content }],
     }));
 
+  // Layer operator-edited persona on top of the baked catalogue prompt.
+  // The base AGENT_SYSTEM_PROMPT contains product knowledge (Italian
+  // collections, finishes, sizes, formats). The operator-edited row from D1
+  // adds tone / rules / handoff so /admin/agent edits actually reach the
+  // live agent (was a phantom — every save toast was a lie pre-2026-04-30).
+  let systemPrompt = AGENT_SYSTEM_PROMPT;
+  try {
+    const a = await getAgentSettings();
+    const rules = (a.rules_json ?? []).map((r) => `- ${r}`).filter(Boolean).join("\n");
+    const handOff = [
+      a.fallback_contact && `Fallback: ${a.fallback_contact}`,
+      a.hand_off_phone && `Phone: ${a.hand_off_phone}`,
+      a.hand_off_email && `Email: ${a.hand_off_email}`,
+    ].filter(Boolean).join(" · ");
+    const overrides: string[] = [];
+    if (a.persona_name && a.persona_name !== "Concierge") {
+      overrides.push(`# Operator persona override\nPersona: ${a.persona_name}`);
+    }
+    if (a.voice && a.voice.trim()) {
+      overrides.push(`# Operator voice override\n${a.voice}`);
+    }
+    if (rules) overrides.push(`# Operator rules\n${rules}`);
+    if (handOff) overrides.push(`# Hand-off contacts (operator-set)\n${handOff}`);
+    if (a.custom_kb_md && a.custom_kb_md.trim()) {
+      overrides.push(`# Operator custom knowledge\n${a.custom_kb_md}`);
+    }
+    if (overrides.length > 0) {
+      systemPrompt = AGENT_SYSTEM_PROMPT + "\n\n---\n\n" + overrides.join("\n\n");
+    }
+  } catch (e) {
+    console.warn("[agent.chat] getAgentSettings failed:", (e as Error).message);
+  }
+
   const geminiBody = {
-    systemInstruction: { parts: [{ text: AGENT_SYSTEM_PROMPT }] },
+    systemInstruction: { parts: [{ text: systemPrompt }] },
     contents,
     generationConfig: {
       temperature: 0.5,

@@ -6,6 +6,7 @@ import {
   organizationLd,
 } from "@/lib/jsonld";
 import { Analytics } from "@/components/Analytics";
+import { getTheme, tokensToStyle } from "@/lib/theme/store";
 import { CookieConsent } from "@/components/CookieConsent";
 
 const SITE_URL =
@@ -49,14 +50,35 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const revalidate = 60;
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const graph = {
     "@context": "https://schema.org",
     "@graph": [organizationLd(), localBusinessLd()],
   };
 
+  // Read theme tokens from D1 so /admin/theme edits actually reach the
+  // public site. Phantom-UI fix per ref 21 + audit P0-CR-B2.
+  let themeStyle = "";
+  try {
+    const theme = await getTheme();
+    themeStyle = tokensToStyle(theme.tokens, theme.custom_css);
+  } catch (e) {
+    console.warn("[layout] getTheme failed:", (e as Error).message);
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {themeStyle ? (
+          <style
+            id="theme-tokens"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: themeStyle }}
+          />
+        ) : null}
+      </head>
       <body className="min-h-dvh bg-canvas text-ink">
         <script
           type="application/ld+json"

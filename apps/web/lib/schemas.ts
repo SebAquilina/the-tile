@@ -181,7 +181,7 @@ export const AgentRoleEnum = z.enum(["user", "assistant", "system"]);
 export const AgentMessageSchema = z.object({
   id: z.string().optional(),
   role: AgentRoleEnum,
-  content: z.string(),
+  content: z.string().max(4000),
   createdAt: z.union([z.string(), z.number()]).optional(),
 });
 
@@ -189,7 +189,7 @@ export type AgentMessage = z.infer<typeof AgentMessageSchema>;
 
 export const AgentChatRequestSchema = z.object({
   messages: z.array(AgentMessageSchema).min(1),
-  sessionId: z.string().min(1),
+  sessionId: z.string().min(1).max(120),
   isFirstMessage: z.boolean().optional(),
   turnstileToken: z.string().optional(),
 });
@@ -200,12 +200,12 @@ export type AgentChatRequest = z.infer<typeof AgentChatRequestSchema>;
 
 export const ContactLeadSchema = z.object({
   name: z.string().min(2).max(200),
-  email: z.string().email(),
-  phone: z.string().optional(),
+  email: z.string().email().max(254),
+  phone: z.string().max(40).optional(),
   message: z.string().min(1).max(4000),
   preferredContactMethod: z.enum(["email", "phone", "whatsapp"]).optional(),
   consentGiven: z.literal(true),
-  saveListIds: z.array(z.string()).optional(),
+  saveListIds: z.array(z.string().max(120)).max(50).optional(),
 });
 
 export type ContactLead = z.infer<typeof ContactLeadSchema>;

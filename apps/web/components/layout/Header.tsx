@@ -6,6 +6,13 @@ import { Bookmark, Menu, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { MobileNav } from "./MobileNav";
 import { useSaveList } from "@/lib/save-list";
+import type { SettingsRow } from "@/lib/settings/store";
+import type { MenuItemType } from "@/lib/navigation/store";
+
+export interface HeaderProps {
+  settings?: SettingsRow | null;
+  headerMenu?: MenuItemType[] | null;
+}
 
 export interface NavItem {
   label: string;
@@ -29,7 +36,14 @@ function useSaveListCount(): number {
   return useSaveList().count;
 }
 
-export function Header() {
+export function Header({ headerMenu }: HeaderProps = {}) {
+  // Header menu items: prefer D1-backed menu (operator-edited via /admin/navigation),
+  // fall back to the build-time NAV_ITEMS const. Per phantom-UI fix CR-B3.
+  const navItems: NavItem[] = (headerMenu ?? NAV_ITEMS).map((it) => ({
+    label: it.label,
+    href: it.href,
+  }));
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
@@ -104,7 +118,7 @@ export function Header() {
             aria-label="Primary"
             className="hidden md:flex items-center gap-space-6"
           >
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -183,7 +197,7 @@ export function Header() {
       <MobileNav
         open={mobileOpen}
         onClose={closeMobile}
-        items={NAV_ITEMS}
+        items={navItems}
         saveCount={saveCount}
       />
     </>
