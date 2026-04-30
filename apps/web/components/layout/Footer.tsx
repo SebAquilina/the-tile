@@ -96,18 +96,42 @@ export function Footer() {
     });
   }, []);
 
+  const [submitting, setSubmitting] = useState(false);
   const onNewsletterSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // Phase 2 will wire this to a real endpoint; for now just log + toast.
-      // eslint-disable-next-line no-console
-      console.info("[newsletter] subscribe stub", { email });
-      toast.success("Thanks — we'll be in touch.", {
-        title: "Subscribed",
-      });
-      setEmail("");
+      if (submitting) return;
+      const trimmed = email.trim();
+      if (!trimmed) return;
+      setSubmitting(true);
+      try {
+        const res = await fetch("/api/newsletter", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email: trimmed, source: "footer" }),
+        });
+        if (!res.ok) {
+          const j = (await res.json().catch(() => ({}))) as { errors?: Array<{ message: string }>; error?: string };
+          if (res.status === 429) {
+            toast.error("Too many attempts — try again in a minute.");
+          } else if (j?.errors?.[0]?.message) {
+            toast.error(j.errors[0].message);
+          } else {
+            toast.error("Could not subscribe — please try again.");
+          }
+          return;
+        }
+        toast.success("We'll be in touch when there's something worth your inbox.", {
+          title: "Subscribed",
+        });
+        setEmail("");
+      } catch {
+        toast.error("Network error — please try again.");
+      } finally {
+        setSubmitting(false);
+      }
     },
-    [email, toast],
+    [email, submitting, toast],
   );
 
   return (

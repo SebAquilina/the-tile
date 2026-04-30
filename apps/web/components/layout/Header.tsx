@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Bookmark, Menu, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { MobileNav } from "./MobileNav";
+import { useSaveList } from "@/lib/save-list";
 
 export interface NavItem {
   label: string;
@@ -22,16 +23,10 @@ export const NAV_ITEMS: NavItem[] = [
 
 const SCROLL_THRESHOLD = 80;
 
-/**
- * Optional save-list count hook hook-up.
- *
- * `lib/save-list.ts` is Wave 3 catalog's responsibility. Until that file
- * exists, this component renders a static 0. When the file lands and exposes
- * a `useSaveList` hook, swap the import and consume its `count`.
- */
 function useSaveListCount(): number {
-  // Intentionally static — see note above.
-  return 0;
+  // Wave 3 catalog ships SaveListProvider at the layout level, so this
+  // is safe to call here. Per phantom-UI audit P1 #3.
+  return useSaveList().count;
 }
 
 export function Header() {

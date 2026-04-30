@@ -40,17 +40,26 @@ export function RedirectsEditor({ initial }: { initial: Row[] }) {
   }
 
   async function toggle(id: string, active: boolean) {
-    await fetch(`/api/admin/redirects/${id}`, {
+    // Phantom-UI audit P1 #6 — must surface server failures to admin.
+    const res = await fetch(`/api/admin/redirects/${id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ active }),
     });
+    if (!res.ok) {
+      toast.error(`Toggle failed: ${res.status}`);
+      return;
+    }
     setRows(rows.map((r) => r.id === id ? { ...r, active: active ? 1 : 0 } : r));
   }
 
   async function remove(id: string) {
     if (!confirm("Delete this redirect?")) return;
-    await fetch(`/api/admin/redirects/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/admin/redirects/${id}`, { method: "DELETE" });
+    if (!res.ok) {
+      toast.error(`Delete failed: ${res.status}`);
+      return;
+    }
     setRows(rows.filter((r) => r.id !== id));
     toast.success("Redirect deleted");
   }

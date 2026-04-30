@@ -107,16 +107,17 @@ export async function getLead(id: string): Promise<Lead | null> {
 
 export async function updateLeadStatus(id: string, status: Lead["status"]): Promise<void> {
   const d = db();
-  if (!d) return;
-  try {
-    // Add `status` column if the migration hasn't run yet — best-effort.
-    await d
-      .prepare(`UPDATE leads SET status = ? WHERE id = ?`)
-      .bind(status, id)
-      .run();
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error("[admin-store.updateLeadStatus] failed:", (e as Error).message);
+  if (!d) {
+    // Don't silently swallow — the admin must know the change didn't persist.
+    // Per ref 19 § Class 9 + the-tile phantom-UI audit P0 #2.
+    throw new Error("db_unbound");
+  }
+  const result = await d
+    .prepare(`UPDATE leads SET status = ? WHERE id = ?`)
+    .bind(status, id)
+    .run();
+  if (!result.success) {
+    throw new Error("update_failed");
   }
 }
 

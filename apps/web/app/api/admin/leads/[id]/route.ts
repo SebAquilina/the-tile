@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { updateLeadStatus } from "@/lib/admin-store";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 const PatchSchema = z.object({
   status: z.enum(["new", "replied", "archived"]),
 });
@@ -19,6 +19,15 @@ export async function PATCH(
       { status: 400 },
     );
   }
-  await updateLeadStatus(params.id, parsed.data.status);
+  try {
+    await updateLeadStatus(params.id, parsed.data.status);
+  } catch (e) {
+    // Surface the failure so the inbox UI's optimistic update rolls back.
+    // Per phantom-UI audit P0 #2.
+    return NextResponse.json(
+      { ok: false, error: (e as Error).message },
+      { status: 503 },
+    );
+  }
   return NextResponse.json({ ok: true });
 }
