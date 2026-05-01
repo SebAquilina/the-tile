@@ -101,3 +101,25 @@ jobs:
           name: playwright-report
           path: apps/web/playwright-report/
           retention-days: 7
+
+  audit-bundle:
+    name: Audit deployed bundle (secrets, headers, routes)
+    runs-on: ubuntu-latest
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for Pages deploy
+        run: sleep 90  # crude — Cloudflare typically deploys within 60s
+      - name: audit-secrets (no leaked keys in JS bundle)
+        run: bash apps/web/scripts/audit/audit-secrets.sh
+        env:
+          BASE_URL: https://the-tile-web.pages.dev
+      - name: audit-headers (CSP, HSTS, X-Frame, etc)
+        run: bash apps/web/scripts/audit/audit-headers.sh
+        env:
+          BASE_URL: https://the-tile-web.pages.dev
+      - name: audit-routes (every product URL resolves)
+        run: bash apps/web/scripts/audit/audit-routes.sh
+        env:
+          BASE_URL: https://the-tile-web.pages.dev
