@@ -24,9 +24,40 @@ if (!existsSync(promptMd) || !existsSync(knowledgeMd)) {
 const promptSrc = readFileSync(promptMd, "utf8");
 const knowledge = readFileSync(knowledgeMd, "utf8");
 
-// Extract the first fenced code block — that's the populated system prompt.
-const fenceMatch = promptSrc.match(/```(?:[a-zA-Z0-9_-]*)?\n([\s\S]*?)\n```/);
-const systemPrompt = fenceMatch ? fenceMatch[1] : promptSrc;
+// Extract the populated system prompt — the content between the first
+// ```...``` after the "## The prompt (copy verbatim below this line)"
+// heading and the matching closing fence.
+//
+// Bug fix: the prompt body itself contains an example wrapped in
+// triple-backticks (the action format example), so a non-greedy regex
+// would cut off everything after the inner fence — which silently dropped
+// the entire action vocabulary, the consent rules, and the navigation
+// contract from the model's instructions. We anchor on the section heading
+// and walk fence-by-fence, taking content from the first opening fence to
+// the LAST closing fence before the next "## " heading.
+function extractSystemPrompt(src: string): string {
+  const heading = "## The prompt (copy verbatim below this line)";
+  const headingIdx = src.indexOf(heading);
+  if (headingIdx < 0) return src;
+  // Search for the first opening fence after the heading.
+  const afterHeading = src.slice(headingIdx);
+  const openMatch = afterHeading.match(/```(?:[a-zA-Z0-9_-]*)?\n/);
+  if (!openMatch || openMatch.index === undefined) return src;
+  const bodyStart = openMatch.index + openMatch[0].length;
+  // The next top-level "## " heading after the first opening fence is the
+  // upper bound. Find it and search backwards from there for the matching
+  // closing fence.
+  const nextHeadingMatch = afterHeading.slice(bodyStart).match(/\n## /);
+  const upperBound = nextHeadingMatch && nextHeadingMatch.index !== undefined
+    ? bodyStart + nextHeadingMatch.index
+    : afterHeading.length;
+  const slice = afterHeading.slice(bodyStart, upperBound);
+  // Last closing fence in this slice is the prompt's terminator.
+  const lastFenceIdx = slice.lastIndexOf("\n```");
+  if (lastFenceIdx < 0) return src;
+  return slice.slice(0, lastFenceIdx);
+}
+const systemPrompt = extractSystemPrompt(promptSrc);
 
 // --- Runtime-injected behaviour overrides -------------------------------
 // These are appended to the populated system prompt from 07-*.md without
