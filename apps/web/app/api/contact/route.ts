@@ -23,6 +23,11 @@ const ContactRequestSchema = ContactLeadSchema.extend({
  * neither works. Email is best-effort and never blocks the lead.
  */
 export async function POST(request: Request): Promise<Response> {
+  // Per round-3 audit: enforce request size cap at the edge before parse.
+  const cl = Number(request.headers.get("content-length") || 0);
+  if (cl > 32 * 1024) {
+    return Response.json({ error: "payload_too_large" }, { status: 413 });
+  }
   let body: unknown;
   try { body = await request.json(); }
   catch { return Response.json({ ok: false, error: "invalid_json" }, { status: 400 }); }

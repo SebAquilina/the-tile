@@ -62,6 +62,20 @@ export async function POST(req: Request): Promise<Response> {
         )
         .bind(id, parsed.data.email, parsed.data.source ?? "footer", ipH, ua, token, now, now)
         .run();
+      // Per round-3 audit: re-subscribes get the canonical id, not a new one,
+      // so clients can dedup. Look up the row and return its actual id +
+      // honest 'via' discriminator.
+      const row = await d
+        .prepare(`SELECT id, status, created_at FROM subscribers WHERE email = ?`)
+        .bind(parsed.data.email)
+        .first<{ id: string; status: string; created_at: number }>();
+      if (row) {
+        const isNew = row.created_at === now;
+        return Response.json(
+          { ok: true, id: row.id, via: isNew ? "primary" : "resubscribed" },
+          { status: isNew ? 201 : 200 }
+        );
+      }
       return Response.json({ ok: true, id, via: "primary" }, { status: 201 });
     } catch (e) {
       console.warn("[newsletter] D1 failed:", (e as Error).message);

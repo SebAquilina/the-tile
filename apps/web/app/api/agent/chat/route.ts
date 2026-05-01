@@ -154,6 +154,11 @@ function buildSessionCookie(value: string): string {
 // --- Route ------------------------------------------------------------------
 
 export async function POST(request: Request): Promise<Response> {
+  // Per round-3 audit: enforce request size cap at the edge before parse.
+  const cl = Number(request.headers.get("content-length") || 0);
+  if (cl > 64 * 1024) {
+    return Response.json({ error: "payload_too_large" }, { status: 413 });
+  }
   let body: unknown;
   try {
     body = await request.json();
@@ -228,6 +233,11 @@ export async function POST(request: Request): Promise<Response> {
       role: m.role === "assistant" ? "model" : "user",
       parts: [{ text: m.content }],
     }));
+  // Per round-3 audit: don't forward an empty conversation to Gemini —
+  // upstream returns 400 with a body that leaks via the SSE stream.
+  if (contents.length === 0) {
+    return Response.json({ error: "no_user_messages" }, { status: 400 });
+  }
 
   // Layer operator-edited persona on top of the baked catalogue prompt.
   // The base AGENT_SYSTEM_PROMPT contains product knowledge (Italian

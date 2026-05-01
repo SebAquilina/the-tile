@@ -188,7 +188,7 @@ export const AgentMessageSchema = z.object({
 export type AgentMessage = z.infer<typeof AgentMessageSchema>;
 
 export const AgentChatRequestSchema = z.object({
-  messages: z.array(AgentMessageSchema).min(1),
+  messages: z.array(AgentMessageSchema).min(1).max(40),
   sessionId: z.string().min(1).max(120),
   isFirstMessage: z.boolean().optional(),
   turnstileToken: z.string().optional(),
