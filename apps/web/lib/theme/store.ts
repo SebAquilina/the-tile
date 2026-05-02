@@ -4,7 +4,6 @@
  */
 
 import { z } from "zod";
-import { unstable_noStore as noStore } from "next/cache";
 
 const HEX = z.string().regex(/^#[0-9a-fA-F]{3,8}$/, "must be a hex color");
 
@@ -67,7 +66,6 @@ export type ThemeRow = {
 };
 
 export async function getTheme(): Promise<ThemeRow> {
-  noStore();
   const d = db();
   if (d) {
     try {

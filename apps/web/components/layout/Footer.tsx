@@ -74,7 +74,21 @@ function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-export function Footer({ settings, footerMenu }: FooterProps = {}) {
+export function Footer({ settings, footerMenu: footerMenuSSR }: FooterProps = {}) {
+  // Per ref 22 — hydrate the footer menu client-side so /admin/navigation
+  // edits reach the public site without waiting for ISR revalidate (which
+  // doesn't always fire under next-on-pages). Falls back to SSR-baked
+  // value while loading.
+  const [footerMenu, setFooterMenuLive] = useState<MenuItemType[] | null | undefined>(footerMenuSSR);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/menu/footer", { cache: "no-store" })
+      .then((r) => r.json() as Promise<{ items?: MenuItemType[] }>)
+      .then((d) => { if (!cancelled && Array.isArray(d?.items)) setFooterMenuLive(d.items); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   // Phantom-UI fix CR-B4: prefer D1-backed site_settings over BUSINESS const,
   // so /admin/settings edits actually reach the public footer.
   const phoneDisplay = settings?.contact_phone || BUSINESS.phoneDisplay;

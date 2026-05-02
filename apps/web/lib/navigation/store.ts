@@ -4,7 +4,6 @@
  */
 
 import { z } from "zod";
-import { unstable_noStore as noStore } from "next/cache";
 
 const MenuItem: z.ZodType<unknown> = z.lazy(() =>
   z.object({
@@ -44,7 +43,6 @@ function db(): D1Database | null {
 }
 
 export async function getMenu(handle: string): Promise<MenuItemType[]> {
-  noStore();
   const d = db();
   if (d) {
     try {
