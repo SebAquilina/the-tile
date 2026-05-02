@@ -54,7 +54,6 @@ export const revalidate = 60;
 // Per ref 22 — same as (public)/layout: bindings unavailable at build time,
 // must be edge-dynamic so theme tokens are read from D1 per request.
 export const dynamic = "force-dynamic";
-export const runtime = "edge";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const graph = {

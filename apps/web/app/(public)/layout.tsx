@@ -14,7 +14,6 @@ export const revalidate = 60;
 // per-request rendering on the edge so D1 reads happen at request time
 // when bindings are present.
 export const dynamic = "force-dynamic";
-export const runtime = "edge";
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
   // Read site settings + menus from D1 so /admin/settings and
