@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ToastProvider } from "@/components/ui";
 import { PublishBar } from "./_components/PublishBar";
+import { DesktopSidebar, MobileNavToggle } from "./_components/Sidebar";
+import { Breadcrumbs } from "./_components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -15,58 +17,58 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 // Auth is enforced by middleware.ts (HTTP Basic on /admin/**). This layout
-// simply renders the admin chrome once the request is authorised.
+// renders the admin chrome once the request is authorised:
+//   - sticky top bar with wordmark + view-site link
+//   - left sidebar (desktop) / hamburger drawer (mobile)
+//   - breadcrumbs under the top bar
+//   - global ToastProvider (top-right)
+//   - global PublishBar (commit-pending badge)
+//   - skip-to-content link for a11y
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <ToastProvider>
-    <div className="min-h-dvh bg-canvas text-ink">
-      <header className="sticky top-0 z-30 border-b border-line bg-surface/90 backdrop-blur">
-        <div className="mx-auto flex max-w-wide items-center justify-between px-space-5 py-space-4 md:px-space-7">
-          <Link
-            href="/admin"
-            className="font-display text-xl text-ink hover:text-umber-strong"
-          >
-            Admin · The Tile
-          </Link>
-          <nav className="flex items-center gap-space-5 text-sm">
-            <Link href="/admin/products" className="hover:text-umber">
-              Tiles
+      <div className="min-h-dvh bg-canvas text-ink">
+        <a
+          href="#admin-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-space-3 focus:top-space-3 focus:z-50 focus:rounded-md focus:bg-surface focus:px-space-4 focus:py-space-2 focus:text-sm focus:text-ink focus:shadow-md"
+        >
+          Skip to content
+        </a>
+
+        <header className="sticky top-0 z-30 border-b border-line bg-surface/90 backdrop-blur">
+          <div className="mx-auto flex h-16 max-w-wide items-center gap-space-4 px-space-5 md:px-space-7">
+            <MobileNavToggle />
+            <Link
+              href="/admin"
+              className="font-display text-xl text-ink hover:text-umber-strong"
+            >
+              Admin · The Tile
             </Link>
-            <Link href="/admin/leads" className="hover:text-umber">
-              Leads
-            </Link>
-            <Link href="/admin/reviews" className="hover:text-umber">
-              Reviews
-            </Link>
-            <Link href="/admin/pages" className="hover:text-umber">
-              Pages
-            </Link>
-            <Link href="/admin/navigation" className="hover:text-umber">
-              Nav
-            </Link>
-            <Link href="/admin/theme" className="hover:text-umber">
-              Theme
-            </Link>
-            <Link href="/admin/agent" className="hover:text-umber">
-              Agent
-            </Link>
-            <Link href="/admin/redirects" className="hover:text-umber">
-              Redirects
-            </Link>
-            <Link href="/admin/settings" className="hover:text-umber">
-              Settings
-            </Link>
-            <Link href="/" className="text-ink-subtle hover:text-ink">
-              View site ↗
-            </Link>
-          </nav>
+            <div className="ml-auto flex items-center gap-space-5 text-sm text-ink-muted">
+              <Link
+                href="/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-ink"
+              >
+                View site ↗
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        <div className="mx-auto flex max-w-wide gap-space-6 px-space-5 md:px-space-7">
+          <DesktopSidebar />
+          <main id="admin-content" className="min-w-0 flex-1 pb-space-11 pt-space-5">
+            <div className="mb-space-5">
+              <Breadcrumbs />
+            </div>
+            {children}
+          </main>
         </div>
-      </header>
-      <main className="mx-auto max-w-wide px-space-5 pb-space-11 pt-space-8 md:px-space-7">
-        {children}
-      </main>
-      <PublishBar />
-    </div>
+
+        <PublishBar />
+      </div>
     </ToastProvider>
   );
 }
