@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { RelatedTiles } from "@/components/catalog/RelatedTiles";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
-import { getReviewsForProduct } from "@/lib/reviews";
+import { listReviews } from "@/lib/reviews/store";
 import { SaveToListButton } from "@/components/catalog/SaveToListButton";
 import { SpecsTable } from "@/components/catalog/SpecsTable";
 import { Button } from "@/components/ui";
@@ -265,8 +265,25 @@ export default function ProductDetailPage({ params }: { params: Params }) {
   );
 }
 
-function ProductReviews({ productId }: { productId: string }) {
-  const reviews = getReviewsForProduct(productId);
+async function ProductReviews({ productId }: { productId: string }) {
+  let rows: Awaited<ReturnType<typeof listReviews>> = [];
+  try {
+    rows = await listReviews({ status: "active" });
+  } catch {
+    rows = [];
+  }
+  const reviews = rows
+    .filter((r) => r.product_id === productId)
+    .map((r) => ({
+      id: r.id,
+      author: { name: r.author, locality: r.location ?? undefined },
+      rating: r.rating,
+      publishedAt: r.date,
+      body: r.quote,
+      headline: r.title ?? undefined,
+      productId: r.product_id ?? undefined,
+      placeholder: !!r.placeholder,
+    }));
   if (reviews.length === 0) return null;
   return (
     <section className="mt-space-10">

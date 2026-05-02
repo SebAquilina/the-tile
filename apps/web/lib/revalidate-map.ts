@@ -24,7 +24,9 @@ export type MutationKey =
   | "agent.prompt"
   | "site.settings"
   | "lead.create"
-  | "lead.update";
+  | "lead.update"
+  | "review.upsert"
+  | "review.delete";
 
 type Resolver = (slug?: string) => string[];
 
@@ -46,6 +48,8 @@ export const REVALIDATE_MAP: Record<MutationKey, Resolver> = {
   "site.settings":          () => ["/", "/sitemap.xml", "/robots.txt"],
   "lead.create":            () => ["/admin/leads"],
   "lead.update":            () => ["/admin/leads"],
+  "review.upsert":          () => ["/reviews", "/"],
+  "review.delete":          () => ["/reviews", "/"],
 };
 
 export function revalidatePaths(key: MutationKey, slug?: string): string[] {

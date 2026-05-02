@@ -8,11 +8,13 @@ import type { Product } from "@/lib/schemas";
 import { AgentHero } from "@/components/agent/AgentHero";
 import { on } from "@/lib/events";
 import { ReviewStrip } from "@/components/reviews/ReviewStrip";
+import type { Review } from "@/lib/reviews";
 
 const DISMISS_KEY = "the-tile:hero-dismissed";
 
 export interface HomeViewProps {
   featured: Product[];
+  reviews: Review[];
 }
 
 /**
@@ -20,7 +22,7 @@ export interface HomeViewProps {
  * sessionStorage check happens client-side so the first-load experience stays
  * the locked-intake hero.
  */
-export function HomeView({ featured }: HomeViewProps) {
+export function HomeView({ featured, reviews }: HomeViewProps) {
   // `undefined` = still deciding (pre-hydration); keeps the server render
   // blank so the hero doesn't flash for returning visitors.
   const [heroMode, setHeroMode] = useState<"hero" | "return" | undefined>(
@@ -49,10 +51,10 @@ export function HomeView({ featured }: HomeViewProps) {
     return <AgentHero />;
   }
 
-  return <ReturnHome featured={featured} />;
+  return <ReturnHome featured={featured} reviews={reviews} />;
 }
 
-function ReturnHome({ featured }: { featured: Product[] }) {
+function ReturnHome({ featured, reviews }: { featured: Product[]; reviews: Review[] }) {
   return (
     <div className="mx-auto max-w-content px-space-5 py-space-10 md:px-space-7">
       <section>
@@ -95,7 +97,7 @@ function ReturnHome({ featured }: { featured: Product[] }) {
         </ul>
       </section>
 
-      <ReviewStrip />
+      <ReviewStrip reviews={reviews} />
     </div>
   );
 }

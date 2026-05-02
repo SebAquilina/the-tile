@@ -1,11 +1,26 @@
 import Link from "next/link";
 import { ReviewCard } from "./ReviewCard";
-import { averageRating, getFeaturedReviews, REVIEWS } from "@/lib/reviews";
+import type { Review } from "@/lib/reviews";
 
-export function ReviewStrip() {
-  const reviews = getFeaturedReviews(3);
-  if (reviews.length === 0) return null;
-  const avg = averageRating();
+export interface ReviewStripProps {
+  /** All active reviews; the strip picks 3 featured (5★ with headline). */
+  reviews: Review[];
+}
+
+export function ReviewStrip({ reviews }: ReviewStripProps) {
+  const featured = reviews
+    .filter((r) => r.rating === 5 && r.headline)
+    .slice(0, 3);
+  if (featured.length === 0) return null;
+
+  const avg =
+    reviews.length === 0
+      ? 0
+      : Number(
+          (
+            reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length
+          ).toFixed(2),
+        );
 
   return (
     <section className="mx-auto mt-space-11 max-w-content px-space-5 md:px-space-7">
@@ -14,7 +29,8 @@ export function ReviewStrip() {
           What customers say
         </p>
         <h2 className="mt-space-3 font-display text-3xl leading-tight text-ink md:text-4xl">
-          {avg.toFixed(1)} across {REVIEWS.length} reviews
+          {avg.toFixed(1)} across {reviews.length} review
+          {reviews.length === 1 ? "" : "s"}
         </h2>
         <p className="mt-space-4 text-ink-muted">
           Unhurried advice, Italian porcelain chosen for Malta. Recent notes
@@ -23,7 +39,7 @@ export function ReviewStrip() {
       </header>
 
       <ul className="mt-space-7 grid gap-space-5 md:grid-cols-3">
-        {reviews.map((r) => (
+        {featured.map((r) => (
           <li key={r.id}>
             <ReviewCard review={r} />
           </li>

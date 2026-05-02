@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, BookmarkX, MessageSquare, PackageCheck, PackageX, Sparkles } from "lucide-react";
 import { getAllProducts } from "@/lib/seed";
-import { getAllReviews } from "@/lib/reviews";
+import { listReviews } from "@/lib/reviews/store";
 import { BUSINESS } from "@/lib/business-info";
 import { getAllLeads } from "@/lib/admin-store";
 import { PersistenceStatus } from "./_components/PersistenceStatus";
@@ -12,7 +12,8 @@ export default async function AdminHome() {
   const products = getAllProducts();
   const outOfStock = products.filter((p) => p.inStock === false);
   const hidden = products.filter((p) => p.showInCatalog === false);
-  const reviews = getAllReviews();
+  let reviews: Awaited<ReturnType<typeof listReviews>> = [];
+  try { reviews = await listReviews({ status: "all" }); } catch {}
   const leads = await getAllLeads();
   const newLeads = leads.filter((l) => l.status === "new");
 
@@ -59,7 +60,9 @@ export default async function AdminHome() {
       icon: Sparkles,
       title: "Reviews",
       primary: `${reviews.length}`,
-      secondary: `All current reviews are fabricated placeholders.`,
+      secondary: reviews.filter((r) => !!r.placeholder).length
+        ? `${reviews.filter((r) => !!r.placeholder).length} flagged as placeholders — replace before launch.`
+        : "All reviews are real and consented.",
     },
   ];
 

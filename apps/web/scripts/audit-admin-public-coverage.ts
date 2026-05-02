@@ -22,7 +22,8 @@ const SCAN_ROOT = join(ROOT, "apps/web");
 // admin UI itself (e.g. inbox views) and don't need a public caller.
 const EXEMPT_READERS = new Set<string>([
   "listLeads",
-  "getPage",            // admin only by id; public uses getPageBySlug          // admin/leads inbox; public side has /api/contact (writer)
+  "getPage",            // admin only by id; public uses getPageBySlug
+  "getReview",          // admin only by id; public uses listReviews
   "listPages",          // admin/pages list; public reads via getPageBySlug per-route
   "listRedirects",      // admin/redirects list; public uses getRedirectMap in middleware
   "listMenus",          // admin/navigation list; public uses getMenu(handle)
