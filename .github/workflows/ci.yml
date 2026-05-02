@@ -48,6 +48,9 @@ jobs:
 
       - run: pnpm validate-seed
 
+      - name: audit-admin-public-coverage (every D1 reader has a public caller)
+        run: pnpm tsx apps/web/scripts/audit-admin-public-coverage.ts ../..
+
       - run: pnpm lint
 
       - run: pnpm typecheck

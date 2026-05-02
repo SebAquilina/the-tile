@@ -74,7 +74,7 @@ function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) {
+export function Footer({ settings, footerMenu }: FooterProps = {}) {
   // Phantom-UI fix CR-B4: prefer D1-backed site_settings over BUSINESS const,
   // so /admin/settings edits actually reach the public footer.
   const phoneDisplay = settings?.contact_phone || BUSINESS.phoneDisplay;
@@ -199,8 +199,14 @@ export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) 
           </div>
         </div>
 
-        {/* 4 columns */}
-        <div className="mt-space-9 grid grid-cols-2 gap-space-7 md:grid-cols-4">
+        {/* 4 structural columns + 1 operator-managed (rendered from D1
+            menus.handle='footer' via /admin/navigation). Per ref 25 +
+            ref 34 admin-public coverage SOP — every admin write must
+            reach a public surface. */}
+        <div className={cn(
+          "mt-space-9 grid grid-cols-2 gap-space-7",
+          (footerMenu && footerMenu.length > 0) ? "md:grid-cols-5" : "md:grid-cols-4",
+        )}>
           {COLUMNS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
               <h3 className="font-sans text-sm font-medium text-ink">
@@ -224,6 +230,29 @@ export function Footer({ settings, footerMenu: _footerMenu }: FooterProps = {}) 
               </ul>
             </nav>
           ))}
+          {footerMenu && footerMenu.length > 0 ? (
+            <nav aria-label="More" data-source="d1-menus-footer">
+              <h3 className="font-sans text-sm font-medium text-ink">More</h3>
+              <ul className="mt-space-4 flex flex-col gap-space-3">
+                {footerMenu.map((it) => (
+                  <li key={it.href}>
+                    <Link
+                      href={it.href}
+                      target={it.external ? "_blank" : undefined}
+                      rel={it.external ? "noopener noreferrer" : undefined}
+                      className={cn(
+                        "text-sm text-ink-muted hover:text-ink",
+                        "transition-colors duration-fast ease-out",
+                        "focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 rounded-sm",
+                      )}
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
         </div>
 
         {/* Bottom bar */}
