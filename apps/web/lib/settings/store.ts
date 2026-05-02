@@ -4,6 +4,7 @@
  */
 
 import { z } from "zod";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const SettingsInput = z.object({
   store_name: z.string().min(1).max(160),
@@ -47,6 +48,7 @@ function db(): D1Database | null {
 }
 
 export async function getSettings(): Promise<SettingsRow> {
+  noStore();
   const d = db();
   if (!d) return DEFAULT;
   try {

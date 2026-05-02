@@ -8,12 +8,6 @@ import { getSettings } from "@/lib/settings/store";
 import { getMenu } from "@/lib/navigation/store";
 
 export const revalidate = 60;
-// Per ref 22 — D1 bindings aren't available at next build time, so without
-// 'force-dynamic' the layout gets baked with DEFAULTS as the menu/settings
-// data (because getMenu/getSettings see db()=null and fall through). Force
-// per-request rendering on the edge so D1 reads happen at request time
-// when bindings are present.
-export const dynamic = "force-dynamic";
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
   // Read site settings + menus from D1 so /admin/settings and
