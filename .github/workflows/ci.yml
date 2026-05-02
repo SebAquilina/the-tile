@@ -92,11 +92,12 @@ jobs:
           GEMINI_API_KEY: ci-placeholder
           NEXT_PUBLIC_SITE_URL: http://localhost:3000
 
-      - name: Run Playwright (skip dialogue battery — needs real Gemini key)
+      - name: Run Playwright (skip dialogue battery + admin roundtrip — both need secrets)
         run: pnpm test:e2e
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_TEST }}
           SKIP_DIALOGUE_BATTERY: "1"
+          SKIP_ADMIN_ROUNDTRIP: "1"
 
       - name: Upload Playwright report
         if: failure()
@@ -127,3 +128,17 @@ jobs:
         run: bash apps/web/scripts/audit/audit-routes.sh
         env:
           BASE_URL: https://the-tile-web.pages.dev
+
+      - name: admin -> public roundtrip (each admin section reaches public)
+        working-directory: apps/web
+        run: |
+          if [ -n "$ADMIN_PASS" ]; then
+            pnpm exec playwright install --with-deps chromium
+            pnpm exec playwright test tests/e2e/09-admin-public-roundtrip.spec.ts
+          else
+            echo "[admin-roundtrip] skipping — ADMIN_PASS not set"
+          fi
+        env:
+          PLAYWRIGHT_BASE_URL: https://the-tile-web.pages.dev
+          ADMIN_USER: ${{ secrets.ADMIN_USER_TEST }}
+          ADMIN_PASS: ${{ secrets.ADMIN_PASS_TEST }}
