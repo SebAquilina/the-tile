@@ -35,7 +35,11 @@ const DEFAULTS: Record<string, MenuItemType[]> = {
 };
 
 function db(): D1Database | null {
-  return (process.env as unknown as { DB?: D1Database }).DB ?? null;
+  return (
+    (process.env as unknown as { DB?: D1Database }).DB ??
+    (globalThis as unknown as { DB?: D1Database }).DB ??
+    null
+  );
 }
 
 export async function getMenu(handle: string): Promise<MenuItemType[]> {

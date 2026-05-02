@@ -58,7 +58,11 @@ export function clearProductOverride(id: string): void {
 // --- leads (D1-backed, v1.9 fix) ------------------------------------------
 
 function db(): D1Database | null {
-  return (process.env as unknown as { DB?: D1Database }).DB ?? null;
+  return (
+    (process.env as unknown as { DB?: D1Database }).DB ??
+    (globalThis as unknown as { DB?: D1Database }).DB ??
+    null
+  );
 }
 
 function rowToLead(r: Record<string, unknown>): Lead {
