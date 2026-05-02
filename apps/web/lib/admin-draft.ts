@@ -21,10 +21,28 @@ import { useCallback, useEffect, useState } from "react";
 
 const STORAGE_KEY = "the-tile:admin:draft";
 
+export type ProductImagePatch = {
+  src: string;
+  alt?: string;
+  caption?: string;
+  source?: string;
+  isPlaceholder?: boolean;
+  provenance?: Record<string, unknown>;
+};
+
 export type ProductDraftPatch = {
   inStock?: boolean;
   showInCatalog?: boolean;
   summary?: string;
+  description?: string;
+  bestFor?: string[];
+  tags?: string[];
+  /**
+   * When present, replaces the product's full image array. We use a full
+   * replacement (not a per-image patch) because reordering, removing, and
+   * adding all share one underlying operation: write the new array.
+   */
+  images?: ProductImagePatch[];
 };
 
 export type AdminDraft = {
@@ -129,11 +147,11 @@ export function useAdminDraft() {
  * current-state values the UI should render. This is purely client-side —
  * it does not mutate any server state.
  */
-export function applyDraft<T extends { id: string } & ProductDraftPatch>(
+export function applyDraft<T extends { id: string }>(
   product: T,
   draft: AdminDraft,
 ): T {
   const patch = draft.products[product.id];
   if (!patch) return product;
-  return { ...product, ...patch };
+  return { ...product, ...patch } as T;
 }

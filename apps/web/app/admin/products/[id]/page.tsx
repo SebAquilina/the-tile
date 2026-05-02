@@ -78,7 +78,8 @@ export default function AdminProductEditPage({
           <header>
             <h1 className="font-display text-3xl text-ink">{product.name}</h1>
             <p className="mt-space-2 text-sm text-ink-muted">
-              Edit the card summary and flags. Changes stage until you publish.
+              Edit images, copy, stock and visibility. Changes stage in this
+              browser until you publish.
             </p>
           </header>
           <div className="mt-space-6">
@@ -88,6 +89,17 @@ export default function AdminProductEditPage({
                 inStock: product.inStock ?? true,
                 showInCatalog: product.showInCatalog ?? true,
                 summary: product.summary,
+                description: product.description ?? "",
+                bestFor: product.bestFor ?? [],
+                tags: product.tags ?? [],
+                images: (product.images ?? []).map((img) => ({
+                  src: img.src,
+                  alt: img.alt,
+                  caption: img.caption,
+                  source: (img as { source?: string }).source,
+                  isPlaceholder: (img as { isPlaceholder?: boolean }).isPlaceholder,
+                  provenance: (img as { provenance?: Record<string, unknown> }).provenance,
+                })),
               }}
             />
           </div>

@@ -69,6 +69,10 @@ export const ProductImageSchema = z
     context: z.enum(["flat", "in-room", "detail", "lifestyle"]).optional(),
     width: z.number().optional(),
     height: z.number().optional(),
+    // Provenance metadata kept explicit so the admin editor can preserve it.
+    source: z.string().optional(),
+    provenance: z.record(z.unknown()).optional(),
+    isPlaceholder: z.boolean().optional(),
   })
   .passthrough();
 

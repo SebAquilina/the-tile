@@ -165,4 +165,87 @@ test.describe("admin -> public roundtrip", () => {
       }
     }
   });
+
+  test("[CRITICAL] products: editing image alt text appears on public detail page", async ({ request }) => {
+    // Products are written back to the seed JSON via /api/admin/publish,
+    // which commits to GitHub and triggers a Cloudflare Pages rebuild.
+    // The public detail page is statically generated, so the roundtrip
+    // takes ~3 minutes. Gate this test behind an extra flag so CI doesn't
+    // wait by default.
+    test.skip(
+      process.env.RUN_PUBLISH_ROUNDTRIP !== "1",
+      "RUN_PUBLISH_ROUNDTRIP=1 to opt into this rebuild-driven test",
+    );
+
+    // Pick a known product (architect-resin is in the marble/concrete effect).
+    // The seed loader resolves it via product.url; we read the seed via the
+    // public detail HTML to learn the canonical effect/slug.
+    const productId = "architect-resin";
+    const probeAlt = `roundtrip-alt-${Date.now()}`;
+
+    // 1. Read current images so we can revert exactly.
+    //    The public detail page exposes the hero image alt in <img alt="…">.
+    const detailUrl = `${BASE}/collections/concrete/${productId}`;
+    const beforeHtml = await request.get(`${detailUrl}?cb=${Date.now()}`).then((r) => r.text());
+    expect(beforeHtml, "detail page should resolve").toMatch(/<img[^>]+alt=/i);
+
+    // 2. Stage + publish a probe via the admin publish flow.
+    //    We send a single image entry with the probe alt to keep the test
+    //    self-contained; if more images existed they will be replaced.
+    //    Revert restores the original list (best-effort: pulled from the
+    //    seed by re-reading the source-of-truth JSON via raw github).
+    const seedRes = await request.get(
+      `https://raw.githubusercontent.com/SebAquilina/the-tile/main/apps/web/data/seed/products.seed.json?cb=${Date.now()}`,
+    );
+    expect(seedRes.ok(), "seed JSON should be reachable on raw").toBeTruthy();
+    const seedBody = (await seedRes.json()) as {
+      products: Array<{ id: string; images?: unknown[] }>;
+    };
+    const product = seedBody.products.find((p) => p.id === productId);
+    expect(product, `${productId} in seed`).toBeDefined();
+    const originalImages = (product?.images as Array<Record<string, unknown>>) ?? [];
+
+    const probeImages = originalImages.map((img, i) => ({
+      ...img,
+      alt: i === 0 ? probeAlt : (img.alt as string | undefined),
+    }));
+
+    const writeRes = await request.post(`${BASE}/api/admin/publish`, {
+      headers: { ...authHeader(), "content-type": "application/json" },
+      data: {
+        products: { [productId]: { images: probeImages } },
+        commitMessage: `test: roundtrip alt probe ${probeAlt}`,
+      },
+    });
+    expect(writeRes.status(), "publish should succeed").toBeLessThan(400);
+
+    try {
+      // 3. Poll the public detail page until the rebuild lands or we time out.
+      //    CF Pages typically rebuilds in ~2-3 minutes; we give it 6 minutes.
+      const deadline = Date.now() + 6 * 60_000;
+      let saw = false;
+      while (Date.now() < deadline) {
+        const html = await request
+          .get(`${detailUrl}?cb=${Date.now()}`)
+          .then((r) => r.text());
+        if (html.includes(probeAlt)) {
+          saw = true;
+          break;
+        }
+        await new Promise((r) => setTimeout(r, 15_000));
+      }
+      expect(saw, `probe alt ${probeAlt} should appear on public after rebuild`).toBe(true);
+    } finally {
+      // 4. Revert — restore original images.
+      await request
+        .post(`${BASE}/api/admin/publish`, {
+          headers: { ...authHeader(), "content-type": "application/json" },
+          data: {
+            products: { [productId]: { images: originalImages } },
+            commitMessage: `test: roundtrip revert ${probeAlt}`,
+          },
+        })
+        .catch(() => {});
+    }
+  });
 });

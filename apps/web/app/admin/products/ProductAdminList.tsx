@@ -293,7 +293,7 @@ export function ProductAdminList({
                         className="inline-flex items-center gap-space-1 rounded-md border border-line px-space-3 py-space-2 text-xs text-ink hover:border-umber hover:text-umber"
                       >
                         <Edit3 aria-hidden="true" className="h-3 w-3" />
-                        Edit copy
+                        Edit
                       </Link>
                     </div>
                   </div>
