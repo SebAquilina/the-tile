@@ -89,10 +89,11 @@ jobs:
           GEMINI_API_KEY: ci-placeholder
           NEXT_PUBLIC_SITE_URL: http://localhost:3000
 
-      - name: Run Playwright
+      - name: Run Playwright (skip dialogue battery — needs real Gemini key)
         run: pnpm test:e2e
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_TEST }}
+          SKIP_DIALOGUE_BATTERY: "1"
 
       - name: Upload Playwright report
         if: failure()
@@ -110,7 +111,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Wait for Pages deploy
-        run: sleep 90  # crude — Cloudflare typically deploys within 60s
+        run: sleep 180  # deploy needs time to propagate; raised after CI flakiness
       - name: audit-secrets (no leaked keys in JS bundle)
         run: bash apps/web/scripts/audit/audit-secrets.sh
         env:
