@@ -126,8 +126,9 @@ test.describe("admin -> public roundtrip", () => {
       },
     });
     expect(writeRes.status(), "page create should succeed").toBeLessThan(400);
-    const created = (await writeRes.json()) as { page?: { id: string } };
+    const created = (await writeRes.json()) as { page?: { id: string; version: number } };
     const pageId = created.page?.id;
+    const pageVersion = created.page?.version ?? 0;
 
     try {
       const publicRes = await request.get(`${BASE}/${slug}`);
@@ -136,8 +137,11 @@ test.describe("admin -> public roundtrip", () => {
       expect(html, "page body must appear on public").toContain("Roundtrip Test");
     } finally {
       if (pageId) {
+        // The DELETE handler requires If-Match for optimistic concurrency.
         await request
-          .delete(`${BASE}/api/admin/pages/${pageId}`, { headers: authHeader() })
+          .delete(`${BASE}/api/admin/pages/${pageId}`, {
+            headers: { ...authHeader(), "If-Match": `W/"${pageVersion}"` },
+          })
           .catch(() => {});
       }
     }
