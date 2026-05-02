@@ -187,7 +187,7 @@ export function RedirectsEditor({ initial }: { initial: Row[] }) {
             </ul>
             {filtered.length === 0 && filter ? (
               <p className="mt-space-3 text-sm text-ink-muted">
-                No redirects match "{filter}".
+                No redirects match &ldquo;{filter}&rdquo;.
               </p>
             ) : null}
           </>
