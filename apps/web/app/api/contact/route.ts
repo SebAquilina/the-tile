@@ -85,6 +85,16 @@ export async function POST(request: Request): Promise<Response> {
         )
         .run();
       storedVia = "primary";
+      // Bind active analytics session to this lead — best-effort.
+      try {
+        const cid = parsed.data.cc_cid;
+        if (cid && /^[0-9a-f-]{20,40}$/i.test(cid)) {
+          const { bindSessionToLead } = await import("@/lib/analytics/track");
+          await bindSessionToLead(d, cid, leadId);
+        }
+      } catch (e) {
+        console.warn("[contact] session-bind failed:", (e as Error).message);
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error("[contact] D1 insert failed:", (e as Error).message);

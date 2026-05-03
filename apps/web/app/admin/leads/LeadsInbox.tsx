@@ -229,6 +229,12 @@ function LeadCard({
           Reply via email
           <ExternalLink aria-hidden="true" className="h-3 w-3" />
         </a>
+        <a
+          href={`/admin/leads/${lead.id}`}
+          className="inline-flex items-center gap-space-2 rounded-md border border-line px-space-4 py-space-2 text-sm font-medium text-ink hover:bg-surface-muted"
+        >
+          Open customer →
+        </a>
         {lead.status !== "replied" ? (
           <Button
             variant="ghost"

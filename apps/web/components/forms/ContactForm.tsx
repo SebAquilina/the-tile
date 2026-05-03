@@ -100,6 +100,15 @@ function ContactFormInner() {
 
   const onSubmit = async (values: FormValues) => {
     setSubmitError(null);
+    // Read the persistent analytics client_id (set by <TrackingPixel/> in
+    // localStorage as "cc_cid") and ship it with the lead so the server
+    // can bind the active session to the new lead — powering the Customer
+    // Timeline tab in /admin/leads/[id].
+    let cc_cid: string | undefined;
+    try {
+      const v = typeof window !== "undefined" ? window.localStorage.getItem("cc_cid") : null;
+      if (v && /^[0-9a-f-]{20,40}$/i.test(v)) cc_cid = v;
+    } catch { /* localStorage blocked */ }
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -112,6 +121,7 @@ function ContactFormInner() {
           preferredContactMethod: values.preferredContactMethod,
           consentGiven: values.consentGiven,
           saveListIds: saveListIds.length > 0 ? saveListIds : undefined,
+          cc_cid,
         }),
       });
 

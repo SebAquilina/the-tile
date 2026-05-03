@@ -210,6 +210,7 @@ export const ContactLeadSchema = z.object({
   preferredContactMethod: z.enum(["email", "phone", "whatsapp"]).optional(),
   consentGiven: z.literal(true),
   saveListIds: z.array(z.string().max(120)).max(50).optional(),
+  cc_cid: z.string().regex(/^[0-9a-f-]{20,40}$/i).optional(),
 });
 
 export type ContactLead = z.infer<typeof ContactLeadSchema>;

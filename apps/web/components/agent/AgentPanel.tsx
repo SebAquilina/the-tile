@@ -19,6 +19,7 @@ import { executeAction, on, type AgentAction } from "@/lib/events";
 import { sendChatMessage } from "@/lib/agent-client";
 import type { AgentMessage } from "@/lib/schemas";
 import { ActionReceipt } from "./ActionReceipt";
+import { trackEvent } from "@/components/analytics/TrackingPixel";
 
 export interface AgentPanelProps {
   open: boolean;
@@ -37,6 +38,11 @@ interface StoredMessage extends AgentMessage {
  * message on mount.
  */
 export function AgentPanel({ open, onClose }: AgentPanelProps) {
+  // Fire front_open exactly once per panel-open transition for analytics.
+  useEffect(() => {
+    if (open) trackEvent("front_open", { source: "panel" });
+  }, [open]);
+
   const router = useRouter();
   const toast = useToast();
 
@@ -120,6 +126,7 @@ export function AgentPanel({ open, onClose }: AgentPanelProps) {
 
       const collectedActions: AgentAction[] = [];
       let visibleText = "";
+      let hadStreamError: string | null = null;
 
       await sendChatMessage({
         messages: historyForServer,
@@ -135,12 +142,23 @@ export function AgentPanel({ open, onClose }: AgentPanelProps) {
           void executeAction(action, router, toast);
         },
         onError: (err) => {
+          hadStreamError = err;
           toast.error(`Concierge hiccup: ${err}`);
         },
         onDone: (final) => {
           visibleText = final;
         },
       });
+
+      // Analytics: fire front_question with had_answer derived from the response.
+      // Escalation phrases (or fetch errors) fire front_no_answer too.
+      const lo = (visibleText || "").toLowerCase();
+      const escalated = /(i don't know|i'm not sure|i can't answer|can't help with that|let me get someone|reach out to|book a showroom|\/contact)/.test(lo);
+      const hadAnswer = !hadStreamError && (visibleText?.length ?? 0) > 0 && !escalated;
+      trackEvent("front_question", { text: trimmed.slice(0, 200), had_answer: hadAnswer ? 1 : 0 });
+      if (!hadAnswer) {
+        trackEvent("front_no_answer", { text: trimmed.slice(0, 200), fallback_kind: hadStreamError ? "stream_error" : escalated ? "escalation" : "empty" });
+      }
 
       // Commit the assistant message.
       setMessages((prev) => [

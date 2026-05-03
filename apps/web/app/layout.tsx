@@ -8,6 +8,8 @@ import {
 import { Analytics } from "@/components/Analytics";
 import { getTheme, tokensToStyle } from "@/lib/theme/store";
 import { CookieConsent } from "@/components/CookieConsent";
+import { TrackingPixel } from "@/components/analytics/TrackingPixel";
+import { Suspense } from "react";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
@@ -86,6 +88,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{ __html: jsonLdToString(graph) }}
         />
         <Analytics />
+        <Suspense fallback={null}><TrackingPixel /></Suspense>
         {children}
         <CookieConsent />
       </body>

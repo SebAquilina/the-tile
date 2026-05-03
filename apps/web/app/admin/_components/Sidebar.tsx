@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
+  Activity,
+  BarChart3,
   Boxes,
   FileText,
+  Globe2,
   Inbox,
   LayoutDashboard,
   Menu as MenuIcon,
@@ -16,6 +19,7 @@ import {
   Settings as SettingsIcon,
   Sparkles,
   X,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -23,6 +27,9 @@ type Item = { href: string; label: string; icon: React.ComponentType<{ className
 
 const ITEMS: Item[] = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
+  { href: "/admin/live", label: "Live View", icon: Globe2 },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/admin/insights", label: "Insights", icon: Zap },
   { href: "/admin/products", label: "Tiles", icon: Boxes },
   { href: "/admin/leads", label: "Leads", icon: Inbox },
   { href: "/admin/reviews", label: "Reviews", icon: MessageSquareQuote },
